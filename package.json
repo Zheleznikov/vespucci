@@ -1,20 +1,23 @@
 {
-  "name": "default",
-  "home-page": "",
+  "name": "vespucci",
+  "home-page": "http://vespucci.tk/",
   "version": "1.0.0",
-  "description": "default webpack build ",
+  "description": "frontend of the diploma in Yandex.Praktikum",
   "main": "",
   "scripts": {
     "build": "cross-env NODE_ENV=production rimraf dist && webpack --mode production",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --mode development --open --watch",
     "gh": "cross-env NODE_ENV=production gh-pages -d dist",
-    "deploy": "npm run build && scp -r ./dist* user@255.255.255.1:/home/user/data"
+    "deploy": "npm run build && scp -r ./dist* polwen@84.201.167.7:/home/polwen/vespucci-frontend"
   },
   "repository": {
     "type": "git",
     "url": ""
   },
-  "keywords": [],
+  "keywords": [
+    "explorer",
+    "news"
+  ],
   "author": "Sergey Zheleznikov <polwen@yandex.ru>",
   "license": "ISC",
   "homepage": "",
