@@ -1,0 +1,14 @@
+.header__links {
+  display: flex;
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+
+
+  /* align-items: center; */
+  padding: 0;
+  margin: 0;
+
+}

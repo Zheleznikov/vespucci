@@ -1,0 +1,17 @@
+@import url(./__copyright/footer__copyright.css);
+@import url(./__icon/footer__icon.css);
+@import url(./__link/footer__link.css);
+@import url(./__nav/footer__nav.css);
+@import url(./__li/footer__li.css);
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1232px;
+  margin: 0 auto;
+  border: 1px solid red;
+
+  font-family: Roboto, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 18px;
+  line-height: 24px;
+}

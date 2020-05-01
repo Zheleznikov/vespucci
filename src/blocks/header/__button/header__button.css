@@ -1,0 +1,10 @@
+.header__button {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 12px 12px 15px;
+    margin-top: 19px;
+    border-radius: 100px;
+    cursor: pointer;
+    outline: none;
+}
