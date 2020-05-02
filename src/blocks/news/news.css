@@ -1,3 +1,18 @@
+@import url(./__date/news__date.css);
+@import url(./__description/news__description.css);
+@import url(./__image/news__image.css);
+@import url(./__source/news__source.css);
+@import url(./__text/news__text.css);
+@import url(./__title/news__title.css);
+@import url(./__icon/news__icon.css);
+@import url(./__icon/_marked/news__icon_marked.css);
+
 .news {
-    
+    width: 400px;
+    background-color: white;
+    position: relative;
+    height: 576px;
+    border-radius: 10px;
+    position: relative;
+
 }

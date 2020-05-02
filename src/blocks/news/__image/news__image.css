@@ -1,0 +1,9 @@
+.news__image {
+    height: 272px;
+    width: 400px;
+    display: block;
+    object-fit: fill;
+    object-position: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
