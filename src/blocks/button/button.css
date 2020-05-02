@@ -6,5 +6,13 @@
   background-color: #2F71E5;
   color: white;
   outline: none;
-  cursor: pointer;
+  cursor: url(../../images/pointer.svg), pointer;
+}
+
+.button:hover {
+  background-color: #347EFF;
+}
+
+.button:active {
+  background-color: #2A65CC;
 }

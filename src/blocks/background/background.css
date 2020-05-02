@@ -1,5 +1,6 @@
 .background {
-    background-image: url(../../images/main-search.png);
-    background-position: cover;
-    background-repeat: no-repeat;
+  width: 100%;
+  background-image: url(../../images/main-search.png);
+  background-position: cover;
+  background-repeat: no-repeat;
 }
