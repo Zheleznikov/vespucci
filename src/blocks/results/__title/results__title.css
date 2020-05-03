@@ -1,5 +1,30 @@
 .results__title {
-  display: block;
-  max-width: 1232px;
   margin: 0 auto;
+}
+
+@media screen and (max-width: 1234px) {
+  .results__title {
+    max-width: 816px;
+
+  }
+}
+
+
+@media screen and (max-width: 840px) {
+  .results__title {
+    max-width: 688px;
+  }
+}
+
+
+ @media screen and (max-width: 687px) {
+  .results__title {
+    max-width: 456px;
+  }
+}
+
+@media screen and (max-width: 539px) {
+  .results__title {
+    max-width: 288px;
+  }
 }

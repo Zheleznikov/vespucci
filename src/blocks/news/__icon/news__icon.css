@@ -15,3 +15,10 @@
 .news__icon:hover {
   background-image: url(../../../images/flag-hover.svg);
 }
+
+@media screen and (max-width: 840px) {
+  .news__icon {
+    top: 8px;
+    right: 8px;
+  }
+}

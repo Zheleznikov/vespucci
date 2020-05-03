@@ -2,11 +2,27 @@
 
     max-width: 1232px;
     margin: 64px auto;
-
     display: grid;
     grid-template-columns: repeat(auto-fill, 400px);
     grid-gap: 16px 16px;
     justify-content: center;
     /* font-size: 40px; */
     position: relative;
+
+}
+
+@media screen and (max-width: 840px) {
+  .results__container {
+    margin: 32px auto 22px;
+    grid-template-columns: repeat(auto-fill, 224px);
+    grid-gap: 8px 8px;
+  }
+}
+
+@media screen and (max-width: 539px) {
+  .results__container {
+    margin: 24px auto 16px;
+    grid-template-columns: repeat(auto-fill, 288px);
+    /* grid-gap: 8px 8px; */
+  }
 }

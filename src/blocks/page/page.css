@@ -1,5 +1,23 @@
 .page {
-    max-width: 1440px;
+    max-width: 1232px;
     margin: 0 auto;
-    /* border: 1px solid #2F71E5; */
 }
+
+@media screen and (max-width: 1439px) {
+  .page {
+    max-width: 86%;
+  }
+ }
+
+ @media screen and (max-width: 800px) {
+  .page {
+
+    max-width: 688px;
+  }
+ }
+
+ @media screen and (max-width: 767px) {
+  .page {
+    max-width: 90%;
+  }
+ }

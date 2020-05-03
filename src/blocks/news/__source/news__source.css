@@ -13,3 +13,11 @@
   bottom: 24px;
   left:24px;
 }
+
+@media screen and (max-width: 840px) {
+  .news__source {
+    bottom: 16px;
+    left: 16px;
+  }
+
+}

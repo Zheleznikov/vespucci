@@ -1,12 +1,26 @@
 @import url(./__button/results__button.css);
 @import url(./__container/results__container.css);
 @import url(./__title/results__title.css);
-
+@import url(./__helpers/results__helpers.css);
 .results {
   background-color: #F5F6F7;
   padding-top: 80px;
   padding-bottom: 80px;
+  position: relative;
 
-  /* display: flex;
-  flex-direction: column; */
+
+}
+
+@media screen and (max-width: 840px) {
+  .results {
+    padding-bottom: 40px;
+    padding-top: 40px;
+  }
+}
+
+@media screen and (max-width: 539px) {
+  .results {
+    padding-bottom: 32px;
+    padding-top: 32px;
+  }
 }

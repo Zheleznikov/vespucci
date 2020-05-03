@@ -11,9 +11,9 @@
 </head>
 
 <body>
-  <div class="page">
+  <!-- <div class="page"> -->
     <div class="background">
-      <header class="header">
+      <header class="page header">
         <!-- <nav class="header__menu"> -->
           <h2 class="header__logo">NewsExplorer</h2>
           <nav class="header__links">
@@ -28,6 +28,7 @@
       </header>
 
       <section class="search">
+
         <div class="search__main">
           <h1 class="search__title">Что в мире творится?</h1>
           <p class="search__subtitle">Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.</p>
@@ -38,22 +39,27 @@
           </form>
       </section>
     </div>
+
       <section class="results">
-        <h2 class="title results__title">Результаты поиска</h2>
+        <div class="results__helpers">
+          <div class="preloader preloader_visible"></div>
+          <h2 class="title results__title">Результаты поиска</h2>
+        </div>
         <div class="results__container">
-          <!-- здесь будут лежать новости -->
           <div class="news">
+            <a href="https://ya.ru/" target="_blank" class="news__link"></a>
             <div class="news__icon"></div>
             <img src="<%=require('./images/image_08.png')%>" alt="" class="news__image">
             <div class="news__description">
               <p class="news__date">2 августа, 2019</p>
               <h3 class="news__title">Национальное достояние – парки</h3>
-              <p class="news__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
+              <div class="news__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начал складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</div>
               <p class="news__source">Лента.ру</p>
             </div>
           </div>
 
-          <!-- <div class="news">
+          <div class="news">
+            <a href="https://ya.ru/" target="_blank" class="news__link"></a>
             <div class="news__icon"></div>
             <img src="<%=require('./images/image_04.png')%>" alt="" class="news__image">
             <div class="news__description">
@@ -65,17 +71,19 @@
           </div>
 
           <div class="news">
+            <a href="https://ya.ru/" target="_blank" class="news__link"></a>
             <div class="news__icon"></div>
             <img src="<%=require('./images/image_07.png')%>" alt="" class="news__image">
             <div class="news__description">
               <p class="news__date">2 августа, 2019</p>
               <h3 class="news__title">«Первозданная тайга»: новый фотопроект Игоря Шпиленка</h3>
-              <p class="news__text">Знаменитый фотограф снимает первозданные леса России, чтобы рассказать о необходимости их сохранения. В этот раз он отправился в Двинско-Пинежскую тайгу, где...</p>
+              <p class="news__text">Знаменитый фотограф снимает первозданные леса России, чтобы рассказать о необходимости их сохранения. В этот раз он отправился в Двинско-Пинежскую тайгу, где</p>
               <p class="news__source">риа</p>
             </div>
           </div>
 
           <div class="news">
+            <a href="https://ya.ru/" target="_blank" class="news__link"></a>
             <div class="news__icon"></div>
             <img src="<%=require('./images/image_08.png')%>" alt="" class="news__image">
             <div class="news__description">
@@ -87,6 +95,7 @@
           </div>
 
           <div class="news">
+            <a href="https://ya.ru/" target="_blank" class="news__link"></a>
             <div class="news__icon"></div>
             <img src="<%=require('./images/image_07.png')%>" alt="" class="news__image">
             <div class="news__description">
@@ -101,7 +110,7 @@
 
         </div>
         <button class="results__button">Показать еще</button>
-      </section> -->
+      </section>
 
       <!-- <section class="author">
         <div class="author__info">
@@ -131,7 +140,7 @@
       </footer> -->
 
 
-    </div>
+    <!-- </div> -->
 
     <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
 </body>
