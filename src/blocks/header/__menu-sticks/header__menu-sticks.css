@@ -1,0 +1,14 @@
+.header__menu-sticks {
+    align-self: center;
+    position: relative;
+    width: 32px;
+    height: 32px;
+    display: none;
+}
+
+@media screen and (max-width: 680px) {
+  .header__menu-sticks {
+    display: block;
+  }
+}
+

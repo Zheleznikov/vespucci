@@ -1,3 +1,5 @@
 .header__li {
     list-style-type: none;
+    align-self: center;
+
 }

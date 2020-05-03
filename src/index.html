@@ -14,15 +14,19 @@
   <div class="page">
     <div class="background">
       <header class="header">
-        <nav class="header__menu">
+        <!-- <nav class="header__menu"> -->
           <h2 class="header__logo">NewsExplorer</h2>
-          <ul class="header__links">
-            <li class="header__li"><a href="" class="header__link header__link_active">Главная</a></li>
-            <li class="header__li"><a href="" class="header__link header__link_none">Сохраненные статьи</a></li>
-            <li class="header__li"><button class="header__button ">Авторизоваться</button></li>
-          </ul>
-        </nav>
+          <nav class="header__links">
+            <a href="" class="header__link header__link_active">Главная</a>
+            <a href="" class="header__link">Сохраненные статьи</a>
+            <button class="header__button header__button_in">Авторизоваться</button>
+          </nav>
+        <!-- </nav> -->
+        <div class="header__menu-sticks">
+          <button class="header__menu-button"></button>
+        </div>
       </header>
+
       <section class="search">
         <div class="search__main">
           <h1 class="search__title">Что в мире творится?</h1>
@@ -33,11 +37,12 @@
             </а>
           </form>
       </section>
-      <section class="results">
+    </div>
+      <!-- <section class="results">
         <h2 class="title results__title">Результаты поиска</h2>
-        <div class="results__container">
+        <div class="results__container"> -->
           <!-- здесь будут лежать новости -->
-          <div class="news">
+          <!-- <div class="news">
             <div class="news__icon"></div>
             <img src="<%=require('./images/image_08.png')%>" alt="" class="news__image">
             <div class="news__description">
@@ -96,8 +101,9 @@
 
         </div>
         <button class="results__button">Показать еще</button>
-      </section>
-      <section class="author">
+      </section> -->
+
+      <!-- <section class="author">
         <div class="author__info">
           <img src="<%=require('./images/ava.png')%>" alt="Сергей - разработчик сайта" class="author__photo">
           <div class="author__about">
@@ -106,8 +112,9 @@
             <p class="author__text">Также можно рассказать о процессе обучения в Практикуме, чему вы тут научились, и чем можете помочь потенциальным заказчикам.</p>
           </div>
         </div>
-      </section>
-      </div>
+      </section> -->
+
+      <!-- </div>
       <footer class="footer">
         <p class="footer__copyright">&#169; 2020 Supersite, Powered by News API</p>
         <ul class="footer__nav">
@@ -121,7 +128,7 @@
           </li>
 
         </ul>
-      </footer>
+      </footer> -->
 
 
     </div>

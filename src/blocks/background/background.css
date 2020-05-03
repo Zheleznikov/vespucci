@@ -1,6 +1,14 @@
 .background {
   width: 100%;
   background-image: url(../../images/main-search.png);
-  background-position: cover;
+  background-position: center;
   background-repeat: no-repeat;
+  background-size: cover;
 }
+
+@media screen and (max-width: 950px) {
+  .background {
+    background-image: url(../../images/main-search-768.png);
+  }
+}
+

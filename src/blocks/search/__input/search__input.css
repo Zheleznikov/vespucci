@@ -1,10 +1,25 @@
 .search__input {
+  display: block;
   font-size: 16px;
   line-height: 22px;
-  width: 376px;
+  width: 100%;
   padding: 21px 206px 21px 24px;
   margin: 0;
   outline: none;
   border: none;
   border-radius: 100px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 800px) {
+  .search__input {
+    padding-right: 196px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .search__input {
+   margin-bottom: 16px;
+   padding-right: 24px;
+  }
 }

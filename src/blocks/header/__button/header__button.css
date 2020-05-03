@@ -2,9 +2,12 @@
     background: transparent;
     border: 1px solid white;
     color: white;
+    /* display: block; */
     padding: 12px 12px 15px;
-    margin-top: 19px;
+    /* margin-top: 19px; */
     border-radius: 100px;
     cursor: url(../../../images/pointer.svg), pointer;
     outline: none;
+    box-sizing: content-box;
+    align-self: center;
 }

@@ -1,0 +1,30 @@
+.header__menu-button {
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: white;
+    position: absolute;
+    top: calc(50% - 6px);
+    right: 0px;
+    outline: none;
+    border: none;
+
+}
+
+
+.header__menu-button::after {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  content: '';
+  width: 100%;
+  height: 4px;
+  background-color: white;
+
+}
+
+@media screen and (max-width: 680px) {
+  .header__menu-button {
+    display: block;
+  }
+}

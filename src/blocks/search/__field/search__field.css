@@ -1,5 +1,13 @@
 .search__field {
-    padding-bottom: 80px;
     position: relative;
 
+}
+
+@media screen and (max-width: 520px) {
+  .search__field {
+    /* width: 90%;
+    margin: 0 auto; */
+    width: 100%;
+
+  }
 }
