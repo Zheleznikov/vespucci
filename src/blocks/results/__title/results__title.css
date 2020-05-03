@@ -1,4 +1,5 @@
 .results__title {
-  margin-left: 104px;
-  margin-top: 0;
+  display: block;
+  max-width: 1232px;
+  margin: 0 auto;
 }
