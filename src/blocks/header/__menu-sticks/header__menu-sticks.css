@@ -12,3 +12,9 @@
   }
 }
 
+@media screen and (max-width: 400px) {
+  .header__menu-sticks {
+    width: 16px;
+    height: 16px;
+  }
+}
