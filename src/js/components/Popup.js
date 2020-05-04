@@ -1,5 +1,6 @@
 export default class Popup {
   constructor(element) {
+
     this.element = element;
     this.toggleButton = this.element.querySelector('.popup__toggle-link');
     this.handlers();
