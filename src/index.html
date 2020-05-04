@@ -153,33 +153,48 @@
 
   <!-- ПОПАПЫ -->
 
-  <!-- ПОПАП ВОЙТИ -->
+  <!-- ПОПАП РЕГИСТРАЦИЯ -->
 
   <div class="popup">
     <div class="popup__content">
-      <!-- <img src="<%=require('./images/close.svg')%>" alt="Х" class="popup__close">
-      <h3 class="popup__title">Вход</h3>
-      <form action="" class="popup__form" name="enterPopup">
-        <div class="popup__form-field">
-          <p class="popup__input-tip">Email</p>
-          <input type="text" class="popup__input" placeholder="Введите почту">
-          <p class="popup__input-error">Неправильный формат email</p>
-        </div>
-        <div class="popup__form-field">
-          <p class="popup__input-tip">Пароль</p>
-          <input type="text" class="popup__input" placeholder="Введите пароль">
-          <p class="popup__input-error">Неправильный пароль</p>
-        </div>
-        <div class="popup__form-field">
-          <p class="popup__input-tip">Имя</p>
-          <input type="text" class="popup__input" placeholder="Введите пароль">
-          <p class="popup__input-error">Введите свое имя</p>
-        </div>
-        <button type="submit" class="button popup__button">Зарегистрироваться</button>
-        <p class="popup__toggle">или<button class="popup__toggle-link">Войти</button></p>
-      </form> -->
+      <div class="popup__template">
+
+      </div>
+
+      <p class="popup__toggle">или<button class="popup__toggle-link is-reg"></button></p>
     </div>
   </div>
+
+<!-- ПОПАП ВОЙТИ -->
+
+<!-- <div class="popup">
+  <div class="popup__content">
+    <img src="<%=require('./images/close.svg')%>" alt="Х" class="popup__close">
+    <h3 class="popup__title">Вход</h3>
+    <form action="" class="popup__form" name="enterPopup">
+      <div class="popup__form-field">
+        <p class="popup__input-tip">Email</p>
+        <input type="text" class="popup__input" placeholder="Введите почту">
+        <p class="popup__input-error">Неправильный формат email</p>
+      </div>
+      <div class="popup__form-field">
+        <p class="popup__input-tip">Пароль</p>
+        <input type="text" class="popup__input" placeholder="Введите пароль">
+        <p class="popup__input-error">Неправильный пароль</p>
+      </div>
+      <div class="popup__form-field">
+        <p class="popup__input-tip">Имя</p>
+        <input type="text" class="popup__input" placeholder="Введите пароль">
+        <p class="popup__input-error">Введите свое имя</p>
+      </div>
+      <button type="submit" class="button popup__button">Зарегистрироваться</button>
+      <p class="popup__toggle">или<button class="popup__toggle-link">Войти</button></p>
+    </form>
+  </div>
+</div> -->
+
+
+
 
   <!-- содержимое ПОПАП ВЫЙТИ  -->
 
@@ -197,8 +212,8 @@
         <input type="text" class="popup__input" placeholder="Введите пароль">
         <p class="popup__input-error">Неправильный пароль</p>
       </div>
-      <button type="submit" class="button popup__button">Войти</button>
-      <p class="popup__toggle">или<button class="popup__toggle-link">Зарегистрироваться</button></p>
+      <button type="submit" class="button popup__button popup__button_enter">Войти</button>
+
     </form>
   </template>
 
@@ -223,8 +238,8 @@
         <input type="text" class="popup__input" placeholder="Введите пароль">
         <p class="popup__input-error">Введите свое имя</p>
       </div>
-      <button type="submit" class="button popup__button">Зарегистрироваться</button>
-      <p class="popup__toggle">или<button class="popup__toggle-link">Войти</button></p>
+      <button type="submit" class="button popup__button popup__button_enter">Зарегистрироваться</button>
+
     </form>
   </template>
 
