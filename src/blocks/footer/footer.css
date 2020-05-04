@@ -3,15 +3,29 @@
 @import url(./__link/footer__link.css);
 @import url(./__nav/footer__nav.css);
 @import url(./__li/footer__li.css);
-
+@import url(./__links-logo/footer__links-logo.css);
+@import url(./__links-word/footer__links-word.css);
 .footer {
   display: flex;
   justify-content: space-between;
-  max-width: 1232px;
-  margin: 0 auto;
-
+  align-items: center;
 
   font-family: Roboto, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 18px;
   line-height: 24px;
+  max-height: 80px;
+  /* border: 1px solid blue; */
+}
+
+@media screen and (max-width: 800px) {
+  .footer {
+    max-height: 64px;
+  }
+}
+
+@media screen and (max-width: 725px) {
+  .footer {
+    max-height: none;
+    flex-direction: column-reverse;
+  }
 }

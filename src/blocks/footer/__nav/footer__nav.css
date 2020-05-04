@@ -1,5 +1,13 @@
 .footer__nav {
-    display: flex;
-    margin: 0;
-    padding: 0;
+  display: flex;
+  margin: 0;
+  padding: 0;
+
+}
+
+@media screen and (max-width: 725px) {
+  .footer__nav {
+    width: 100%;
+    justify-content: space-between;
+  }
 }

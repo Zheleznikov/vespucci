@@ -14,14 +14,19 @@
 	bottom: 0;
 	margin: auto;
 
-	animation: spin 10.75s infinite linear;
+	animation: spin .75s infinite linear;
 }
-
 
 @keyframes spin {
 	100% {
 		transform: rotate(360deg);
 	}
 }
+
+.preloader_visible {
+  display: block;
+}
+
+
 
 

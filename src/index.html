@@ -40,9 +40,10 @@
       </section>
     </div>
 
-      <section class="results">
+      <section class="results results_on">
         <div class="results__helpers">
-          <div class="preloader preloader_visible"></div>
+          <div class="preloader">
+          </div>
           <h2 class="title results__title">Результаты поиска</h2>
         </div>
         <div class="results__container">
@@ -112,35 +113,38 @@
         <button class="results__button">Показать еще</button>
       </section>
 
-      <!-- <section class="author">
+      <section class="page author">
         <div class="author__info">
-          <img src="<%=require('./images/ava.png')%>" alt="Сергей - разработчик сайта" class="author__photo">
+          <div class="author__view">
+            <img src="<%=require('./images/ava.png')%>" alt="Сергей - разработчик сайта" class="author__photo">
+          </div>
           <div class="author__about">
             <h2 class="title author__title">Об авторе</h2>
-            <p class="author__text">Это блок с описанием автора проекта. Здесь следует указать, как вас зовут, чем вы занимаетесь, какими технологиями разработки владеете.</p>
-            <p class="author__text">Также можно рассказать о процессе обучения в Практикуме, чему вы тут научились, и чем можете помочь потенциальным заказчикам.</p>
+            <p class="author__text">Привет! Я Сергей. Люблю JavaScript, больше чем верстать. JavaScript, больше чем верстать. JavaScript, больше чем верстать. JavaScript, больше чем верстать. JavaScript, больше чем верстать.</p>
+            <p class="author__text">В процессе учебы в Яндекс.Практикуме освоил html, css, JavaScript. Работал с expressJS и mongoDB. Готов работать на интересной работе за еду для кота и деньги.</p>
           </div>
         </div>
-      </section> -->
+      </section>
 
-      <!-- </div>
-      <footer class="footer">
+      </div>
+      <footer class="page footer">
         <p class="footer__copyright">&#169; 2020 Supersite, Powered by News API</p>
-        <ul class="footer__nav">
-          <li class="footer__li"><a href="./index.html" class="footer__link">Главная</a></li>
-          <li class="footer__li"><a href="https://praktikum.yandex.ru/" target="_blank" class="footer__link">Яндекс.Практикум</a></li>
-          <li class="footer__li">
+        <nav class="footer__nav">
+          <div class="footer__links-word">
+            <a href="./index.html" class="footer__link">Главная</a>
+            <a href="https://praktikum.yandex.ru/" target="_blank" class="footer__link">Яндекс.Практикум</a>
+          </div>
+          <div class="footer__links-logo">
             <a href="https://github.com/Zheleznikov/" target="_blank" class="footer__link"><img src="<%=require('./images/github-icon.svg')%>" alt="" class="footer__icon"></a>
-          </li>
-          <li class="footer__li">
+
             <a href="https://www.facebook.com/yandex.praktikum/" target="_blank" class="footer__link"><img src="<%=require('./images/fb-icon.svg')%>" alt="" class="footer__icon"></a>
-          </li>
+          </div>
 
-        </ul>
-      </footer> -->
+        </nav>
+      </footer>
 
 
-    <!-- </div> -->
+
 
     <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
 </body>

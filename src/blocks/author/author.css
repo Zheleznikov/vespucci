@@ -3,10 +3,26 @@
 @import url(./__photo/author__photo.css);
 @import url(./__info/author__info.css);
 @import url(./__about/author__about.css);
+@import url(./__view/author__view.css);
 
 .author {
-  max-width: 1232px;
-  margin: 0 auto;
+  /* max-width: 1232px;
+  margin: 0 auto; */
   padding-top: 80px;
   padding-bottom: 80px;
+}
+
+
+@media screen and (max-width: 1000px) {
+  .author {
+    padding-top: 40px;
+    padding-bottom: 60px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .author {
+    padding-top: 32px;
+    padding-bottom: 80px;
+  }
 }

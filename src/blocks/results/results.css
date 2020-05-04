@@ -2,13 +2,17 @@
 @import url(./__container/results__container.css);
 @import url(./__title/results__title.css);
 @import url(./__helpers/results__helpers.css);
+
 .results {
   background-color: #F5F6F7;
   padding-top: 80px;
   padding-bottom: 80px;
   position: relative;
+  display: none;
+}
 
-
+.results_on {
+  display: block;
 }
 
 @media screen and (max-width: 840px) {

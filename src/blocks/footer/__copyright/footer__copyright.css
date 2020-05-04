@@ -3,6 +3,14 @@
   line-height: 22px;
   color: #B6BCBF;
   text-decoration: none;
-  margin-top: 32px;
-  margin-bottom: 26px;
+  /* margin-top: 32px;
+  margin-bottom: 26px; */
+}
+
+
+@media screen and (max-width: 440px) {
+  .footer__copyright {
+    margin-bottom: 20px;
+    margin-top: 0;
+  }
 }
