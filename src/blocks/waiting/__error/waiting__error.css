@@ -1,0 +1,11 @@
+.waiting__error {
+  min-height: 374px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.waiting__error_on {
+  display: flex;
+}

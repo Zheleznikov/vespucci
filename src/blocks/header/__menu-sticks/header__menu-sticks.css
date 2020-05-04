@@ -1,9 +1,9 @@
 .header__menu-sticks {
     align-self: center;
     position: relative;
-    width: 32px;
-    height: 32px;
     display: none;
+    width: 16px;
+    height: 16px;
 }
 
 @media screen and (max-width: 680px) {
@@ -12,9 +12,4 @@
   }
 }
 
-@media screen and (max-width: 400px) {
-  .header__menu-sticks {
-    width: 16px;
-    height: 16px;
-  }
-}
+

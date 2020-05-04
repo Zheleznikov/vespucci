@@ -1,36 +1,21 @@
 .header__menu-button {
-    display: block;
-    width: 100%;
-    height: 4px;
-    background-color: white;
-    position: absolute;
-    top: calc(50% - 6px);
-    right: 0px;
-    outline: none;
-    border: none;
+  display: block;
+  width: 100%;
+  background-color: white;
+  position: absolute;
+  right: 0px;
+  outline: none;
+  border: none;
+  height: 2px;
+  top: calc(50% - 3px);
 }
-
 
 .header__menu-button::after {
   position: absolute;
   left: 0;
-  top: 10px;
   content: '';
   width: 100%;
-  height: 4px;
   background-color: white;
-
-}
-
-@media screen and (max-width: 400px) {
-  .header__menu-button {
-    height: 2px;
-    top: calc(50% - 3px);
-  }
-
-  .header__menu-button::after {
-    height: 2px;
-    top: 5px;
-
-  }
+  height: 2px;
+  top: 5px;
 }

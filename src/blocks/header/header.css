@@ -1,6 +1,5 @@
 @import url(./__menu/header__menu.css);
 @import url(./__button/header__button.css);
-@import url(./__li/header__li.css);
 @import url(./__link/header__link.css);
 @import url(./__links/header__links.css);
 @import url(./__logo/header__logo.css);
@@ -9,26 +8,22 @@
 @import url(./__button/_in/header__button_in.css);
 @import url(./__menu-button/header__menu-button.css);
 @import url(./__menu-sticks/header__menu-sticks.css);
-
 .header {
-    color: white;
-    font-family: Roboto, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    /* max-width: 1232px;
-    margin: 0 auto; */
-    display: flex;
-    justify-content: space-between;
-    min-height: 80px;
+  color: white;
+  font-family: Roboto, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  display: flex;
+  justify-content: space-between;
+  min-height: 80px;
 }
 
 @media screen and (max-width: 1439px) {
- .header {
-   max-width: 86%;
- }
+  .header {
+    max-width: 86%;
+  }
 }
 
 @media screen and (max-width: 800px) {
   .header {
     min-height: 66px;
-
   }
- }
+}

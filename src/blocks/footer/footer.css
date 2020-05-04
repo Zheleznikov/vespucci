@@ -23,7 +23,7 @@
   }
 }
 
-@media screen and (max-width: 725px) {
+@media screen and (max-width: 740px) {
   .footer {
     max-height: none;
     flex-direction: column-reverse;
