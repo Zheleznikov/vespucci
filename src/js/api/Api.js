@@ -68,6 +68,7 @@ export default class Api {
       .catch((err) => console.log(err));
   }
 
+  // получить информацию о себе
   getMyData(callback) {
     return fetch(`${this.IP}users/me`, {
         headers: {

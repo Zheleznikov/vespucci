@@ -5,40 +5,21 @@ export default class Validate extends ValidateConst {
     super();
   }
 
-  checkName(value, tip) {
-    if (value.length === 0) {
+  // проверяем поле
+  checkField(value, tip, input) {
+    if (value === '') {
       tip.textContent = this.errMessageNull;
       return false;
-    } else if (value.length === 1 || value.length > 30) {
+    } else if (input.classList.contains('popup__input_name') && (value.length === 1 || value.length > 30)) {
       tip.textContent = this.errMessageLength;
       return false;
-    } else {
-      tip.textContent = '';
-      return true;
-    }
-  }
-
-  checkEmail(value, tip) {
-    if (value === '') {
-      tip.textContent = this.errMessageNull;
-      return false;
-    } else if (!this.emailReg.test(value)) {
+    } else if (input.classList.contains('popup__input_email') && !this.emailReg.test(value)) {
       tip.textContent = this.errMessageEmail;
       return false;
-    } else {
-      tip.textContent = '';
-      return true;
-    }
-  }
-
-  checkPass(value, tip) {
-    if (value === '') {
-      tip.textContent = this.errMessageNull;
-      return false;
-    } else if (value.length < 8) {
+    } else if (input.classList.contains('popup__input_pass') && value.length < 8) {
       tip.textContent = this.errMessagePassLength;
       return false;
-    } else if (!this.passwordReg.test(value)) {
+    } else if (input.classList.contains('popup__input_pass') && !this.passwordReg.test(value)) {
       tip.textContent = this.errMessagePass;
       return false;
     } else {
@@ -47,18 +28,16 @@ export default class Validate extends ValidateConst {
     }
   }
 
-  checkWhatToCheck(value, tip, inputType) {
-    if (inputType === 'name') {
-      return this.checkName(value, tip);
-    }
-    if (inputType === 'email') {
-      return this.checkEmail(value, tip);
-    }
-    if (inputType === 'password') {
-      return this.checkPass(value, tip)
+  // убрать подсказку, если инпут сейчас в фокусе
+  hideHint(value, err, type) {
+    if (type === 'focus') {
+      value.onfocus = () => err.textContent = '';
+    } else if (type === 'blur') {
+      value.onblur = () => err.textContent = '';
     }
   }
 
+  // работа с кнопкой
   setButtonAttribute(button, valid) {
     if (valid) {
       button.removeAttribute('disabled', true);
@@ -66,6 +45,34 @@ export default class Validate extends ValidateConst {
       button.setAttribute('disabled', true);
     }
   }
+
+  // обработчик валидации
+  handler(evt, email, emailErr, pass, passErr, button, handlerErr, name = document.querySelector('.popup__input_name'), nameErr = document.querySelector('.popup__input-err_name')) {
+    this.emailFlag;
+    this.passFlag;
+    this.nameFlag = true;
+
+    if (evt.target === email) {
+      this.emailFlag = this.checkField(email.value, emailErr, email);
+    } else if (evt.target === pass) {
+      this.passFlag = this.checkField(pass.value, passErr, pass);
+    } else if (evt.target === name) {
+      this.nameFlag = this.checkField(name.value, nameErr, name);
+    }
+
+    if (this.emailFlag && this.passFlag && this.nameFlag) {
+      this.setButtonAttribute(button, true);
+    } else {
+      this.setButtonAttribute(button, false);
+    }
+
+    this.hideHint(email, emailErr, 'focus');
+    this.hideHint(pass, passErr, 'focus');
+    this.hideHint(name, nameErr, 'focus');
+    this.hideHint(button, handlerErr, 'blur');
+  }
+
+
 
 
 

@@ -6,6 +6,7 @@ export default class Head {
     this.accountLink = this.header.querySelector('.header__link_account');
   }
 
+  // кнопки в хэдере для авторизванного пользователя
   ifLogin(name) {
     this.authButton.classList.add('header__button_none');
     this.userButton.classList.remove('header__button_none');
@@ -13,6 +14,7 @@ export default class Head {
     this.userButton.textContent = name;
   }
 
+  // кнопки входа для неавторизованного пользователя
   ifUnauthorized() {
     this.authButton.classList.remove('header__button_none');
     this.userButton.classList.add('header__button_none');

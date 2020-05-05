@@ -14,6 +14,7 @@ import Popup from './js/components/Popup';
   const SERVER = 'https://api.vespucci.tk/'
   const api = new Api(SERVER);
   const head = new Head(document.querySelector('.header'));
+  const validate = new Validate();
 
   api.getMyData(data => {
     if (data.message === 'Congratulate') {
@@ -24,7 +25,6 @@ import Popup from './js/components/Popup';
   })
 
   new Popup(document.querySelector('.popup-success'));
-  const validate = new Validate();
   new Enter(document.querySelector('.popup-enter'), validate, api, head);
   new Reg(document.querySelector('.popup-reg'), validate, api);
 

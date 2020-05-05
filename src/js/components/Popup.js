@@ -5,49 +5,60 @@ export default class Popup extends PopupConst {
     super(element);
     this.defaultHandlers();
     this.switchPopupHandler();
+
   }
 
   open() {
-    this.clearContent();
     this.element.classList.add('popup_is-opened');
   }
 
   close() {
-    this.element.classList.remove('popup_is-opened', true);
+    if (this.element.classList.contains('popup-success')) {
+      this.element.classList.remove('popup_is-opened', true);
+    } else {
+      this.element.classList.remove('popup_is-opened', true);
+      this.clearContent();
+    }
   }
+
 
   multyClose(event) {
-    if (event.target === this.element || event.target === this.element.querySelector('.popup__close')) {
-      this.close();
-    }
-    if (event.keyCode === 27) {
+    if (event.target === this.element || event.target === this.element.querySelector('.popup__close') || event.keyCode === 27) {
       this.close();
     }
   }
 
+
+  // очистить содержимое полей и подсказок
   clearContent() {
-    this.element.querySelector('.popup__input_email').value = '';
-    this.element.querySelector('.popup__input_pass').value = '';
+    this.email.value = '';
+    this.pass.value = '';
     document.querySelector('.popup__input_name').value = '';
-    this.element.querySelector('.popup__input-error_email').textContent = '';
-    this.element.querySelector('.popup__input-error_pass').textContent = '';
+    this.emailErr.textContent = '';
+    this.passErr.textContent = '';
+    this.handlerErr.textContent = '';
     document.querySelector('.popup__input-error_name').textContent = '';
-    this.element.querySelector('.popup__button').setAttribute('disabled', 'disabled');
+    this.button.setAttribute('disabled', 'disabled');
   }
 
+  // переключиться на попап входа
   showEnterPopup() {
-    // this.clearContent();
-    this.enterPopup.classList.add('popup_is-opened');
-    this.regPopup.classList.remove('popup_is-opened', true);
-    this.successPopup.classList.remove('popup_is-opened', true);
+    if (this.element.classList.contains('popup-reg') || this.element.classList.contains('popup-success')) {
+      this.enterPopup.classList.add('popup_is-opened');
+      this.close();
+    }
   }
 
+
+  // переключиться на попап регистрации
   showRegPopup() {
-    // this.clearContent();
-    this.regPopup.classList.add('popup_is-opened');
-    this.enterPopup.classList.remove('popup_is-opened', true);
+    if (this.element.classList.contains('popup-enter')) {
+      this.regPopup.classList.add('popup_is-opened');
+      this.close();
+    }
   }
 
+  // обработчик переключения попапов
   switchPopupHandler() {
     document.querySelector('.popup__toggle-link_reg').addEventListener('click', this.showEnterPopup.bind(this));
     document.querySelector('.popup__toggle-link_enter').addEventListener('click', this.showRegPopup.bind(this));
