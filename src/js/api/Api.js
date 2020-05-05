@@ -1,12 +1,12 @@
 export default class Api {
-  constructor(options, IP) {
+  constructor(IP, options) {
     this.options = options;
     this.IP = IP;
   }
 
   // зарегистрироваться
   signup(email, name, password, callback) {
-    fetch(`${this.IP3}signup`, {
+    fetch(`${this.IP}signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -64,6 +64,23 @@ export default class Api {
       .then(res => res.json())
       .then((result) => {
         callback(result);
+      })
+      .catch((err) => console.log(err));
+  }
+
+  getMyData(callback) {
+    return fetch(`${this.IP}users/me`, {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type': 'application/json'
+        },
+      })
+      .then(res => res.json())
+      .then((result) => {
+        if (callback) {
+          callback(result);
+        }
+        return result;
       })
       .catch((err) => console.log(err));
 

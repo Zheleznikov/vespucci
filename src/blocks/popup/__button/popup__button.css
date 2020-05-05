@@ -1,5 +1,5 @@
 .popup__button {
-  margin-top: 25px;
+  margin-top: 0px;
   margin-bottom: 16px;
   width: 100%;
   /* font-family: Roboto;
@@ -14,7 +14,7 @@
   /* cursor: url(../../../images/pointer.svg), pointer; */
 }
 
-.popup__button_disabled, .popup__button_disabled:hover, .popup__button_disabled:active {
+.popup__button:disabled, .popup__button_disabled:hover, .popup__button_disabled:active {
   background-color: #E6E8EB;
   color: #B6BCBF;
   box-shadow: none;

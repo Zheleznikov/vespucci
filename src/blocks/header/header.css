@@ -6,6 +6,7 @@
 @import url(./__link/_active/header__link_active.css);
 @import url(./__link/_none/header__link_none.css);
 @import url(./__button/_in/header__button_in.css);
+@import url(./__button/_none/header__button_none.css);
 @import url(./__menu-button/header__menu-button.css);
 @import url(./__menu-sticks/header__menu-sticks.css);
 .header {

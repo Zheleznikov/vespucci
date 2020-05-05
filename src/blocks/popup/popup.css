@@ -9,6 +9,9 @@
 @import url(./__input-tip/popup__input-tip.css);
 @import url(./__toggle-link/popup__toggle-link.css);
 @import url(./__toggle/popup__toggle.css);
+@import url(./__input-error/_handler/popup__input-error_handler.css);
+@import url(./__toggle-link/_success/popup__toggle-link_success.css);
+
 
 .popup {
   position: fixed;
