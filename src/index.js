@@ -11,7 +11,8 @@ import Popup from './js/components/Popup';
 
 (function() {
   const IP = 'http://localhost:3000/';
-  const api = new Api(IP);
+  const SERVER = 'https://api.vespucci.tk/'
+  const api = new Api(SERVER);
   const head = new Head(document.querySelector('.header'));
 
   api.getMyData(data => {

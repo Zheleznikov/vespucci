@@ -42,7 +42,7 @@ export default class Auth extends Popup {
     this.api.signup(this.email.value, this.name.value, this.pass.value, (data) => {
       if (data.message === 'Congratulate') {
         this.close();
-        document.querySelector('.popup-success').classList.add('is-opened')
+        document.querySelector('.popup-success').classList.add('popup_is-opened');
 
       } else {
         this.handlerErr.textContent = data.message;
