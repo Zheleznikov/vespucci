@@ -11,23 +11,25 @@ export default class Auth extends Popup {
 
   };
 
-// обработчик формы входа
+  // обработчик формы входа
   regHandler(evt) {
-    this.validate.handler(evt, this.email, this.emailErr, this.pass, this.passErr, this.button, this.handlerErr, this.name, this.nameErr )
+    this.validate.handler(evt, this.email, this.emailErr, this.pass, this.passErr, this.button, this.handlerErr, this.name, this.nameErr)
   }
 
   // зарегистрироваться
   reg(evt) {
     evt.preventDefault();
-    this.api.signup(this.email.value, this.name.value, this.pass.value, (data) => {
-      if (data.message === 'Congratulate') {
-        this.close();
-        document.querySelector('.popup-success').classList.add('popup_is-opened');
+    this.api.signup(this.email.value, this.name.value, this.pass.value)
+      .then((data) => {
+        if (data.message === 'Congratulate') {
+          this.close();
+          document.querySelector('.popup-success').classList.add('popup_is-opened');
 
-      } else {
-        this.handlerErr.textContent = data.message;
-      }
-    })
+        } else {
+          this.handlerErr.textContent = data.message;
+        }
+      })
+      .catch(err => console.log(err));
   }
 
   handlers() {

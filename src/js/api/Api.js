@@ -6,7 +6,7 @@ export default class Api {
 
   // зарегистрироваться
   signup(email, name, password, callback) {
-    fetch(`${this.IP}signup`, {
+    return fetch(`${this.IP}signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -20,7 +20,10 @@ export default class Api {
       })
       .then(res => res.json())
       .then((result) => {
-        callback(result);
+        if (callback) {
+          callback(result);
+        }
+        return result;
       })
       .catch((err) => console.log(err))
 
@@ -28,7 +31,7 @@ export default class Api {
 
   // залогиниться
   signin(email, password, callback) {
-    fetch(`${this.IP}signin`, {
+    return fetch(`${this.IP}signin`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -48,13 +51,14 @@ export default class Api {
         if (callback) {
           callback(data)
         }
+        return data;
       })
       .catch(err => console.log(err));
   }
 
   // разлогиниться
   logout(callback) {
-    fetch(`${this.IP}logout`, {
+    return fetch(`${this.IP}logout`, {
         method: 'POST',
         headers: {
           authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -64,6 +68,7 @@ export default class Api {
       .then(res => res.json())
       .then((result) => {
         callback(result);
+        return result;
       })
       .catch((err) => console.log(err));
   }

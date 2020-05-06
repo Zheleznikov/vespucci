@@ -1,0 +1,8 @@
+@media screen and (max-width: 680px) {
+  .header__links_mobile {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
+  }
+}

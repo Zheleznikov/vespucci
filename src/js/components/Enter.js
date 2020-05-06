@@ -6,11 +6,8 @@ export default class Enter extends Popup {
     this.api = api;
     this.validate = validate;
     this.head = head;
-
     this.handlers();
   }
-
-
 
   enterHandler(evt) {
     this.validate.handler(evt, this.email, this.emailErr, this.pass, this.passErr, this.button, this.handlerErr)
@@ -18,22 +15,24 @@ export default class Enter extends Popup {
 
   enter(evt) {
     evt.preventDefault();
-    this.api.signin(this.email.value, this.pass.value, (data) => {
-      if (data.message === 'Congratulate') {
-        this.head.ifLogin(data.data.name);
-        this.close();
-      } else {
-        this.handlerErr.textContent = data.message;
-      }
-    })
+    this.api.signin(this.email.value, this.pass.value)
+      .then((data) => {
+        if (data.message === 'Congratulate') {
+          this.head.ifLogin(data.data.name);
+          this.close();
+        } else {
+          this.handlerErr.textContent = data.message;
+        }
+      })
+      .catch(err => console.log(err));
 
   }
 
   exit() {
-    this.api.logout(data => this.head.ifUnauthorized());
+    this.api.logout()
+      .then(() => this.head.ifUnauthorized())
+      .catch(err => console.log(err));
   }
-
-
 
   handlers() {
     document.querySelector('.header__button_auth').addEventListener('click', this.open.bind(this));

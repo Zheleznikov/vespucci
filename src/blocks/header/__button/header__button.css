@@ -1,13 +1,36 @@
 .header__button {
-    background: transparent;
-    border: 1px solid white;
-    color: white;
-    /* display: block; */
-    padding: 12px 12px 15px;
-    /* margin-top: 19px; */
-    border-radius: 100px;
-    cursor: url(../../../images/pointer.svg), pointer;
-    outline: none;
-    box-sizing: content-box;
-    align-self: center;
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  /* display: block; */
+  padding: 12px 12px 15px;
+  /* margin-top: 19px; */
+  border-radius: 100px;
+  cursor: url(../../../images/pointer.svg), pointer;
+  outline: none;
+  box-sizing: content-box;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* align-self: center; */
 }
+
+
+/* .header__button_mobile {
+  width: 100%;
+  margin-top: 22px;
+  box-sizing: border-box;
+} */
+
+/* .header__button_icon {
+  display: block;
+  padding: 0;
+  margin: 0;
+} */
+
+/* .header__button_user {
+  margin: 0;
+  margin-right: 3px;
+  padding: 0;
+} */

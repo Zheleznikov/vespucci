@@ -4,7 +4,14 @@
     display: none;
     width: 16px;
     height: 16px;
+    position: absolute;
+    right: 0;
+    top: 20px;
 }
+
+/* .header__menu-sticks_mobile {
+  right: 5%;
+} */
 
 @media screen and (max-width: 680px) {
   .header__menu-sticks {

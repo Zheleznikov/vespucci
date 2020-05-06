@@ -2,3 +2,7 @@
     color: white;
     border-bottom: 1px solid white;
 }
+
+.header__link_active_mobile {
+  border-bottom: none;
+}

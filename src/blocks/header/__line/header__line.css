@@ -1,0 +1,14 @@
+@media screen and (max-width: 680px) {
+  .header__line {
+    position: absolute;
+    top:56px;
+    width: 100%;
+    border-top: 1px solid rgb(196,196,196);
+    z-index: 1;
+    display: none;
+  }
+
+  .header__line_mobile {
+display: block;
+  }
+}

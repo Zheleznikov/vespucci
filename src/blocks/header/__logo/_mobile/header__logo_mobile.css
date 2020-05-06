@@ -1,0 +1,8 @@
+@media screen and (max-width: 680px) {
+  .header__logo_mobile {
+    line-height: 56px;
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+  }
+}

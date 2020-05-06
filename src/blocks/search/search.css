@@ -4,6 +4,7 @@
 @import url(./__subtitle/search__subtitle.css);
 @import url(./__title/search__title.css);
 @import url(./__main/search__main.css);
+@import url(./_mobile/search_mobile.css);
 
 .search {
   width: 100%;
@@ -16,6 +17,10 @@
   padding-bottom: 80px;
 }
 
+.search_mobile {
+  border-top: none;
+}
+
 @media screen and (max-width: 800px) {
   .search {
     padding-top: 48px;
@@ -23,11 +28,3 @@
   }
 }
 
-@media screen and (max-width: 520px) {
-  .search {
-    /* padding-left: 16px;
-    padding-right: 16px; */
-
-  }
-
-}

@@ -1,7 +1,7 @@
 .header__button_in {
-    background-image: url(../../../../images/logout.svg);
+    /* background-image: url(../../../../images/logout.svg); */
     background-repeat: no-repeat;
     background-position-x: calc(100% - 12px);
     background-position-y: center;
-    padding-right: 37px;
+    /* padding-right: 37px; */
 }
