@@ -3,21 +3,16 @@
   text-decoration: none;
   display: block;
   color: #B6BCBF;
-  /* border: 1px solid red; */
   align-self: flex-end;
   margin-right: 32px;
-  /* margin-top: 30px; */
   padding-bottom: 26px;
-  /* height:  100%; */
 }
-
 
 @media screen and (max-width: 800px) {
   .header__link {
     margin-right: 16px;
     padding-bottom: 20px;
   }
-
   .header__link_mobile {
     align-self: flex-start;
     padding-bottom: 0;

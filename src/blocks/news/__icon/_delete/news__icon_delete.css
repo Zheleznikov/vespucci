@@ -1,0 +1,12 @@
+.news__icon_delete {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: white;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background-image: url(../../../../images/trash.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}

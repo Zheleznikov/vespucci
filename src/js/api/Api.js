@@ -92,4 +92,66 @@ export default class Api {
 
   }
 
+// сохранить новость себе
+  postNews(keyword, title, text, date, source, link, image, callback) {
+    return fetch(`${this.IP}articles`, {
+      method: 'POST',
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        keyword: keyword,
+        title: title,
+        text: text,
+        date: date,
+        source: source,
+        link: link,
+        image: image
+      })
+    })
+    .then(res => res.json())
+    .then((result) => {
+      if (callback) {
+        callback(result);
+      }
+      return result;
+    })
+    .catch((err) => console.log(err))
+  }
+
+  // удалить новость
+  deleteNews(id) {
+    return fetch(`${this.IP}articles/${id}`, {
+        method: 'DELETE',
+        headers: {
+          authorization: `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type': 'application/json'
+        }
+      })
+      .catch(err => console.log(err));
+
+  }
+
+  // показать все новости
+
+  getNews(callback) {
+    return fetch(`${this.IP}articles`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json'
+      },
+    })
+    .then(res => res.json())
+    .then((result) => {
+      if (callback) {
+        callback(result);
+      }
+      return result.data;
+    })
+    .catch((err) => console.log(err));
+  }
+
+
+
 }

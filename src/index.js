@@ -11,13 +11,14 @@ import Popup from './js/components/Popup';
 import News from './js/components/News'
 import Newslist from './js/components/Newslist';
 import Operate from './js/utils/Operate';
+import Exit from './js/components/Exit';
 
 
 (function() {
   const newsApi = new NewsApi();
   const operate = new Operate();
 
-  const api = new Api(SERVER);
+  const api = new Api(IP);
   const head = new Head(document.querySelector('.header'));
   const validate = new Validate();
 
@@ -25,22 +26,28 @@ import Operate from './js/utils/Operate';
     .then(data => head.ifLogin(data.data.name))
     .catch(() => head.ifUnauthorized());
 
-  newsApi.getNews('sport')
+  newsApi.getNews('it')
     .then((res) => {
+      console.log(res.articles);
       newslist.render(res.articles);
     })
     .catch(err => console.log(err));
 
-  const insertNews = (url, urlToImage, publishedAt, description, content, source) => {
-    const news = new News(url, urlToImage, publishedAt, description, content, source);
+
+  const insertNews = (url, urlToImage, publishedAt, description, content, source, _id) => {
+    const news = new News(url, urlToImage, publishedAt, description, content, source, _id, api);
     news.createNewsCard();
+    news.handlers();
     return news;
   }
+
+
 
   const newslist = new Newslist(document.querySelector('.results__container'), insertNews, operate);
 
   new Popup(document.querySelector('.popup-success'));
   new Enter(document.querySelector('.popup-enter'), validate, api, head);
+  new Exit(api, head);
   new Reg(document.querySelector('.popup-reg'), validate, api);
 
 

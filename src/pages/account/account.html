@@ -11,8 +11,68 @@
 </head>
 
 <body>
-  <h1>Account</h1>
-  <img src="<%=require('../../images/image_08.png')%>" alt="mesto logo" class="logo">
+  <header class="page header">
+    <div class="header__logo-container">
+      <h2 class="header__logo">NewsExplorer</h2>
+    </div>
+    <nav class="header__links">
+      <a href="./index.html" class="header__link ">Главная</a>
+      <a href="./account.html" class="header__link header__link_account header__link_active">Сохраненные статьи</a>
+      <button class="header__button header__button_auth">Авторизоваться</button>
+      <button class="header__button header__button_in header__theme_black">
+        <p class="header__button_user"></p>
+        <img src="<%=require('../../images/logout-black.svg')%>" alt="" class="header__button_icon">
+      </button>
+    </nav>
+    <div class="header__menu-sticks">
+      <button class="header__menu-button"></button>
+    </div>
+  </header>
+
+  <section class="save"></section>
+  <section class="results"></section>
+
+  <section class="results results_on">
+
+
+    <div class="results__container">
+      <!-- сюда кладутся новости -->
+
+    </div>
+
+    <button class="results__button">Показать еще</button>
+  </section>
+
+  <footer class="page footer">
+    <p class="footer__copyright">&#169; 2020 Supersite, Powered by News API</p>
+    <nav class="footer__nav">
+      <div class="footer__links-word">
+        <a href="" class="footer__link">Главная</a>
+        <a href="https://praktikum.yandex.ru/" target="_blank" class="footer__link">Яндекс.Практикум</a>
+      </div>
+      <div class="footer__links-logo">
+        <a href="https://github.com/Zheleznikov/" target="_blank" class="footer__link"><img src="<%=require('../../images/github-icon.svg')%>" alt="" class="footer__icon"></a>
+
+        <a href="https://www.facebook.com/yandex.praktikum/" target="_blank" class="footer__link"><img src="<%=require('../../images/fb-icon.svg')%>" alt="" class="footer__icon"></a>
+      </div>
+
+    </nav>
+  </footer>
+
+  <template class="news-template">
+    <div class="news">
+      <a href="" target="_blank" class="news__link"></a>
+      <div class="news__icon_delete"></div>
+      <img src="" alt="" class="news__image">
+      <div class="news__description">
+        <p class="news__date"></p>
+        <h3 class="news__title"></h3>
+        <p class="news__text"></p>
+        <p class="news__source"></p>
+      </div>
+    </div>
+  </template>
+
   <script src="<%= htmlWebpackPlugin.files.chunks.account.entry %>"></script>
 
 </body>

@@ -7,6 +7,7 @@
 @import url(./__icon/news__icon.css);
 @import url(./__icon/_marked/news__icon_marked.css);
 @import url(./__link/news__link.css);
+@import url(./__icon/_delete/news__icon_delete.css);
 
 .news {
     width: 400px;
