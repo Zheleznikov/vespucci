@@ -7,7 +7,6 @@ export default class News {
     this.description = description;
     this.content = content;
     this.source = source;
-
     this.api = api;
   }
 
@@ -31,41 +30,23 @@ export default class News {
     this.newsCard.querySelector('.news__icon').classList.toggle('news__icon_marked')
   }
 
-  add() {
-    this.mark();
-    this.api.postNews('ключевое слово', this.description, this.content, this.publishedAt, this.source, this.url, this.urlToImage)
-      .then((res) => {
-        console.log(res);
-        this.user_id = res.data._id;
-
-      })
-  }
 
   remove(_id) {
     this.newsCard.parentElement.removeChild(this.newsCard);
     this.api.deleteNews(this._id)
   }
 
-  removeOnMain(_id) {
-    if (this.newsCard.classList.contains('news__icon_marked')) {
-      this.api.deleteNews(this._id);
-    }
-  }
+
 
   addNewsHandler() {
     if (this.newsCard.querySelector('.news__icon').classList.contains('news__icon_marked')) {
       this.api.deleteNews(this._id);
-      console.log('удаляем');
       this.mark();
     } else {
-      console.log(this.newsCard.querySelector('.news__icon'))
       this.mark();
+
       this.api.postNews('ключевое слово', this.description, this.content, this.publishedAt, this.source, this.url, this.urlToImage)
-        .then((res) => {
-          console.log(res);
-          this._id = res.data._id;
-          console.log(this._id);
-        })
+        .then((res) => this._id = res.data._id)
     }
   }
 

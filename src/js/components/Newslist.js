@@ -9,8 +9,8 @@ export default class Newslist {
     container.appendChild(news);
   }
 
-  render(arr) {
-    arr.forEach(news => {
+  render(arr, n) {
+    arr.splice(n, 3).forEach(news => {
       this.publishedAt = this.operate.turnDate(news.publishedAt);
       this.description = this.operate.trimString(news.description, 46);
       this.content = this.operate.trimString(news.content, 200);

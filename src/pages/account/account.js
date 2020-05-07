@@ -9,7 +9,7 @@ import Operate from '../../js/utils/Operate';
 
 
 (function() {
-  const api = new Api(IP);
+  const api = new Api(SERVER);
   const head = new Head(document.querySelector('.header'));
   const operate = new Operate();
 

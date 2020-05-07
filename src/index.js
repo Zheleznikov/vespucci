@@ -12,26 +12,20 @@ import News from './js/components/News'
 import Newslist from './js/components/Newslist';
 import Operate from './js/utils/Operate';
 import Exit from './js/components/Exit';
+import Search from './js/components/Search';
 
 
 (function() {
   const newsApi = new NewsApi();
   const operate = new Operate();
 
-  const api = new Api(IP);
+  const api = new Api(SERVER);
   const head = new Head(document.querySelector('.header'));
   const validate = new Validate();
 
   api.getMyData()
     .then(data => head.ifLogin(data.data.name))
     .catch(() => head.ifUnauthorized());
-
-  newsApi.getNews('it')
-    .then((res) => {
-      console.log(res.articles);
-      newslist.render(res.articles);
-    })
-    .catch(err => console.log(err));
 
 
   const insertNews = (url, urlToImage, publishedAt, description, content, source, _id) => {
@@ -42,8 +36,8 @@ import Exit from './js/components/Exit';
   }
 
 
-
   const newslist = new Newslist(document.querySelector('.results__container'), insertNews, operate);
+  new Search(document.forms.search, newsApi, newslist);
 
   new Popup(document.querySelector('.popup-success'));
   new Enter(document.querySelector('.popup-enter'), validate, api, head);
