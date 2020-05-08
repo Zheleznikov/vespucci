@@ -1,3 +1,10 @@
+/* ФОРМА ВХОДА
+
+- обработчик входа - enter
+
+- обработчик валидации enterValidate
+*/
+
 import Popup from './Popup';
 
 export default class Enter extends Popup {
@@ -9,15 +16,18 @@ export default class Enter extends Popup {
     this.handlers();
   }
 
+  // валидация
   enterHandler(evt) {
     this.validate.handler(evt, this.email, this.emailErr, this.pass, this.passErr, this.button, this.handlerErr)
   }
 
+  // вход
   enter(evt) {
     evt.preventDefault();
     this.api.signin(this.email.value, this.pass.value)
       .then((data) => {
         if (data.message === 'Congratulate') {
+          localStorage.setItem('token', data.token);
           this.head.ifLogin(data.data.name);
           this.close();
         } else {
@@ -28,15 +38,9 @@ export default class Enter extends Popup {
 
   }
 
-  exit() {
-    this.api.logout()
-      .then(() => this.head.ifUnauthorized())
-      .catch(err => console.log(err));
-  }
 
   handlers() {
     document.querySelector('.header__button_auth').addEventListener('click', this.open.bind(this));
-    // document.querySelector('.header__button_in').addEventListener('click', this.exit.bind(this));
     this.form.addEventListener('change', this.enterHandler.bind(this));
     this.form.addEventListener('submit', this.enter.bind(this));
 

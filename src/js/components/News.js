@@ -10,6 +10,7 @@ export default class News {
     this.keyword = keyword;
     this.message = message;
     this.api = api;
+    // console.log(this.newsCard.querySelector('.news__tip'))
   }
 
 
@@ -29,6 +30,7 @@ export default class News {
 
   createNewsCard() {
     this.newsCard = this.create(this.url, this.urlToImage, this.publishedAt, this.description, this.content, this.source, this._id, this.keyword, this.message);
+
   }
 
   mark() {
@@ -63,7 +65,8 @@ export default class News {
 
   tipHandler() {
     this.newsCard.querySelector('.news__icon').addEventListener('mouseover', this.showTip.bind(this));
-    this.newsCard.querySelector('.news__icon').addEventListener('mouseout', this.hideTip.bind(this));
+    this.newsCard.querySelector('.news__tip-content').addEventListener('mouseout', this.hideTip.bind(this));
+    this.newsCard.querySelector('.news__tip').addEventListener('click', this.openEnter.bind(this));
   }
 
   authHandler() {
@@ -72,6 +75,11 @@ export default class News {
     } else {
       this.tipHandler();
     }
+  }
+
+  openEnter() {
+
+    document.querySelector('.popup-enter').classList.add('popup_is-opened');
   }
 
   handlers() {

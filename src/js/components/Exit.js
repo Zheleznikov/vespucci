@@ -9,7 +9,7 @@ export default class Exit {
     this.api.logout()
       .then(() => {
         this.head.ifUnauthorized();
-        location = "./index.html";
+        window.location.pathname = './index.html';
       })
       .catch(err => console.log(err));
   }

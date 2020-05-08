@@ -72,4 +72,18 @@ export default class Operate {
     return `${uniqKeys[0]}, ${uniqKeys[1]} и ${length} другим`
 
   }
+
+  getDate(time) {
+    const date = time;
+    let dd = date.getDate();
+    if (dd < 10) {
+      dd = '0' + dd;
+    };
+    let mm = date.getMonth() + 1;
+    if (mm < 10) {
+      mm = '0' + mm
+    };
+    const year = date.getFullYear();
+    return `${year}-${mm}-${dd}`
+  }
 }

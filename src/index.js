@@ -1,5 +1,7 @@
 import './style/index.css';
 import { IP, SERVER } from './js/constants/service';
+import { REQUEST_OPTIONS, URL, MY_API_HEADERS } from './js/constants/reqOptions';
+import { SEVEN_DAYS_AGO, TODAY } from './js/constants/times';
 
 import Api from './js/api/Api';
 import NewsApi from './js/api/NewsApi';
@@ -16,21 +18,13 @@ import Search from './js/components/Search';
 
 
 (function() {
-  const newsApi = new NewsApi();
+  const newsApi = new NewsApi(REQUEST_OPTIONS, URL);
   const operate = new Operate();
 
-  const api = new Api(SERVER);
+  const api = new Api(SERVER, MY_API_HEADERS);
   const head = new Head(document.querySelector('.header'));
   const validate = new Validate();
 
-  // newsApi.getNews('cats')
-  //   .then((res) => {
-  //     document.querySelector('.results').classList.add('results_on');
-  //     newslist.render(res.articles, 0);
-  //   })
-  //   .catch(err => {
-  //     console.log(err);
-  //   });
 
   api.getMyData()
     .then(data => head.ifLogin(data.data.name))
@@ -46,7 +40,7 @@ import Search from './js/components/Search';
 
 
   const newslist = new Newslist(document.querySelector('.results__container'), insertNews, operate);
-  new Search(document.forms.search, newsApi, newslist, api);
+  new Search(document.forms.search, newsApi, newslist, api, operate, SEVEN_DAYS_AGO, TODAY);
 
   new Popup(document.querySelector('.popup-success'));
   new Enter(document.querySelector('.popup-enter'), validate, api, head);

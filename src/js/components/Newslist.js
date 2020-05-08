@@ -1,3 +1,14 @@
+/* ОБРАБОТКА МАССИВА С НОВОСТЯМИ
+
+- рендерим карточки с сервера - render
+
+- выводим карточки по 3(или по сколько надо) append
+
+- рендерим в личный кабинет renderInAccount
+
+- добавляем карточку в контейнер
+*/
+
 export default class Newslist {
   constructor(container, insertNews, operate) {
     this.container = container;
@@ -5,19 +16,14 @@ export default class Newslist {
     this.operate = operate;
   }
 
-
-  // отрисовать карточку
-  appendNews(container, news) {
+  // добавляем в контейнер
+  _appendNews(container, news) {
     container.appendChild(news);
   }
-
-
-
 
   // рендерим новости с newsApi
   render(arr, keyword, message) {
     return arr.map(news => {
-      console.log(news);
       this.publishedAt = this.operate.turnDate(news.publishedAt);
       this.title = this.operate.trimString(news.title, 46);
       this.content = this.operate.trimString(news.content, 200);
@@ -30,7 +36,7 @@ export default class Newslist {
   // отрисовываем новости с сервера по 3 шт
   append(arr, n) {
     arr.splice(0, n).forEach(news => {
-      this.appendNews(this.container, news.newsCard);
+      this._appendNews(this.container, news.newsCard);
     });
   }
 
@@ -38,7 +44,7 @@ export default class Newslist {
   renderInAccount(arr) {
     arr.forEach(news => {
       const card = this.insertNews(news.link, news.image, news.date, news.title, news.text, news.source, news._id, news.keyword, news.message);
-      this.appendNews(this.container, card.newsCard)
+      this._appendNews(this.container, card.newsCard)
     })
   }
 

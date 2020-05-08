@@ -1,47 +1,28 @@
 export default class NewsApi {
 
-
-  constructor(options) {
+  constructor(options, url) {
     this.options = options;
+    this.url = url;
   }
 
-  getNews(query) {
+  getNews(query, today, sevenDaysAgo) {
+    const params = {
+      "q": query,
+      "from": sevenDaysAgo,
+      'to': today,
+      'pageSize': '100',
+      'sortBy': 'popularity'
+    };
 
-    const url = 'https://newsapi.org/v2/everything?' +
-      `q=${query}&` +
-      'from=2020-05-07&' +
-      'sortBy=popularity&' +
-      'pageSize=100&' +
-      'apiKey=e1b4f6c04db147c8afb184bec5c703a5';
+    const queryParams = Object.keys(params).map(key => `${key}=${params[key]}`).join('&');
 
-
-    // https://newsapi.org/v2/everything?q=${sport}&from=2020-06-05&sortBy=popularity&pageSize=5&apiKey=e1b4f6c04db147c8afb184bec5c703a5
-
-    const req = new Request(url);
-    // console.log(req);
-
-    const options = {
-      method: 'GET',
-      credentials: "same-origin",
-      mode: "cors",
-      redirect: 'follow',
-      headers: {
-        "Authorization": 'Bearer e1b4f6c04db147c8afb184bec5c703a5'
-
-      }
-    }
-
-    return fetch(req)
-
-    .then((res) => res.json())
-      .then(function(response) {
-        // console.log(response);
+    return fetch(`${this.url}${queryParams}`, this.options)
+      .then((res) => res.json())
+      .then((response) => {
         return response;
       })
-
+      .catch(error => console.log('error', error));
   }
 
-  handler() {
 
-  }
 }

@@ -101,6 +101,30 @@
 
   <!-- ПОПАПЫ -->
 
+    <!-- ПОПАП ВОЙТИ -->
+
+    <div class="popup popup-enter">
+      <div class="popup__content">
+        <img src="<%=require('./images/close.svg')%>" alt="Х" class="popup__close">
+        <h3 class="popup__title">Вход</h3>
+        <form name="enter" class="popup__form">
+          <div class="popup__form-field">
+            <p class="popup__input-tip">Email</p>
+            <input type="text" name="email" class="popup__input popup__input_email" placeholder="Введите почту">
+            <p class="popup__input-error popup__input-error_email"></p>
+          </div>
+          <div class="popup__form-field">
+            <p class="popup__input-tip">Пароль</p>
+            <input type="text" name="pass" class="popup__input popup__input_pass" placeholder="Введите пароль">
+            <p class="popup__input-error popup__input-error_pass"></p>
+          </div>
+          <p class="popup__input-error popup__input-error_handler"></p>
+          <button type="submit" name="button" class="button popup__button popup__button_re-search" disabled>Войти</button>
+        </form>
+        <p class="popup__toggle">или<button type="button" class="popup__toggle-link popup__toggle-link_enter">Зарегистрироваться</button></p>
+      </div>
+    </div>
+
   <!-- ПОПАП РЕГИСТРАЦИЯ -->
 
   <div class="popup popup-reg">
@@ -130,29 +154,7 @@
     </div>
   </div>
 
-  <!-- ПОПАП ВОЙТИ -->
 
-  <div class="popup popup-enter">
-    <div class="popup__content">
-      <img src="<%=require('./images/close.svg')%>" alt="Х" class="popup__close">
-      <h3 class="popup__title">Вход</h3>
-      <form name="enter" class="popup__form">
-        <div class="popup__form-field">
-          <p class="popup__input-tip">Email</p>
-          <input type="text" name="email" class="popup__input popup__input_email" placeholder="Введите почту">
-          <p class="popup__input-error popup__input-error_email"></p>
-        </div>
-        <div class="popup__form-field">
-          <p class="popup__input-tip">Пароль</p>
-          <input type="text" name="pass" class="popup__input popup__input_pass" placeholder="Введите пароль">
-          <p class="popup__input-error popup__input-error_pass"></p>
-        </div>
-        <p class="popup__input-error popup__input-error_handler"></p>
-        <button type="submit" name="button" class="button popup__button" disabled>Войти</button>
-      </form>
-      <p class="popup__toggle">или<button type="button" class="popup__toggle-link popup__toggle-link_enter">Зарегистрироваться</button></p>
-    </div>
-  </div>
 
   <!-- ПОПАП УСПЕХ -->
 
@@ -169,9 +171,10 @@
     <div class="news">
       <a href="" target="_blank" class="news__link"></a>
       <div class="news__icon"></div>
-      <div class="news__tip">
+      <!-- это не должна быть кнопка -->
+      <button class="news__tip">
         <p class="news__tip-content">Войдите, чтобы сохранять статьи</p>
-      </div>
+      </button>
       <img src="" alt="" class="news__image">
       <div class="news__description">
         <p class="news__date"></p>

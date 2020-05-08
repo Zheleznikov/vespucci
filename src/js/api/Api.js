@@ -5,7 +5,7 @@ export default class Api {
   }
 
   // зарегистрироваться
-  signup(email, name, password, callback) {
+  signup(email, name, password) {
     return fetch(`${this.IP}signup`, {
         method: 'POST',
         headers: {
@@ -19,18 +19,13 @@ export default class Api {
         })
       })
       .then(res => res.json())
-      .then((result) => {
-        if (callback) {
-          callback(result);
-        }
-        return result;
-      })
-      .catch((err) => console.log(err))
+      .then(data => data)
+      .catch(err => console.log(err));
 
   }
 
   // залогиниться
-  signin(email, password, callback) {
+  signin(email, password) {
     return fetch(`${this.IP}signin`, {
         method: 'POST',
         headers: {
@@ -43,21 +38,12 @@ export default class Api {
         })
       })
       .then(res => res.json())
-      .then((data) => {
-        localStorage.setItem('token', data.token);
-        return data
-      })
-      .then(data => {
-        if (callback) {
-          callback(data)
-        }
-        return data;
-      })
+      .then(data => data)
       .catch(err => console.log(err));
   }
 
   // разлогиниться
-  logout(callback) {
+  logout() {
     return fetch(`${this.IP}logout`, {
         method: 'POST',
         headers: {
@@ -66,15 +52,12 @@ export default class Api {
         },
       })
       .then(res => res.json())
-      .then((result) => {
-        callback(result);
-        return result;
-      })
-      .catch((err) => console.log(err));
+      .then(data => data)
+      .catch(err => console.log(err));
   }
 
   // получить информацию о себе
-  getMyData(callback) {
+  getMyData() {
     return fetch(`${this.IP}users/me`, {
         headers: {
           authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -82,18 +65,13 @@ export default class Api {
         },
       })
       .then(res => res.json())
-      .then((result) => {
-        if (callback) {
-          callback(result);
-        }
-        return result;
-      })
-      .catch((err) => console.log(err));
+      .then(data => data)
+      .catch(err => console.log(err));
 
   }
 
 // сохранить новость себе
-  postNews(keyword, title, text, date, source, link, image, callback) {
+  postNews(keyword, title, text, date, source, link, image) {
     return fetch(`${this.IP}articles`, {
       method: 'POST',
       headers: {
@@ -111,13 +89,8 @@ export default class Api {
       })
     })
     .then(res => res.json())
-    .then((result) => {
-      if (callback) {
-        callback(result);
-      }
-      return result;
-    })
-    .catch((err) => console.log(err))
+    .then(data => data)
+    .catch(err => console.log(err));
   }
 
   // удалить новость
