@@ -1,11 +1,12 @@
 .results__title {
-  margin: 0 auto;
+  margin: 18px auto 64px;
+
 }
 
 @media screen and (max-width: 1234px) {
   .results__title {
     max-width: 816px;
-
+    margin: 8px auto 32px;
   }
 }
 
@@ -26,5 +27,6 @@
 @media screen and (max-width: 539px) {
   .results__title {
     max-width: 288px;
+    margin: 8px auto 24px;
   }
 }

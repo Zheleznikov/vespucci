@@ -6,18 +6,18 @@ import Exit from '../../js/components/Exit';
 import News from '../../js/components/News';
 import Newslist from '../../js/components/Newslist';
 import Operate from '../../js/utils/Operate';
+import SavedArt from '../../js/components/SavedArt';
 
 
 (function() {
   const api = new Api(SERVER);
   const head = new Head(document.querySelector('.header'));
+  const savedArt = new SavedArt(document.querySelector('.articles-info'));
+  head.setBlackTheme();
+  head.setButtonBlackTheme();
+
   const operate = new Operate();
 
-  // то, что надо будет вынести в отдельный файл
-  document.querySelector('.header__logo').classList.add('header__theme_black');
-  document.querySelector('.header__link').classList.add('header__theme_black');
-  document.querySelectorAll('.header__link').forEach(link => link.classList.add('header__theme_black'));
-  document.querySelector('.header__button_in').classList.add('header__theme_black');
 
   const insertNews = (url, urlToImage, publishedAt, description, content, source, _id, keyword, message) => {
     const news = new News(url, urlToImage, publishedAt, description, content, source, _id, keyword, message, api);
@@ -30,17 +30,24 @@ import Operate from '../../js/utils/Operate';
   const newslist = new Newslist(document.querySelector('.results__container'), insertNews, operate);
 
   api.getNews()
-  .then(data => {
-    console.log(data);
-    newslist.renderInAccount(data);
-  });
+    .then(data => {
+      if (data.length === 0) {
+        savedArt.turnKeywordsOff();
+      } else {
+        savedArt.setKeywords(operate.getKeywords(data));
+        newslist.renderInAccount(data);
+      }
+    });
 
 
   api.getMyData()
-    .then(data => head.ifLogin(data.data.name))
+    .then(data => {
+      head.ifLogin(data.data.name);
+      savedArt.setName(data.data.name, operate.pairValue(data.data.articles.length));
+    })
     .catch(() => {
       head.ifUnauthorized();
-      location = "./index.html";
+      window.location.pathname = "./index.html";
     });
 
   new Exit(api, head);

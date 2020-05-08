@@ -11,6 +11,8 @@
 @import url(./__tip/news__tip.css);
 @import url(./__tip-content/news__tip-content.css);
 @import url(./__tip/_on/news__tip_on.css);
+@import url(./__keyword/news__keyword.css);
+@import url(./__keyword-content/news__keyword-content.css);
 
 .news {
     width: 400px;

@@ -14,7 +14,8 @@
   font-size: 18px;
   line-height: 24px;
   max-height: 80px;
-  /* border: 1px solid blue; */
+
+
 }
 
 @media screen and (max-width: 800px) {
@@ -27,5 +28,6 @@
   .footer {
     max-height: none;
     flex-direction: column-reverse;
+    padding-top: 20px;
   }
 }

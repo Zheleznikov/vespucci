@@ -12,8 +12,7 @@ export default class NewsApi {
       'from=2020-05-07&' +
       'sortBy=popularity&' +
       'pageSize=5&' +
-      'apiKey=e1b4f6c04db147c8afb184bec5c703a5' +
-      "&language=ru";
+      'apiKey=e1b4f6c04db147c8afb184bec5c703a5';
 
 
     // https://newsapi.org/v2/everything?q=${sport}&from=2020-06-05&sortBy=popularity&pageSize=5&apiKey=e1b4f6c04db147c8afb184bec5c703a5

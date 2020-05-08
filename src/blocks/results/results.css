@@ -6,8 +6,8 @@
 
 .results {
   background-color: #F5F6F7;
-  padding-top: 80px;
-  padding-bottom: 80px;
+  padding-top: 62px;
+  padding-bottom: 62px;
   position: relative;
   display: none;
 }
@@ -18,14 +18,14 @@
 
 @media screen and (max-width: 840px) {
   .results {
-    padding-bottom: 40px;
-    padding-top: 40px;
+    padding-bottom: 22px;
+    padding-top: 32px;
   }
 }
 
 @media screen and (max-width: 539px) {
   .results {
-    padding-bottom: 32px;
-    padding-top: 32px;
+    padding-bottom: 16px;
+    padding-top: 24px;
   }
 }

@@ -21,6 +21,9 @@ export default class News {
     news.querySelector('.news__title').textContent = description;
     news.querySelector('.news__text').textContent = content;
     news.querySelector('.news__source').textContent = source;
+    if (window.location.pathname === '/account.html') {
+      news.querySelector('.news__keyword-content').textContent = keyword;
+    }
     return news.querySelector('.news');
   }
 
@@ -73,12 +76,8 @@ export default class News {
 
   handlers() {
     this.newsCard.querySelector('.news__icon').addEventListener('click', this.clickIconHandler.bind(this));
-  }
 
-  handlers2() {
-    this.newsCard.querySelector('.news__icon').addEventListener('mouseover', this.authHandler.bind(this));
   }
-
 
   // для другой страницы
   accountHandlers() {

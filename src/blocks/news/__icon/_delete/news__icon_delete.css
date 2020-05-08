@@ -10,3 +10,11 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+
+@media screen and (max-width: 840px) {
+  .news__icon_delete {
+    top: 16px;
+    right: 16px;
+
+  }
+}

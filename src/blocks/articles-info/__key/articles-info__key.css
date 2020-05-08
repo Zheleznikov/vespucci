@@ -1,0 +1,22 @@
+.articles-info__key {
+  font-family: Roboto;
+  font-size: 18px;
+  line-height: 24px;
+  color: #1A1B22;
+  padding: 0;
+  margin: 0;
+}
+
+@media screen and (max-width: 800px) {
+  .articles-info__key {
+    font-size: 14px;
+    line-height: 24px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .articles-info__key {
+    font-size: 18px;
+  }
+}
+

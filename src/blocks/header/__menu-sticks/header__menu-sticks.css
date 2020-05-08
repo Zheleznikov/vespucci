@@ -9,9 +9,6 @@
     top: 20px;
 }
 
-/* .header__menu-sticks_mobile {
-  right: 5%;
-} */
 
 @media screen and (max-width: 680px) {
   .header__menu-sticks {

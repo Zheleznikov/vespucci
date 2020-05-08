@@ -8,9 +8,22 @@
   background-color: white;
   ;
   padding: 18px 84px 22px;
-  margin-top: 19px;
+  /* margin-top: 64px;
+  margin-bottom: 18px; */
   border-radius: 100px;
   cursor: url(../../../images/pointer.svg), pointer;
   outline: none;
-  margin: 64px auto 0;
+  margin: 64px auto 18px;
+}
+
+@media screen and (max-width: 840px) {
+  .results__button {
+    margin: 32px auto 8px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .results__button {
+    margin: 15px auto 16px;
+  }
 }
