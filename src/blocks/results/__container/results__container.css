@@ -1,7 +1,7 @@
 .results__container {
 
     max-width: 1232px;
-    margin: 64px auto;
+    margin: 64px auto 0;
     display: grid;
     grid-template-columns: repeat(auto-fill, 400px);
     grid-gap: 16px 16px;

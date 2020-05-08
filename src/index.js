@@ -23,21 +23,30 @@ import Search from './js/components/Search';
   const head = new Head(document.querySelector('.header'));
   const validate = new Validate();
 
+  // newsApi.getNews('cats')
+  //   .then((res) => {
+  //     document.querySelector('.results').classList.add('results_on');
+  //     newslist.render(res.articles, 0);
+  //   })
+  //   .catch(err => {
+  //     console.log(err);
+  //   });
+
   api.getMyData()
     .then(data => head.ifLogin(data.data.name))
     .catch(() => head.ifUnauthorized());
 
 
-  const insertNews = (url, urlToImage, publishedAt, description, content, source, _id) => {
-    const news = new News(url, urlToImage, publishedAt, description, content, source, _id, api);
+  const insertNews = (url, urlToImage, publishedAt, description, content, source, _id, keyword, message) => {
+    const news = new News(url, urlToImage, publishedAt, description, content, source, _id, keyword, message, api);
     news.createNewsCard();
-    news.handlers();
+    news.authHandler();
     return news;
   }
 
 
   const newslist = new Newslist(document.querySelector('.results__container'), insertNews, operate);
-  new Search(document.forms.search, newsApi, newslist);
+  new Search(document.forms.search, newsApi, newslist, api);
 
   new Popup(document.querySelector('.popup-success'));
   new Enter(document.querySelector('.popup-enter'), validate, api, head);

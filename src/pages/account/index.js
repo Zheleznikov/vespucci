@@ -19,8 +19,8 @@ import Operate from '../../js/utils/Operate';
   document.querySelectorAll('.header__link').forEach(link => link.classList.add('header__theme_black'));
   document.querySelector('.header__button_in').classList.add('header__theme_black');
 
-  const insertNews = (url, urlToImage, publishedAt, description, content, source, _id) => {
-    const news = new News(url, urlToImage, publishedAt, description, content, source, _id, api);
+  const insertNews = (url, urlToImage, publishedAt, description, content, source, _id, keyword, message) => {
+    const news = new News(url, urlToImage, publishedAt, description, content, source, _id, keyword, message, api);
     news.createNewsCard();
     news.accountHandlers();
 
@@ -32,12 +32,8 @@ import Operate from '../../js/utils/Operate';
   api.getNews()
   .then(data => {
     console.log(data);
-    newslist.renderInAccount(data)
+    newslist.renderInAccount(data);
   });
-
-
-
-
 
 
   api.getMyData()

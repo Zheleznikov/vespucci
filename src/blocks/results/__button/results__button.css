@@ -12,5 +12,5 @@
   border-radius: 100px;
   cursor: url(../../../images/pointer.svg), pointer;
   outline: none;
-  margin: 0 auto;
+  margin: 64px auto 0;
 }

@@ -11,7 +11,7 @@ const isDev = process.env.NODE_ENV === 'development';
 module.exports = {
   entry: {
     main: './src/index.js',
-    account: './src/pages/account/account.js',
+    account: './src/pages/account/index.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),

@@ -9,10 +9,11 @@ export default class NewsApi {
 
     const url = 'https://newsapi.org/v2/everything?' +
       `q=${query}&` +
-      'from=2020-05-06&' +
+      'from=2020-05-07&' +
       'sortBy=popularity&' +
-      'pageSize=17&' +
-      'apiKey=e1b4f6c04db147c8afb184bec5c703a5';
+      'pageSize=5&' +
+      'apiKey=e1b4f6c04db147c8afb184bec5c703a5' +
+      "&language=ru";
 
 
     // https://newsapi.org/v2/everything?q=${sport}&from=2020-06-05&sortBy=popularity&pageSize=5&apiKey=e1b4f6c04db147c8afb184bec5c703a5
