@@ -11,7 +11,7 @@ export default class NewsApi {
       `q=${query}&` +
       'from=2020-05-07&' +
       'sortBy=popularity&' +
-      'pageSize=5&' +
+      'pageSize=100&' +
       'apiKey=e1b4f6c04db147c8afb184bec5c703a5';
 
 

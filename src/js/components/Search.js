@@ -51,13 +51,12 @@ export default class Search {
           .then((res) => {
             this.turnOnResults();
             this.turnOffWaiting();
-
             if (this.searchString.value === '') {
               this.turnOnError();
               this.turnOffResults();
             } else {
               this.renderArr = this.newslist.render(res.articles, this.searchString.value, data.message);
-              this.newslist.append(this.renderArr);
+              this.widthHandler();
               this.resultButtonHandler();
               if (res.articles.length === 0) {
                 this.turnOnError();
@@ -76,8 +75,27 @@ export default class Search {
   }
 
   showMore() {
-    this.newslist.append(this.renderArr);
+    this.widthHandler();
     this.resultButtonHandler();
+  }
+
+  widthHandler() {
+    if (window.innerWidth > 1230) {
+      this.newslist.append(this.renderArr, 3);
+    }
+    if (window.innerWidth < 1231 && window.innerWidth > 840) {
+      this.newslist.append(this.renderArr, 4);
+    }
+
+    if (window.innerWidth < 841 && window.innerWidth > 683) {
+      this.newslist.append(this.renderArr, 3);
+    }
+
+    if (window.innerWidth < 684) {
+      this.newslist.append(this.renderArr, 2);
+    }
+
+
   }
 
   resultButtonHandler() {
@@ -92,8 +110,6 @@ export default class Search {
   handlers() {
     this.form.addEventListener('submit', this.show.bind(this));
     document.querySelector('.results__button').addEventListener('click', this.showMore.bind(this));
-    // document.querySelector('.results__button').addEventListener('click', this.resultButtonHandler.bind(this));
-
 
   }
 }

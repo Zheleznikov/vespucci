@@ -70,6 +70,7 @@ export default class Head {
     }
   }
 
+  // подключение классов для мобильной версии для страницы личного кабинета для кнопки (не влезло верхний метод)
   setButtonBlackTheme() {
     this.header.querySelector('.header__button_in').classList.add('header__theme_black');
   }
