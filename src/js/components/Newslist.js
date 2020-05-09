@@ -42,7 +42,7 @@ export default class Newslist {
 
   // рендерим новости с нашего сервера в личный кабинет
   renderInAccount(arr) {
-    arr.forEach(news => {
+    arr.reverse().forEach(news => {
       const card = this.insertNews(news.link, news.image, news.date, news.title, news.text, news.source, news._id, news.keyword, news.message);
       this._appendNews(this.container, card.newsCard)
     })

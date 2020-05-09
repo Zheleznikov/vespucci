@@ -6,6 +6,11 @@
   align-self: flex-end;
   margin-right: 32px;
   padding-bottom: 26px;
+  cursor: url(../../../images/pointer.svg), pointer;
+}
+
+.header__link:hover {
+  opacity: .9;
 }
 
 @media screen and (max-width: 800px) {

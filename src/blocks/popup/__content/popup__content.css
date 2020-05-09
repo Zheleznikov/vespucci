@@ -8,3 +8,15 @@
   box-sizing: border-box;
   padding: 34px 36px 28px;
 }
+
+
+@media screen and (max-width: 500px) {
+  .popup__content {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    min-height: 90vh;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}

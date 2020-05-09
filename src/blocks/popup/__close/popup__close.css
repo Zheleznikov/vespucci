@@ -9,9 +9,9 @@
 
 @media screen and (max-width: 500px) {
   .popup__close {
-    width: 24px;
-    height: 24px;
-    right: 10px;
-    top: -40px;
+    width: 26px;
+    height: 26px;
+    right: 4%;
+    top: -39px;
   }
 }

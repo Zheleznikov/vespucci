@@ -49,6 +49,7 @@ export default class Head {
     this.header.querySelectorAll('.header__button').forEach(button => button.classList.toggle('header__button_mobile'));
     this.header.querySelectorAll('.header__link').forEach(link => link.classList.toggle('header__link_mobile'));
     this.header.querySelector('.header__link_active').classList.toggle('header__link_active_mobile');
+    this.header.querySelector('.header__menu-button').classList.toggle('header__menu-button_x'); // крестик
 
     if (window.location.pathname !== "/account.html") {
       document.querySelector('.search').classList.toggle('search_mobile');

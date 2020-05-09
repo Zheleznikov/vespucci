@@ -12,6 +12,10 @@
   /* width: 100%; */
 }
 
+.articles-info_mobile {
+  border: none;
+}
+
 
 @media screen and (max-width: 800px) {
   .articles-info {

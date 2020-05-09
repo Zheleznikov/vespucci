@@ -54,7 +54,7 @@ export default class Operate {
         res.push(current)
       }
       return res;
-    }, [])
+    }, []).reverse();
 
     if (uniqKeys.length === 1) {
       return uniqKeys[0]

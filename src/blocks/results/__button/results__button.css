@@ -16,6 +16,12 @@
   margin: 64px auto 18px;
 }
 
+
+.results__button:hover {
+  /* background-color: #E6E8EB; */
+  opacity: .7;
+}
+
 @media screen and (max-width: 840px) {
   .results__button {
     margin: 32px auto 8px;
