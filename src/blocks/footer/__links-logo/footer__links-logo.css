@@ -1,8 +1,6 @@
 .footer__links-logo {
-    display: flex;
-
-    align-items: center;
-
+  display: flex;
+  align-items: center;
 }
 
 @media screen and (max-width: 440px) {
@@ -10,5 +8,3 @@
     align-items: flex-start;
   }
 }
-
-

@@ -6,8 +6,6 @@
 @import url(./__view/author__view.css);
 
 .author {
-  /* max-width: 1232px;
-  margin: 0 auto; */
   padding-top: 80px;
   padding-bottom: 80px;
 }

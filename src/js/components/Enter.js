@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+
 /* ФОРМА ВХОДА
 
 - обработчик входа - enter
@@ -18,7 +20,7 @@ export default class Enter extends Popup {
 
   // валидация
   enterHandler(evt) {
-    this.validate.handler(evt, this.email, this.emailErr, this.pass, this.passErr, this.button, this.handlerErr)
+    this.validate.handler(evt, this.email, this.emailErr, this.pass, this.passErr, this.button, this.handlerErr);
   }
 
   // вход
@@ -34,8 +36,7 @@ export default class Enter extends Popup {
           this.handlerErr.textContent = data.message;
         }
       })
-      .catch(err => console.log(err));
-
+      .catch((err) => console.log(err));
   }
 
 
@@ -43,6 +44,5 @@ export default class Enter extends Popup {
     document.querySelector('.header__button_auth').addEventListener('click', this.open.bind(this));
     this.form.addEventListener('change', this.enterHandler.bind(this));
     this.form.addEventListener('submit', this.enter.bind(this));
-
   }
 }

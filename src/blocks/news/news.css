@@ -13,16 +13,24 @@
 @import url(./__tip/_on/news__tip_on.css);
 @import url(./__keyword/news__keyword.css);
 @import url(./__keyword-content/news__keyword-content.css);
-
 .news {
-    width: 400px;
-    height: 576px;
-    background-color: white;
-    position: relative;
-    border-radius: 10px;
-    position: relative;
-    overflow: hidden;
+  width: 400px;
+  height: 576px;
+  background-color: white;
+  position: relative;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  transition: all .5s ease-out;
+}
 
+
+.news:hover {
+  transform: translateY(-5px);
+}
+
+.news__deleted {
+  display: none;
 }
 
 @media screen and (max-width: 840px) {
@@ -38,3 +46,4 @@
     height: 440px;
   }
 }
+

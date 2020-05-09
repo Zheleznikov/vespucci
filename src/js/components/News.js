@@ -41,6 +41,8 @@ export default class News {
   remove(_id) {
     this.api.deleteNews(this._id);
     this.newsCard.parentElement.removeChild(this.newsCard);
+    this.newsCard.classList.add('news__deleted');
+
   }
 
   clickIconHandler() {

@@ -4,20 +4,16 @@
 @import url(./__words/articles-info__words.css);
 @import url(./_mobile/articles-info_mobile.css);
 @import url(./__key/_off/articles-info__key_off.css);
-
 .articles-info {
   padding-top: 40px;
   padding-bottom: 56px;
   border-top: 1px solid rgba(196, 196, 196);
-  /* width: 100%; */
-  /* border: 1px solid red; */
   flex: auto;
 }
 
 .articles-info_mobile {
   border: none;
 }
-
 
 @media screen and (max-width: 800px) {
   .articles-info {
