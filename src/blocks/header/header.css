@@ -22,7 +22,7 @@
 @import url(./__theme/_black/header__theme_black.css);
 @import url(./__menu-button/_account/header__menu-button_account.css);
 @import url(./__menu-button/_x/header__menu-button_x.css);
-
+@import url(./__links/_mobile/header__links_mobile_animation.css);
 .header {
   color: white;
   font-family: Roboto, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -30,7 +30,9 @@
   justify-content: space-between;
   min-height: 80px;
   position: relative;
+  /* animation: scale-down-ver-top 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both; */
 }
+
 
 
 @media screen and (max-width: 800px) {

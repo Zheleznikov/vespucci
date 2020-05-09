@@ -1,7 +1,7 @@
-.header__menu-button_account {
-    background-color: #1A1B22;
+.header__menu-button_account::after {
+  background-color: #1A1B22;
 }
 
-.header__menu-button_account::after {
+.header__menu-button_account::before {
   background-color: #1A1B22;
 }

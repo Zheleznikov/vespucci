@@ -2,9 +2,10 @@
 @import url(./__icon/footer__icon.css);
 @import url(./__link/footer__link.css);
 @import url(./__nav/footer__nav.css);
-@import url(./__li/footer__li.css);
+@import url(./__link-api/footer__link-api.css);
 @import url(./__links-logo/footer__links-logo.css);
 @import url(./__links-word/footer__links-word.css);
+
 .footer {
   display: flex;
   justify-content: space-between;
@@ -14,7 +15,7 @@
   font-size: 18px;
   line-height: 24px;
   max-height: 80px;
-
+  flex-shrink: 0;
 
 }
 

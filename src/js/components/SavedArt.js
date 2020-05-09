@@ -16,4 +16,12 @@ export default class SavedArt {
     console.log(this.element.querySelector('.articles-info__key'))
   }
 
+  turnOnResults() {
+    document.querySelector('.results').classList.add('results_on');
+  }
+
+  turnOffResults() {
+    document.querySelector('.results').classList.remove('results_on');
+  }
+
 }

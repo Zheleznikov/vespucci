@@ -1,0 +1,8 @@
+.footer__link-api {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.footer__link-api:hover {
+  opacity: .6;
+}

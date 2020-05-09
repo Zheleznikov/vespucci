@@ -1,18 +1,11 @@
-.header__menu-button_x {
-  background-color: transparent;
-}
-
 .header__menu-button_x::before {
   transform: rotate(45deg);
   top: 0;
-  transition: top 0.2s linear, transform 0.2s ease-in 0.2s;
-  background-color: white;
-
-
+  transition: top 0.1s linear, transform 0.2s ease-in 0.2s;
 }
 
 .header__menu-button_x::after {
   transform: rotate(-45deg);
   top: 0;
-  transition: top 0.2s linear, transform 0.2s ease-in 0.2s;
+  transition: top 0.1s linear, transform 0.2s ease-in 0.2s;
 }

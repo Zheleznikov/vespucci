@@ -1,16 +1,13 @@
 .header__menu-button {
   display: block;
   width: 100%;
-  background-color: white;
+  background-color: transparent;
   position: absolute;
   right: 0px;
+  top: 50%;
   outline: none;
   border: none;
   height: 2px;
-  top: calc(50% - 3px);
-  transition: transform 0.1s ease-in, top 0.2s linear 0.2s;
-
-
 }
 
 .header__menu-button::after {
@@ -20,7 +17,7 @@
   width: 100%;
   background-color: white;
   height: 2px;
-  top: 5px;
+  top: 2px;
   transition: transform 0.1s ease-in, top 0.2s linear 0.2s;
 
 }
@@ -30,9 +27,9 @@
   left: 0;
   content: '';
   width: 100%;
-  background-color: transparent;
+  background-color: white;
   height: 2px;
-  top: 10px;
-
+  top: -4px;
+  transition: transform 0.1s ease-in, top 0.2s linear 0.2s;
 
 }

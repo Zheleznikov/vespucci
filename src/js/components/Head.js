@@ -49,7 +49,8 @@ export default class Head {
     this.header.querySelectorAll('.header__button').forEach(button => button.classList.toggle('header__button_mobile'));
     this.header.querySelectorAll('.header__link').forEach(link => link.classList.toggle('header__link_mobile'));
     this.header.querySelector('.header__link_active').classList.toggle('header__link_active_mobile');
-    this.header.querySelector('.header__menu-button').classList.toggle('header__menu-button_x'); // крестик
+    this.header.querySelector('.header__menu-button').classList.toggle('header__menu-button_x');
+    //  this.header.querySelector('.header__links_mobile').classList.toggle('header__links_mobile_animation');
 
     if (window.location.pathname !== "/account.html") {
       document.querySelector('.search').classList.toggle('search_mobile');
@@ -71,17 +72,15 @@ export default class Head {
     }
   }
 
-  // подключение классов для мобильной версии для страницы личного кабинета для кнопки (не влезло верхний метод)
-  setButtonBlackTheme() {
-    this.header.querySelector('.header__button_in').classList.add('header__theme_black');
-  }
-
   // обработчик переключение значка выхода в зависимости от ширины страницы
   widthHandler() {
     if (window.innerWidth < 680) {
       this.header.querySelector('.header__button_icon').src = '../../images/logout.svg';
+      // this.header.querySelector('.header__links').classList.add('header__links_mobile_animation');
+
     } else if (window.innerWidth > 680) {
       this.header.querySelector('.header__button_icon').src = '../../images/logout-black.svg';
+      // this.header.querySelector('.header__links').classList.remove('header__links_mobile_animation');
     }
   }
 

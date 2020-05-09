@@ -14,7 +14,6 @@ import SavedArt from '../../js/components/SavedArt';
   const head = new Head(document.querySelector('.header'));
   const savedArt = new SavedArt(document.querySelector('.articles-info'));
   head.setBlackTheme();
-  head.setButtonBlackTheme();
 
   const operate = new Operate();
 
@@ -33,7 +32,10 @@ import SavedArt from '../../js/components/SavedArt';
     .then(data => {
       if (data.length === 0) {
         savedArt.turnKeywordsOff();
+        saved.turnOffResults()
+
       } else {
+        savedArt.turnOnResults();
         savedArt.setKeywords(operate.getKeywords(data));
         newslist.renderInAccount(data);
       }

@@ -5,44 +5,58 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Explorer Vespucci</title>
+  <meta name="description" content="Поиск новостей">
+  <meta name="keywords" content="новости, поисковик, newsApi, Яндекс.Практикум">
+  <meta name="author" content="Сергей Железников">
   <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.main.css %>">
   <link rel="icon" type="image/svg+xml" href="<%=require('./images/favicon.svg')%>">
+  <title>Explorer Vespucci</title>
 </head>
 
 <body>
-  <div class="background">
-    <header class="page header">
-      <div class="header__logo-container">
-        <h2 class="header__logo">NewsExplorer</h2>
-      </div>
-      <nav class="header__links">
-        <a href="./" class="header__link header__link_active">Главная</a>
-        <a href="./account.html" class="header__link header__link_account header__link_none">Сохраненные статьи</a>
-        <button class="header__button header__button_auth">Авторизоваться</button>
-        <button class="header__button header__button_in">
-          <p class="header__button_user"></p>
-          <img src="<%=require('./images/logout.svg')%>" alt="" class="header__button_icon">
-        </button>
-      </nav>
-      <div class="header__menu-sticks">
-        <button class="header__menu-button"></button>
-      </div>
-    </header>
 
-    <section class="search">
+  <div class="container">
 
-      <div class="search__main">
-        <h1 class="search__title">Что в мире творится?</h1>
-        <p class="search__subtitle">Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.</p>
-        <form class="search__field" name="search">
-          <input type="text" class="search__input" name="searchString" placeholder="Введите тему новости">
-          <button class="button search__button" name="button">Искать</button>
-          </а>
-        </form>
-    </section>
+    <!-- ===  фоновая картинка ===  -->
+    <div class="background">
+
+      <!-- === хэдер ===  -->
+      <header class="page header">
+        <div class="header__logo-container">
+          <h2 class="header__logo">NewsExplorer</h2>
+        </div>
+        <nav class="header__links">
+          <a href="./" class="header__link header__link_active">Главная</a>
+          <a href="./account.html" class="header__link header__link_account header__link_none">Сохраненные статьи</a>
+          <button class="header__button header__button_auth">Авторизоваться</button>
+          <button class="header__button header__button_in">
+            <span class="header__button_user"></span>
+            <img class="header__button_icon" src="<%=require('./images/logout.svg')%>" alt="&rsqb;&#8594;">
+          </button>
+        </nav>
+        <div class="header__menu-sticks">
+          <button class="header__menu-button"></button>
+        </div>
+      </header>
+      <!-- === /хэдер ===  -->
+
+      <!-- === секция с поисковой строкой ===  -->
+      <section class="search">
+        <div class="search__main">
+          <h1 class="search__title">Что в мире творится?</h1>
+          <p class="search__subtitle">Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.</p>
+          <form class="search__field" name="search">
+            <input type="text" class="search__input" name="searchString" placeholder="Введите тему новости">
+            <button class="button search__button" name="button">Искать</button>
+          </form>
+        </div>
+      </section>
+      <!-- === / секция с поисковой строкой ===  -->
+
     </div>
+    <!-- === / фоновая картинка ===  -->
 
+    <!-- ===  прелоудер и неудачная загрузка === -->
     <section class="waiting">
       <div class="waiting__loading">
         <div class="preloader"></div>
@@ -53,20 +67,21 @@
         <p class="waiting__text">К сожалению по вашему запросу ничего не найдено.</p>
       </div>
     </section>
+    <!-- ===  /прелоудер и неудачная загрузка === -->
 
-
+    <!-- === результаты поиска ===  -->
     <section class="results">
       <div class="results__helpers">
         <h2 class="title results__title">Результаты поиска</h2>
       </div>
       <div class="results__container">
-        <!-- сюда кладутся новости -->
-
+        <!-- здесь карточки новостей -->
       </div>
-
       <button class="results__button">Показать еще</button>
     </section>
+    <!-- === /результаты поиска ===  -->
 
+    <!-- === об авторе === -->
     <section class="page author">
       <div class="author__info">
         <div class="author__view">
@@ -79,31 +94,26 @@
         </div>
       </div>
     </section>
+    <!-- === /об авторе === -->
 
-  </div>
+    <!-- === футер === -->
+    <footer class="page footer">
+      <p class="footer__copyright">&#169; 2020 vespucci.tk <a href="https://newsapi.org/" target="_blank" class="footer__link-api"> Powered by News API</a></p>
+      <nav class="footer__nav">
+        <div class="footer__links-word">
+          <a href="./" class="footer__link">Главная</a>
+          <a href="https://praktikum.yandex.ru/" target="_blank" class="footer__link">Яндекс.Практикум</a>
+        </div>
+        <div class="footer__links-logo">
+          <a href="https://github.com/Zheleznikov/" target="_blank" class="footer__link"><img src="<%=require('./images/github-icon.svg')%>" alt="github" class="footer__icon"></a>
+          <a href="https://www.facebook.com/yandex.praktikum/" target="_blank" class="footer__link"><img src="<%=require('./images/fb-icon.svg')%>" alt="facebook" class="footer__icon"></a>
+        </div>
+      </nav>
+    </footer>
+    <!-- === /футер === -->
 
-  <!-- footer -->
-  <footer class="page footer">
-    <p class="footer__copyright">&#169; 2020 Supersite, Powered by News API</p>
-    <nav class="footer__nav">
-      <div class="footer__links-word">
-        <a href="" class="footer__link">Главная</a>
-        <a href="https://praktikum.yandex.ru/" target="_blank" class="footer__link">Яндекс.Практикум</a>
-      </div>
-      <div class="footer__links-logo">
-        <a href="https://github.com/Zheleznikov/" target="_blank" class="footer__link"><img src="<%=require('./images/github-icon.svg')%>" alt="" class="footer__icon"></a>
-
-        <a href="https://www.facebook.com/yandex.praktikum/" target="_blank" class="footer__link"><img src="<%=require('./images/fb-icon.svg')%>" alt="" class="footer__icon"></a>
-      </div>
-
-    </nav>
-  </footer>
-
-  <!-- ПОПАПЫ -->
-
-    <!-- ПОПАП ВОЙТИ -->
-
-    <div class="popup popup-enter">
+    <!-- === попап ВОЙТИ === -->
+    <section class="popup popup-enter">
       <div class="popup__content">
         <img src="<%=require('./images/close.svg')%>" alt="Х" class="popup__close">
         <h3 class="popup__title">Вход</h3>
@@ -123,57 +133,55 @@
         </form>
         <p class="popup__toggle">или<button type="button" class="popup__toggle-link popup__toggle-link_enter">Зарегистрироваться</button></p>
       </div>
-    </div>
+    </section>
+    <!-- === /попап ВОЙТИ === -->
 
-  <!-- ПОПАП РЕГИСТРАЦИЯ -->
+    <!-- === попап РЕГИСТРАЦИЯ === -->
+    <section class="popup popup-reg">
+      <div class="popup__content">
+        <img src="<%=require('./images/close.svg')%>" alt="Х" class="popup__close">
+        <h3 class="popup__title">Регистрация</h3>
+        <form class="popup__form" name="reg">
+          <div class="popup__form-field">
+            <p class="popup__input-tip">Email</p>
+            <input type="text" name="email" class="popup__input popup__input_email" placeholder="Введите почту">
+            <p class="popup__input-error popup__input-error_email"></p>
+          </div>
+          <div class="popup__form-field">
+            <p class="popup__input-tip">Пароль</p>
+            <input type="text" name="pass" class="popup__input popup__input_pass" placeholder="Введите пароль">
+            <p class="popup__input-error popup__input-error_pass"></p>
+          </div>
+          <div class="popup__form-field">
+            <p class="popup__input-tip">Имя</p>
+            <input type="text" name="name" class="popup__input popup__input_name" placeholder="Введите имя">
+            <p class="popup__input-error popup__input-error_name"></p>
+          </div>
+          <p class="popup__input-error popup__input-error_handler"></p>
+          <button type="submit" name="button" class="button popup__button" disabled>Зарегистрироваться</button>
+        </form>
+        <p class="popup__toggle">или<button class="popup__toggle-link popup__toggle-link_reg">войти</button></p>
+      </div>
+    </section>
+    <!-- === /попап РЕГИСТРАЦИЯ === -->
 
-  <div class="popup popup-reg">
-    <div class="popup__content">
-      <img src="<%=require('./images/close.svg')%>" alt="Х" class="popup__close">
-      <h3 class="popup__title">Регистрация</h3>
-      <form action="" class="popup__form" name="reg">
-        <div class="popup__form-field">
-          <p class="popup__input-tip">Email</p>
-          <input type="text" name="email" class="popup__input popup__input_email" placeholder="Введите почту">
-          <p class="popup__input-error popup__input-error_email"></p>
-        </div>
-        <div class="popup__form-field">
-          <p class="popup__input-tip">Пароль</p>
-          <input type="text" name="pass" class="popup__input popup__input_pass" placeholder="Введите пароль">
-          <p class="popup__input-error popup__input-error_pass"></p>
-        </div>
-        <div class="popup__form-field">
-          <p class="popup__input-tip">Имя</p>
-          <input type="text" name="name" class="popup__input popup__input_name" placeholder="Введите имя">
-          <p class="popup__input-error popup__input-error_name"></p>
-        </div>
-        <p class="popup__input-error popup__input-error_handler"></p>
-        <button type="submit" name="button" class="button popup__button" disabled>Зарегистрироваться</button>
-      </form>
-      <p class="popup__toggle">или<button class="popup__toggle-link popup__toggle-link_reg">войти</button></p>
-    </div>
-  </div>
+    <!-- === попап в случае УСПЕШНОЙ регистрации === -->
+    <section class="popup popup-success">
+      <div class="popup__content">
+        <img src="<%=require('./images/close.svg')%>" alt="Х" class="popup__close">
+        <h3 class="popup__title">Пользователь успешно зарегистрирован!</h3>
+        <button type="button" class="popup__toggle-link popup__toggle-link_success">Выполнить вход</button>
+      </div>
+    </section>
+    <!-- === /попап в случае успешной регистрации === -->
 
-
-
-  <!-- ПОПАП УСПЕХ -->
-
-  <div class="popup popup-success">
-    <div class="popup__content">
-      <img src="<%=require('./images/close.svg')%>" alt="Х" class="popup__close">
-      <h3 class="popup__title">Пользователь успешно зарегистрирован!</h3>
-      <button type="button" class="popup__toggle-link popup__toggle-link_success">Выполнить вход</button>
-    </div>
-  </div>
-
-  <!-- КАРТОЧКА НОВОСТИ -->
-  <template class="news-template">
+    <!-- === КАРТОЧКА новости ===  -->
+    <template class="news-template">
     <div class="news">
       <a href="" target="_blank" class="news__link"></a>
       <div class="news__icon"></div>
-      <!-- это не должна быть кнопка -->
       <button class="news__tip">
-        <p class="news__tip-content">Войдите, чтобы сохранять статьи</p>
+        <span class="news__tip-content">Войдите, чтобы сохранять статьи</span>
       </button>
       <img src="" alt="" class="news__image">
       <div class="news__description">
@@ -184,7 +192,9 @@
       </div>
     </div>
   </template>
+    <!-- === / карточка новости ===  -->
 
+  </div>
   <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
 </body>
 

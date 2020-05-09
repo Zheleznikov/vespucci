@@ -10,6 +10,8 @@
   padding-bottom: 56px;
   border-top: 1px solid rgba(196, 196, 196);
   /* width: 100%; */
+  /* border: 1px solid red; */
+  flex: auto;
 }
 
 .articles-info_mobile {
