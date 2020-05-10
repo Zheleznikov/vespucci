@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="Поиск новостей">
+  <meta name="keywords" content="новости, поисковик, newsApi, Яндекс.Практикум">
+  <meta name="author" content="Сергей Железников">
+  <link rel="stylesheet" href="style.f273b5025ed3ec0b5a2f.css">
+  <link rel="icon" type="image/svg+xml" href="./images/favicon.svg">
+  <title>Explorer Vespucci</title>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- === хэдер === -->
+    <header class="page header">
+      <div class="header__logo-container">
+        <h2 class="header__logo">NewsExplorer</h2>
+      </div>
+      <nav class="header__links">
+        <a href="./" class="header__link ">Главная</a>
+        <a href="./account.html" class="header__link header__link_account header__link_active">Сохраненные статьи</a>
+        <button class="header__button header__button_auth">Авторизоваться</button>
+        <button class="header__button header__button_in">
+        <span class="header__button_user"></span>
+        <img src="./images/logout-black.svg" alt="&rsqb;&#8594;" class="header__button_icon">
+      </button>
+      </nav>
+      <div class="header__menu-sticks">
+        <button class="header__menu-button"></button>
+      </div>
+    </header>
+    <!-- === / хэдер === -->
+
+    <main class="main">
+      <!-- === сохраненные статьи заголовок ===  -->
+      <section class="articles-info">
+        <div class="page articles-info__content">
+          <h1 class="articles-info__title">Сохраненные статьи</h1>
+          <p class="articles-info__main"></p>
+          <p class="articles-info__key">По ключевым словам: <span class="articles-info__words"></span></p>
+        </div>
+      </section>
+      <!-- === /сохраненные статьи заголовок ===  -->
+
+      <!-- === сохраненные карточки ===  -->
+      <section class="results">
+        <div class="results__container">
+          <!-- сохраненные карточки лежат здесь -->
+        </div>
+      </section>
+      <!-- === /сохраненные карточки ===  -->
+    </main>
+
+    <!-- === футер === -->
+    <footer class="page footer">
+      <p class="footer__copyright">&#169; 2020 vespucci.tk <a href="https://newsapi.org/" target="_blank" class="footer__link-api"> Powered by News API</a></p>
+      <nav class="footer__nav">
+        <div class="footer__links-word">
+          <a href="./" class="footer__link">Главная</a>
+          <a href="https://praktikum.yandex.ru/" target="_blank" class="footer__link">Яндекс.Практикум</a>
+        </div>
+        <div class="footer__links-logo">
+          <a href="https://github.com/Zheleznikov/" target="_blank" class="footer__link"><img src="./images/github-icon.svg" alt="github" class="footer__icon"></a>
+          <a href="https://www.facebook.com/yandex.praktikum/" target="_blank" class="footer__link"><img src="./images/fb-icon.svg" alt="facebook" class="footer__icon"></a>
+        </div>
+      </nav>
+    </footer>
+    <!-- === /футер === -->
+
+    <!-- === КАРТОЧКА новости ===  -->
+    <template class="news-template">
+    <div class="news">
+      <a href="" target="_blank" class="news__link"></a>
+      <div class="news__icon_delete"></div>
+      <div class="news__keyword">
+        <p class="news__keyword-content">Природа</p>
+      </div>
+      <img src="" alt="" class="news__image">
+      <div class="news__description">
+        <p class="news__date"></p>
+        <h3 class="news__title"></h3>
+        <p class="news__text"></p>
+        <p class="news__source"></p>
+      </div>
+    </div>
+  </template>
+    <!-- === /КАРТОЧКА новости ===  -->
+  </div>
+  <script src="account.c3918342a49024c9b5a4.js"></script>
+
+</body>
+
+</html>
