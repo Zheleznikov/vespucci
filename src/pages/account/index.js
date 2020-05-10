@@ -1,5 +1,5 @@
 import './account.css';
-import { IP, SERVER } from '../../js/constants/service';
+import { SERVER } from '../../js/constants/service';
 import Api from '../../js/api/Api';
 import Head from '../../js/components/Head';
 import Exit from '../../js/components/Exit';
@@ -9,7 +9,7 @@ import Operate from '../../js/utils/Operate';
 import SavedArt from '../../js/components/SavedArt';
 
 
-(function() {
+(function main() {
   const api = new Api(SERVER);
   const head = new Head(document.querySelector('.header'));
   const savedArt = new SavedArt(document.querySelector('.articles-info'));
@@ -24,16 +24,15 @@ import SavedArt from '../../js/components/SavedArt';
     news.accountHandlers();
 
     return news;
-  }
+  };
 
   const newslist = new Newslist(document.querySelector('.results__container'), insertNews, operate);
 
   api.getNews()
-    .then(data => {
+    .then((data) => {
       if (data.length === 0) {
         savedArt.turnKeywordsOff();
-        saved.turnOffResults()
-
+        saved.turnOffResults();
       } else {
         savedArt.turnOnResults();
         savedArt.setKeywords(operate.getKeywords(data));
@@ -41,18 +40,15 @@ import SavedArt from '../../js/components/SavedArt';
       }
     });
 
-
   api.getMyData()
-    .then(data => {
+    .then((data) => {
       head.ifLogin(data.data.name);
       savedArt.setName(data.data.name, operate.pairValue(data.data.articles.length));
     })
     .catch(() => {
       head.ifUnauthorized();
-      window.location.pathname = "./index.html";
+      window.location.pathname = './index.html';
     });
 
   new Exit(api, head);
-
-
-})()
+}());

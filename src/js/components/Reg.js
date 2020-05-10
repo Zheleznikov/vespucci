@@ -31,7 +31,7 @@ export default class Auth extends Popup {
   }
 
   handlers() {
-    this.form.addEventListener('change', this.regHandler.bind(this));
+    this.form.addEventListener('input', this.regHandler.bind(this));
     this.form.addEventListener('submit', this.reg.bind(this));
   }
 }

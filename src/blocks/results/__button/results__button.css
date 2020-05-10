@@ -14,7 +14,8 @@
 }
 
 .results__button:hover {
-  opacity: .7;
+  background-color:#E5E5E5;
+
 }
 
 @media screen and (max-width: 840px) {

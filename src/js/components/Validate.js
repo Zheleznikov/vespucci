@@ -1,45 +1,46 @@
-/* eslint-disable no-unused-expressions */
+
 /* eslint-disable no-return-assign */
 /* eslint-disable class-methods-use-this */
+/* eslint-disable no-unused-expressions */
 /* eslint-disable no-param-reassign */
-/* eslint-disable no-else-return */
 import ValidateConst from '../constants/ValidateConst';
 
 export default class Validate extends ValidateConst {
-  // constructor() {
-  //   super();
-  // }
-
   // проверяем поле
   checkField(value, tip, input) {
     if (value === '') {
-      tip.textContent = this.errMessageNull;
+      input.onblur = () => tip.textContent = this.errMessageNull;
+      input.onfocus = () => tip.textContent = '';
       return false;
-    } else if (input.classList.contains('popup__input_name') && (value.length === 1 || value.length > 30)) {
-      tip.textContent = this.errMessageLength;
+    }
+
+    if (input.classList.contains('popup__input_name') && (value.length === 1 || value.length > 30)) {
+      input.onblur = () => tip.textContent = this.errMessageLength;
+      input.onfocus = () => tip.textContent = '';
       return false;
-    } else if (input.classList.contains('popup__input_email') && !this.emailReg.test(value)) {
-      tip.textContent = this.errMessageEmail;
+    }
+
+    if (input.classList.contains('popup__input_email') && !this.emailReg.test(value)) {
+      input.onblur = () => tip.textContent = this.errMessageEmail;
+      input.onfocus = () => tip.textContent = '';
       return false;
-    } else if (input.classList.contains('popup__input_pass') && value.length < 8) {
-      tip.textContent = this.errMessagePassLength;
+    }
+
+    if (input.classList.contains('popup__input_pass') && value.length < 8 && value.length !== 0) {
+      // tip.textContent = this.errMessagePassLength;
+      input.onblur = () => tip.textContent = this.errMessagePassLength;
+      input.onfocus = () => tip.textContent = '';
       return false;
-    } else if (input.classList.contains('popup__input_pass') && !this.passwordReg.test(value)) {
+    }
+
+    if (input.classList.contains('popup__input_pass') && !this.passwordReg.test(value)) {
       tip.textContent = this.errMessagePass;
       return false;
-    } else {
-      tip.textContent = '';
-      return true;
     }
-  }
 
-  // убрать подсказку, если инпут сейчас в фокусе
-  hideHint(value, err, type) {
-    if (type === 'focus') {
-      value.onfocus = () => err.textContent = '';
-    } else if (type === 'blur') {
-      value.onblur = () => err.textContent = '';
-    }
+    input.onblur = () => tip.textContent = '';
+    tip.textContent = '';
+    return true;
   }
 
   // работа с кнопкой
@@ -57,6 +58,8 @@ export default class Validate extends ValidateConst {
     this.passFlag;
     this.nameFlag = true;
 
+    button.onblur = () => handlerErr.textContent = '';
+
     if (evt.target === email) {
       this.emailFlag = this.checkField(email.value, emailErr, email);
     } else if (evt.target === pass) {
@@ -70,10 +73,5 @@ export default class Validate extends ValidateConst {
     } else {
       this.setButtonAttribute(button, false);
     }
-
-    this.hideHint(email, emailErr, 'focus');
-    this.hideHint(pass, passErr, 'focus');
-    this.hideHint(name, nameErr, 'focus');
-    this.hideHint(button, handlerErr, 'blur');
   }
 }

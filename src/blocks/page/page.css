@@ -1,5 +1,5 @@
 .page {
-    max-width: 1232px;
+    width: 1232px;
     margin: 0 auto;
 }
 
@@ -12,7 +12,7 @@
  @media screen and (max-width: 800px) {
   .page {
 
-    max-width: 688px;
+    width: 688px;
   }
  }
 

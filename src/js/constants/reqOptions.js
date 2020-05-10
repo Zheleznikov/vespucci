@@ -5,6 +5,7 @@ const REQUEST_OPTIONS = {
 };
 
 const URL = 'https://newsapi.org/v2/everything?';
+
 const MY_API_HEADERS = {
   authorization: `Bearer ${localStorage.getItem('token')}`,
   'Content-Type': 'application/json',

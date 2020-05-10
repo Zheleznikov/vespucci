@@ -1,5 +1,4 @@
 export default class NewsApi {
-
   constructor(options, url) {
     this.options = options;
     this.url = url;
@@ -7,22 +6,18 @@ export default class NewsApi {
 
   getNews(query, today, sevenDaysAgo) {
     const params = {
-      "q": query,
-      "from": sevenDaysAgo,
-      'to': today,
-      'pageSize': '100',
-      'sortBy': 'popularity'
+      q: query,
+      from: sevenDaysAgo,
+      to: today,
+      pageSize: 100,
+      sortBy: 'popularity',
     };
 
-    const queryParams = Object.keys(params).map(key => `${key}=${params[key]}`).join('&');
+    const queryParams = Object.keys(params).map((key) => `${key}=${params[key]}`).join('&');
 
     return fetch(`${this.url}${queryParams}`, this.options)
       .then((res) => res.json())
-      .then((response) => {
-        return response;
-      })
-      .catch(error => console.log('error', error));
+      .then((response) => response)
+      .catch((error) => console.log('error', error));
   }
-
-
 }

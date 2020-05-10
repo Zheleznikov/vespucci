@@ -9,6 +9,7 @@
   background-image: url(../../../../images/trash.svg);
   background-repeat: no-repeat;
   background-position: center;
+  cursor: url(../../../../images/pointer.svg), pointer;
 }
 
 @media screen and (max-width: 840px) {

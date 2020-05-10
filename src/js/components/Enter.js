@@ -42,7 +42,7 @@ export default class Enter extends Popup {
 
   handlers() {
     document.querySelector('.header__button_auth').addEventListener('click', this.open.bind(this));
-    this.form.addEventListener('change', this.enterHandler.bind(this));
+    this.form.addEventListener('input', this.enterHandler.bind(this));
     this.form.addEventListener('submit', this.enter.bind(this));
   }
 }

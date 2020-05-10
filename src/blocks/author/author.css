@@ -4,6 +4,7 @@
 @import url(./__info/author__info.css);
 @import url(./__about/author__about.css);
 @import url(./__view/author__view.css);
+@import url(./__links/author__links.css);
 
 .author {
   padding-top: 80px;

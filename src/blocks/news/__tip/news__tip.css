@@ -11,6 +11,7 @@
   right: 69px;
   outline: none;
   border: none;
+  cursor: url(../../../images/pointer.svg), pointer;
 }
 
 

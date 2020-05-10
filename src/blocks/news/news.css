@@ -13,6 +13,7 @@
 @import url(./__tip/_on/news__tip_on.css);
 @import url(./__keyword/news__keyword.css);
 @import url(./__keyword-content/news__keyword-content.css);
+@import url(./__deleted/news__deleted.css);
 
 
 .news {
@@ -26,14 +27,11 @@
   transition: all .5s ease-out;
 }
 
-
 .news:hover {
   transform: translateY(-5px);
 }
 
-.news__deleted {
-  display: none;
-}
+
 
 @media screen and (max-width: 840px) {
   .news {

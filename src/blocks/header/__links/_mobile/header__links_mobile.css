@@ -5,7 +5,9 @@
     width: 90%;
     margin: 0 auto;
     animation: scale-up-ver-top 0.6s ease-out both;
-    /* animation: scale-up-ver-top 0.6s backwrds ease-out both; */
+    flex-shrink: 0;
+
+
   }
 
   @-webkit-keyframes scale-up-ver-top {
