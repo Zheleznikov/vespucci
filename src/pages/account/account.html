@@ -36,23 +36,25 @@
     </header>
     <!-- === / хэдер === -->
 
-    <!-- === сохраненные статьи заголовок ===  -->
-    <section class="articles-info">
-      <div class="page articles-info__content">
-        <h1 class="articles-info__title">Сохраненные статьи</h1>
-        <p class="articles-info__main"></p>
-        <p class="articles-info__key">По ключевым словам: <span class="articles-info__words"></span></p>
-      </div>
-    </section>
-    <!-- === /сохраненные статьи заголовок ===  -->
+    <main class="main">
+      <!-- === сохраненные статьи заголовок ===  -->
+      <section class="articles-info">
+        <div class="page articles-info__content">
+          <h1 class="articles-info__title">Сохраненные статьи</h1>
+          <p class="articles-info__main"></p>
+          <p class="articles-info__key">По ключевым словам: <span class="articles-info__words"></span></p>
+        </div>
+      </section>
+      <!-- === /сохраненные статьи заголовок ===  -->
 
-    <!-- === сохраненные карточки ===  -->
-    <section class="results">
-      <div class="results__container">
-        <!-- сохраненные карточки лежат здесь -->
-      </div>
-    </section>
-    <!-- === /сохраненные карточки ===  -->
+      <!-- === сохраненные карточки ===  -->
+      <section class="results">
+        <div class="results__container">
+          <!-- сохраненные карточки лежат здесь -->
+        </div>
+      </section>
+      <!-- === /сохраненные карточки ===  -->
+    </main>
 
     <!-- === футер === -->
     <footer class="page footer">
@@ -89,8 +91,8 @@
   </template>
     <!-- === /КАРТОЧКА новости ===  -->
 
-  </div>
-  <script src="<%= htmlWebpackPlugin.files.chunks.account.entry %>"></script>
+    </main>
+    <script src="<%= htmlWebpackPlugin.files.chunks.account.entry %>"></script>
 
 </body>
 

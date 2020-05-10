@@ -1,11 +1,10 @@
-import PopupConst from '../constants/PopupConst'
+import PopupConst from '../constants/PopupConst';
 
 export default class Popup extends PopupConst {
   constructor(element) {
     super(element);
     this.defaultHandlers();
     this.switchPopupHandler();
-
   }
 
   open() {

@@ -11,7 +11,7 @@ export default class Exit {
         this.head.ifUnauthorized();
         window.location.pathname = './index.html';
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   }
 
   handler() {

@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 export default class News {
   constructor(url, urlToImage, publishedAt, description, content, source, _id, keyword, message, api) {
     this._id = _id;
@@ -10,11 +11,10 @@ export default class News {
     this.keyword = keyword;
     this.message = message;
     this.api = api;
-    // console.log(this.newsCard.querySelector('.news__tip'))
   }
 
 
-  create(url, urlToImage, publishedAt, description, content, source, _id, keyword, message) {
+  create(url, urlToImage, publishedAt, description, content, source, _id, keyword) {
     const news = document.querySelector('.news-template').content.cloneNode(true);
     news.querySelector('.news__link').href = url;
     news.querySelector('.news__image').src = urlToImage;
@@ -30,19 +30,17 @@ export default class News {
 
   createNewsCard() {
     this.newsCard = this.create(this.url, this.urlToImage, this.publishedAt, this.description, this.content, this.source, this._id, this.keyword, this.message);
-
   }
 
   mark() {
-    this.newsCard.querySelector('.news__icon').classList.toggle('news__icon_marked')
+    this.newsCard.querySelector('.news__icon').classList.toggle('news__icon_marked');
   }
 
 
-  remove(_id) {
+  remove() {
     this.api.deleteNews(this._id);
     this.newsCard.parentElement.removeChild(this.newsCard);
     this.newsCard.classList.add('news__deleted');
-
   }
 
   clickIconHandler() {
@@ -52,17 +50,18 @@ export default class News {
     } else {
       this.mark();
       this.api.postNews(this.keyword, this.description, this.content, this.publishedAt, this.source, this.url, this.urlToImage)
+        // eslint-disable-next-line no-return-assign
         .then((res) => this._id = res.data._id)
-        .catch(err => console.log(err))
+        .catch((err) => console.log(err));
     }
   }
 
   showTip() {
-    this.newsCard.querySelector('.news__tip').classList.add('news__tip_on')
+    this.newsCard.querySelector('.news__tip').classList.add('news__tip_on');
   }
 
   hideTip() {
-    this.newsCard.querySelector('.news__tip').classList.remove('news__tip_on', true)
+    this.newsCard.querySelector('.news__tip').classList.remove('news__tip_on', true);
   }
 
   tipHandler() {
@@ -80,20 +79,15 @@ export default class News {
   }
 
   openEnter() {
-
     document.querySelector('.popup-enter').classList.add('popup_is-opened');
   }
 
   handlers() {
     this.newsCard.querySelector('.news__icon').addEventListener('click', this.clickIconHandler.bind(this));
-
   }
 
   // для другой страницы
   accountHandlers() {
-    this.newsCard.querySelector('.news__icon_delete').addEventListener('click', this.remove.bind(this))
+    this.newsCard.querySelector('.news__icon_delete').addEventListener('click', this.remove.bind(this));
   }
-
-
-
 }

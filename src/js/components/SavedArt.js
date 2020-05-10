@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 export default class SavedArt {
   constructor(element) {
     this.element = element;
@@ -12,8 +13,8 @@ export default class SavedArt {
   }
 
   turnKeywordsOff() {
-   this.element.querySelector('.articles-info__key').classList.add('articles-info__key_off');
-    console.log(this.element.querySelector('.articles-info__key'))
+    this.element.querySelector('.articles-info__key').classList.add('articles-info__key_off');
+    console.log(this.element.querySelector('.articles-info__key'));
   }
 
   turnOnResults() {
@@ -23,5 +24,4 @@ export default class SavedArt {
   turnOffResults() {
     document.querySelector('.results').classList.remove('results_on');
   }
-
 }

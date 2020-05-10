@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 export default class Search {
   constructor(form, newsApi, newslist, api, operate, sevenDaysAgo, today) {
     this.operate = operate;
@@ -11,7 +12,6 @@ export default class Search {
     this.button = this.form.elements.button;
 
     this.handlers();
-
   }
 
   // вспомогательные функции
@@ -55,7 +55,6 @@ export default class Search {
       .then((data) => {
         this.newsApi.getNews(this.searchString.value, this.operate.getDate(this.today), this.operate.getDate(this.sevenDaysAgo))
           .then((res) => {
-
             this.turnOnResults();
             this.turnOffWaiting();
 
@@ -74,14 +73,13 @@ export default class Search {
               }
             }
           })
-          .catch(err => {
+          .catch((err) => {
             this.turnOffResults();
             this.turnOnError();
             console.log(err);
           });
       })
-      .catch(err => console.log(err));
-
+      .catch((err) => console.log(err));
   }
 
   // вывести еще карточек
@@ -107,7 +105,6 @@ export default class Search {
     if (window.innerWidth < 684) {
       this.newslist.append(this.renderArr, 2);
     }
-
   }
 
   // обработчик кнопки "показать еще"
@@ -130,8 +127,5 @@ export default class Search {
     this.form.addEventListener('submit', this.show.bind(this));
     document.querySelector('.results__button').addEventListener('click', this.showMore.bind(this));
     document.querySelector('.popup__button_re-search').addEventListener('input', this.showAfterAuth.bind(this));
-
-
-
   }
 }

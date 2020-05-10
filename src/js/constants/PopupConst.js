@@ -14,6 +14,5 @@ export default class PopupConst {
     this.email = this.element.querySelector('.popup__input_email');
     this.pass = this.element.querySelector('.popup__input_pass');
     this.button = this.element.querySelector('.popup__button');
-
   }
 }

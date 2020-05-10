@@ -10,6 +10,7 @@
   background-image: url(../../../images/flag-normal.svg);
   background-repeat: no-repeat;
   background-position: center;
+  cursor: url(../../../images/pointer.svg), pointer;
 }
 
 .news__icon:hover {

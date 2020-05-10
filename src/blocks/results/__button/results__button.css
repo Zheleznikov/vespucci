@@ -6,19 +6,14 @@
   border: 1px solid white;
   color: #1A1B22;
   background-color: white;
-  ;
   padding: 18px 84px 22px;
-  /* margin-top: 64px;
-  margin-bottom: 18px; */
   border-radius: 100px;
   cursor: url(../../../images/pointer.svg), pointer;
   outline: none;
   margin: 64px auto 18px;
 }
 
-
 .results__button:hover {
-  /* background-color: #E6E8EB; */
   opacity: .7;
 }
 

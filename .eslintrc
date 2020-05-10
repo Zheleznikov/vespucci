@@ -5,6 +5,8 @@
      "no-console": "off",
      "object-curly-newline": "off",
      "max-len": "off",
-     "no-underscore-dangle": ["error", { "allow": ["_id"] }]
+     "no-undef": "off",
+     "no-new": "off",
+     "no-underscore-dangle": "off"
    }
 }

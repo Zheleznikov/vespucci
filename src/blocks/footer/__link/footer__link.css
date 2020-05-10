@@ -5,6 +5,7 @@
   color: #1A1B22;
   text-decoration: none;
   display: flex;
+  cursor: url(../../../images/pointer.svg), pointer;
 }
 
 .footer__link:first-of-type {

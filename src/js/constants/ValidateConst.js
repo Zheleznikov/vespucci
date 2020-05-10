@@ -7,6 +7,5 @@ export default class ValidateConst {
     this.errMessagePassLength = 'Пароль должен быть не менее 8 символов';
     this.passwordReg = /\w+/;
     this.emailReg = /^[-._a-z0-9]+@(?:[a-z0-9][-a-z0-9]+\.)+[a-z]{2,6}$/;
-
   }
 }

@@ -1,9 +1,14 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-return-assign */
+/* eslint-disable class-methods-use-this */
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-else-return */
 import ValidateConst from '../constants/ValidateConst';
 
 export default class Validate extends ValidateConst {
-  constructor() {
-    super();
-  }
+  // constructor() {
+  //   super();
+  // }
 
   // проверяем поле
   checkField(value, tip, input) {
@@ -71,9 +76,4 @@ export default class Validate extends ValidateConst {
     this.hideHint(name, nameErr, 'focus');
     this.hideHint(button, handlerErr, 'blur');
   }
-
-
-
-
-
 }
