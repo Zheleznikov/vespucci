@@ -15,7 +15,7 @@ export default class Operate {
 
   trimString(string, n) {
     // eslint-disable-next-line no-nested-ternary
-    return string === null ? '' : string.length > n ? `${string.slice(0, 53)}...` : string;
+    return string === null ? '' : string.length > n ? `${string.slice(0, n)}...` : string;
   }
 
 
