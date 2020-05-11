@@ -12,7 +12,6 @@ export default class NewsApi {
       from: sevenDaysAgo,
       to: today,
       pageSize: 100,
-      sortBy: 'popularity',
     };
     const queryParams = Object.keys(params).map((key) => `${key}=${params[key]}`).join('&');
 

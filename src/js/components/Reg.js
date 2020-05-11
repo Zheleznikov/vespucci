@@ -14,16 +14,16 @@ export default class Auth extends Popup {
     this.api = api;
     this.name = this.element.querySelector('.popup__input_name');
     this.nameErr = this.element.querySelector('.popup__input-error_name');
-    this.handlers();
+    this._handlers();
   }
 
   // валидация
-  regHandler(evt) {
+  _regHandler(evt) {
     this.validate.handler(evt, this.email, this.emailErr, this.pass, this.passErr, this.button, this.handlerErr, this.name, this.nameErr);
   }
 
   // зарегистрироваться
-  reg(evt) {
+  _reg(evt) {
     evt.preventDefault();
     this.api.signup(this.email.value, this.name.value, this.pass.value)
       .then((data) => {
@@ -37,8 +37,8 @@ export default class Auth extends Popup {
       .catch((err) => console.log(err));
   }
 
-  handlers() {
-    this.form.addEventListener('input', this.regHandler.bind(this));
-    this.form.addEventListener('submit', this.reg.bind(this));
+  _handlers() {
+    this.form.addEventListener('input', this._regHandler.bind(this));
+    this.form.addEventListener('submit', this._reg.bind(this));
   }
 }

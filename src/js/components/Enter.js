@@ -13,16 +13,16 @@ export default class Enter extends Popup {
     this.api = api;
     this.validate = validate;
     this.head = head;
-    this.handlers();
+    this._handlers();
   }
 
   // валидация
-  enterHandler(evt) {
+  _enterHandler(evt) {
     this.validate.handler(evt, this.email, this.emailErr, this.pass, this.passErr, this.button, this.handlerErr);
   }
 
   // вход
-  enter(evt) {
+  _enter(evt) {
     evt.preventDefault();
     this.api.signin(this.email.value, this.pass.value)
       .then((data) => {
@@ -38,9 +38,9 @@ export default class Enter extends Popup {
   }
 
 
-  handlers() {
+  _handlers() {
     document.querySelector('.header__button_auth').addEventListener('click', this.open.bind(this));
-    this.form.addEventListener('input', this.enterHandler.bind(this));
-    this.form.addEventListener('submit', this.enter.bind(this));
+    this.form.addEventListener('input', this._enterHandler.bind(this));
+    this.form.addEventListener('submit', this._enter.bind(this));
   }
 }

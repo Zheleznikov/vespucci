@@ -23,7 +23,7 @@ export default class Head {
     this.accountLink = this.header.querySelector('.header__link_account');
     this.openButton = this.header.querySelector('.header__menu-button');
 
-    this.handlers();
+    this._handlers();
   }
 
   // кнопки в хэдере для авторизванного пользователя
@@ -75,7 +75,7 @@ export default class Head {
   }
 
   // обработчик переключение значка выхода в зависимости от ширины страницы
-  widthHandler() {
+  _widthHandler() {
     if (window.innerWidth < 680) {
       this.header.querySelector('.header__button_icon').src = '../../images/logout.svg';
     } else if (window.innerWidth > 680) {
@@ -83,12 +83,12 @@ export default class Head {
     }
   }
 
-  handlers() {
+  _handlers() {
     this.openButton.addEventListener('click', this.ifMobile.bind(this));
     this.openButton.addEventListener('click', this.setBlackTheme.bind(this));
 
     if (window.location.pathname === '/account.html') {
-      window.addEventListener('resize', this.widthHandler.bind(this));
+      window.addEventListener('resize', this._widthHandler.bind(this));
     }
   }
 }

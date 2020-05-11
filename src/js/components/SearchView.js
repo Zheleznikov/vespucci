@@ -9,6 +9,7 @@ export default class SearchView {
     this.loadingView = document.querySelector('.waiting__loading');
     this.errorView = document.querySelector('.waiting__error');
     this.resultButton = document.querySelector('.results__button');
+    this.errMessage = document.querySelector('.waiting__text_err');
   }
 
   clearContainer() {
@@ -49,8 +50,23 @@ export default class SearchView {
     this._turnOffWaiting();
   }
 
-  getError() {
+  _getError() {
     this._turnOnError();
     this._turnOffResults();
+  }
+
+  getErrEmptyField() {
+    this._getError();
+    this.errMessage.textContent = 'Вы ввели пустую строку';
+  }
+
+  getErrMotFound() {
+    this._getError();
+    this.errMessage.textContent = 'К сожалению, по вашему запросу ничего не найдено';
+  }
+
+  getErrServer() {
+    this._getError();
+    this.errMessage.textContent = 'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз';
   }
 }

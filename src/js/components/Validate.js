@@ -16,7 +16,7 @@ import ValidateConst from '../constants/ValidateConst';
 
 export default class Validate extends ValidateConst {
   // проверяем поле
-  checkField(value, tip, input) {
+  _checkField(value, tip, input) {
     if (value === '') {
       input.onblur = () => tip.textContent = this.errMessageNull;
       input.onfocus = () => tip.textContent = '';
@@ -54,7 +54,7 @@ export default class Validate extends ValidateConst {
   }
 
   // работа с кнопкой
-  setButtonAttribute(button, valid) {
+  _setButtonAttribute(button, valid) {
     if (valid) {
       button.removeAttribute('disabled', true);
     } else {
@@ -71,17 +71,17 @@ export default class Validate extends ValidateConst {
     button.onblur = () => handlerErr.textContent = '';
 
     if (evt.target === email) {
-      this.emailFlag = this.checkField(email.value, emailErr, email);
+      this.emailFlag = this._checkField(email.value, emailErr, email);
     } else if (evt.target === pass) {
-      this.passFlag = this.checkField(pass.value, passErr, pass);
+      this.passFlag = this._checkField(pass.value, passErr, pass);
     } else if (evt.target === name) {
-      this.nameFlag = this.checkField(name.value, nameErr, name);
+      this.nameFlag = this._checkField(name.value, nameErr, name);
     }
 
     if (this.emailFlag && this.passFlag && this.nameFlag) {
-      this.setButtonAttribute(button, true);
+      this._setButtonAttribute(button, true);
     } else {
-      this.setButtonAttribute(button, false);
+      this._setButtonAttribute(button, false);
     }
   }
 }

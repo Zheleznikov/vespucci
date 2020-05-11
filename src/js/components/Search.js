@@ -13,11 +13,11 @@ export default class Search extends SearchView {
     this.today = today;
     this.searchString = form.elements.searchString;
     this.button = this.form.elements.button;
-    this.handlers();
+    this._handlers();
   }
 
   // вывод карточек на экран
-  show(evt) {
+  _show(evt) {
     evt.preventDefault();
     this.clearContainer();
     this.runPreloader();
@@ -27,21 +27,18 @@ export default class Search extends SearchView {
           .then((res) => {
             this.getResults();
             if (this.searchString.value === '') {
-              // здесь должно быть кое-какое сообщение типа это пустая строка
-              this.getError();
+              this.getErrEmptyField();
             } else {
               this.renderArr = this.newslist.render(res.articles, this.searchString.value, data.message);
-              this.widthHandler();
-              this.resultButtonHandler();
+              this._widthHandler();
+              this._resultButtonHandler();
               if (res.articles.length === 0) {
-                this.getError();
-                // здесь должно быть кое-какое сообщение типа ничего не найдено
+                this.getErrMotFound();
               }
             }
           })
           .catch((err) => {
-            this.getError();
-            // здесь должно быть сообщение типа на сервере что-то не так, повторите позже
+            this.getErrServer();
             console.log(err);
           });
       })
@@ -49,14 +46,14 @@ export default class Search extends SearchView {
   }
 
   // вывести еще карточек
-  showMore() {
-    this.widthHandler();
-    this.resultButtonHandler();
+  _showMore() {
+    this._widthHandler();
+    this._resultButtonHandler();
   }
 
 
   // обработчик, который в зависимости от ширины экрана выводит разное количество карточек
-  widthHandler() {
+  _widthHandler() {
     if (window.innerWidth > 1230) {
       this.newslist.append(this.renderArr, 3);
     }
@@ -74,7 +71,7 @@ export default class Search extends SearchView {
   }
 
   // обработчик кнопки "показать еще"
-  resultButtonHandler() {
+  _resultButtonHandler() {
     if (this.renderArr.length === 0) {
       document.querySelector('.results__button').classList.add('results__button_off');
     } else {
@@ -82,8 +79,8 @@ export default class Search extends SearchView {
     }
   }
 
-  handlers() {
-    this.form.addEventListener('submit', this.show.bind(this));
-    this.resultButton.addEventListener('click', this.showMore.bind(this));
+  _handlers() {
+    this.form.addEventListener('submit', this._show.bind(this));
+    this.resultButton.addEventListener('click', this._showMore.bind(this));
   }
 }

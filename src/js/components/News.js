@@ -69,7 +69,7 @@ export default class News {
   }
 
   // обработчик подсказок
-  tipHandler() {
+  _tipHandler() {
     this.newsCard.querySelector('.news__icon').addEventListener('mouseover', this._showTip.bind(this));
     this.newsCard.querySelector('.news__tip-content').addEventListener('mouseout', this._hideTip.bind(this));
     this.newsCard.querySelector('.news__tip').addEventListener('click', this._openEnter.bind(this));
@@ -80,7 +80,7 @@ export default class News {
     if (this.message === 'Congratulate') {
       this.handlers();
     } else {
-      this.tipHandler();
+      this._tipHandler();
     }
   }
 

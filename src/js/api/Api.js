@@ -20,7 +20,9 @@ export default class Api {
     })
       .then((res) => res.json())
       .then((data) => data)
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        throw new Error(err);
+      });
   }
 
   // залогиниться
@@ -35,7 +37,9 @@ export default class Api {
     })
       .then((res) => res.json())
       .then((res) => res)
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        throw new Error(err.message);
+      });
   }
 
   // разлогиниться
@@ -46,7 +50,9 @@ export default class Api {
     })
       .then((res) => res.json())
       .then((res) => res)
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        throw new Error(err);
+      });
   }
 
   // получить информацию о себе
@@ -54,7 +60,9 @@ export default class Api {
     return fetch(`${this.IP}users/me`, { headers: this.bearerHeaders })
       .then((res) => res.json())
       .then((res) => res)
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        throw new Error(err.message);
+      });
   }
 
   // сохранить новость себе
@@ -74,7 +82,9 @@ export default class Api {
     })
       .then((res) => res.json())
       .then((res) => res)
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        throw new Error(err);
+      });
   }
 
   // удалить новость
@@ -83,7 +93,11 @@ export default class Api {
       method: 'DELETE',
       headers: this.bearerHeaders,
     })
-      .catch((err) => console.log(err));
+      .then((res) => res.json())
+      .then((res) => res.data)
+      .catch((err) => {
+        throw new Error(err);
+      });
   }
 
   // показать все новости
@@ -91,6 +105,8 @@ export default class Api {
     return fetch(`${this.IP}articles`, { headers: this.bearerHeaders })
       .then((res) => res.json())
       .then((res) => res.data)
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        throw new Error(err);
+      });
   }
 }

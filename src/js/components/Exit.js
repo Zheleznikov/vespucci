@@ -4,10 +4,10 @@ export default class Exit {
   constructor(api, head) {
     this.api = api;
     this.head = head;
-    this.handler();
+    this._handler();
   }
 
-  exit() {
+  _exit() {
     this.api.logout()
       .then(() => {
         this.head.ifUnauthorized();
@@ -16,7 +16,7 @@ export default class Exit {
       .catch((err) => console.log(err));
   }
 
-  handler() {
-    document.querySelector('.header__button_in').addEventListener('click', this.exit.bind(this));
+  _handler() {
+    document.querySelector('.header__button_in').addEventListener('click', this._exit.bind(this));
   }
 }
