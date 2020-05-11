@@ -1,3 +1,5 @@
+// класс для работы с newsapi.org
+
 export default class NewsApi {
   constructor(options, url) {
     this.options = options;
@@ -18,6 +20,6 @@ export default class NewsApi {
     return fetch(`${this.url}${queryParams}`, this.options)
       .then((res) => res.json())
       .then((response) => response)
-      .catch((error) => console.log('error', error));
+      .catch((error) => console.log(error));
   }
 }

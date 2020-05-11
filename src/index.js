@@ -1,6 +1,6 @@
 import './style/index.css';
 import { SERVER } from './js/constants/service';
-import { REQUEST_OPTIONS, URL, MY_API_HEADERS } from './js/constants/reqOptions';
+import { REQUEST_OPTIONS, URL, MY_USUAL_HEADERS, MY_BEARER_HEADERS } from './js/constants/reqOptions';
 import { SEVEN_DAYS_AGO, TODAY } from './js/constants/times';
 import Api from './js/api/Api';
 import NewsApi from './js/api/NewsApi';
@@ -18,7 +18,7 @@ import Search from './js/components/Search';
 (function main() {
   const newsApi = new NewsApi(REQUEST_OPTIONS, URL);
   const operate = new Operate();
-  const api = new Api(SERVER, MY_API_HEADERS);
+  const api = new Api(SERVER, MY_USUAL_HEADERS, MY_BEARER_HEADERS);
   const head = new Head(document.querySelector('.header'));
   const validate = new Validate();
 

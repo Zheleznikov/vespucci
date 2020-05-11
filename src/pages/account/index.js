@@ -7,10 +7,11 @@ import News from '../../js/components/News';
 import Newslist from '../../js/components/Newslist';
 import Operate from '../../js/utils/Operate';
 import SavedArt from '../../js/components/SavedArt';
+import { MY_USUAL_HEADERS, MY_BEARER_HEADERS } from '../../js/constants/reqOptions';
 
 
 (function main() {
-  const api = new Api(SERVER);
+  const api = new Api(SERVER, MY_USUAL_HEADERS, MY_BEARER_HEADERS);
   const head = new Head(document.querySelector('.header'));
   const savedArt = new SavedArt(document.querySelector('.articles-info'));
   head.setBlackTheme();
@@ -28,26 +29,24 @@ import SavedArt from '../../js/components/SavedArt';
 
   const newslist = new Newslist(document.querySelector('.results__container'), insertNews, operate);
 
-  api.getNews()
-    .then((data) => {
-      if (data.length === 0) {
-        savedArt.turnKeywordsOff();
-        saved.turnOffResults();
-      } else {
-        savedArt.turnOnResults();
-        savedArt.setKeywords(operate.getKeywords(data));
-        newslist.renderInAccount(data);
-      }
-    });
-
   api.getMyData()
     .then((data) => {
       head.ifLogin(data.data.name);
       savedArt.setName(data.data.name, operate.pairValue(data.data.articles.length));
+      api.getNews()
+        .then((res) => {
+          if (res.length === 0) {
+            savedArt.turnKeywordsOff();
+            saved.turnOffResults();
+          } else {
+            savedArt.turnOnResults();
+            savedArt.setKeywords(operate.getKeywords(res));
+            newslist.renderInAccount(res);
+          }
+        });
     })
     .catch(() => {
-      head.ifUnauthorized();
-      window.location.pathname = './index.html';
+      window.location.pathname = './';
     });
 
   new Exit(api, head);
