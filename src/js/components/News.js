@@ -38,7 +38,7 @@ export default class News {
     this.newsCard.querySelector('.news__icon').classList.toggle('news__icon_marked');
   }
 
-  // удлаить карточку из личного кабинета
+  // удалить карточку из личного кабинета
   remove() {
     this.api.deleteNews(this._id);
     this.newsCard.parentElement.removeChild(this.newsCard);

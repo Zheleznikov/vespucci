@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 /* РАБОТА С ПОПАПОМ
 
 - открыть, закрыть, закрыть по кнопке esc и щелчку мыши в другом месте экрана
@@ -10,17 +11,40 @@
   switchPopupHandler()
 */
 
-import PopupConst from '../constants/PopupConst';
+// import PopupConst from '../constants/PopupConst';
 
-export default class Popup extends PopupConst {
-  constructor(element) {
-    super(element);
+export default class Popup {
+  constructor(element, validate) {
+    this.element = element;
+    this.validate = validate;
+    // super(element);
+    this.enterPopup = document.querySelector('.popup-enter');
+    this.regPopup = document.querySelector('.popup-reg');
+    this.successPopup = document.querySelector('.popup-success');
+
+    // поля ошибок
+    this.emailErr = this.element.querySelector('.popup__input-error_email');
+    this.passErr = this.element.querySelector('.popup__input-error_pass');
+    this.handlerErr = this.element.querySelector('.popup__input-error_handler');
+
+    // элементы формы
+    this.form = this.element.querySelector('.popup__form');
+    this.email = this.element.querySelector('.popup__input_email');
+    this.pass = this.element.querySelector('.popup__input_pass');
+    this.button = this.element.querySelector('.popup__button');
+
+    // ссылка для переключения между попапами
+    this.toggleLinkReg = document.querySelector('.popup__toggle-link_reg');
+    this.toggleLinkEnter = document.querySelector('.popup__toggle-link_enter');
+    this.toggleLinkSuccess = document.querySelector('.popup__toggle-link_success');
     this.defaultHandlers();
     this.switchPopupHandler();
   }
 
   open() {
     this.element.classList.add('popup_is-opened');
+    // this.emailFlag = false;
+    // this.passFlag = false;
   }
 
   close() {
@@ -29,8 +53,11 @@ export default class Popup extends PopupConst {
     } else {
       this.element.classList.remove('popup_is-opened', true);
       this.clearContent();
+      // this.emailFlag = false;
+      // this.passFlag = false;
     }
   }
+
 
   // закрыть по щелчку мыши в другом месте или по esc
   multyClose(event) {

@@ -12,9 +12,21 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-param-reassign */
-import ValidateConst from '../constants/ValidateConst';
+// import ValidateConst from '../constants/ValidateConst';
 
-export default class Validate extends ValidateConst {
+export default class Validate {
+  constructor() {
+    this.errMessageNull = 'Это поле должно быть заполнено';
+    this.errMessageLength = 'Должно быть от 2 до 30 символов';
+    this.errMessageEmail = 'Это не email';
+    this.errMessagePass = 'Пароль должен содержать латинские символы и цифры';
+    this.errMessagePassLength = 'Пароль должен быть не менее 8 символов';
+    this.passwordReg = /\w+/;
+    this.emailReg = /^[-._a-z0-9]+@(?:[a-z0-9][-a-z0-9]+\.)+[a-z]{2,6}$/;
+    this.emailFlag = false;
+    this.passFlag = false;
+  }
+
   // проверяем поле
   _checkField(value, tip, input) {
     if (value === '') {
@@ -54,7 +66,7 @@ export default class Validate extends ValidateConst {
   }
 
   // работа с кнопкой
-  _setButtonAttribute(button, valid) {
+  setButtonAttribute(button, valid) {
     if (valid) {
       button.removeAttribute('disabled', true);
     } else {
@@ -63,25 +75,29 @@ export default class Validate extends ValidateConst {
   }
 
   // обработчик валидации
-  handler(evt, email, emailErr, pass, passErr, button, handlerErr, name = document.querySelector('.popup__input_name'), nameErr = document.querySelector('.popup__input-err_name')) {
-    this.emailFlag;
-    this.passFlag;
-    this.nameFlag = true;
+  handler(evt, data, emailFlag, passFlag, nameFlag = true) {
+    data.button.onblur = () => data.handlerErr.textContent = '';
+    // this.emailFlag = false;
+    // this.passFlag = false;
 
-    button.onblur = () => handlerErr.textContent = '';
-
-    if (evt.target === email) {
-      this.emailFlag = this._checkField(email.value, emailErr, email);
-    } else if (evt.target === pass) {
-      this.passFlag = this._checkField(pass.value, passErr, pass);
-    } else if (evt.target === name) {
-      this.nameFlag = this._checkField(name.value, nameErr, name);
+    // if (evt.target === data.email) {
+    emailFlag = this._checkField(data.email.value, data.emailErr, data.email);
+    // }
+    // if (evt.target === data.pass) {
+    passFlag = this._checkField(data.pass.value, data.passErr, data.pass);
+    // }
+    // if (evt.target === data.name) {
+    if (data.name) {
+      nameFlag = this._checkField(data.name.value, data.nameErr, data.name);
     }
+    // }
+    console.log(emailFlag, '- флаг email', passFlag, '- флаг пароля');
+    // console.log(this.passFlag, '- флаг пароля');
 
-    if (this.emailFlag && this.passFlag && this.nameFlag) {
-      this._setButtonAttribute(button, true);
+    if (emailFlag && passFlag && nameFlag) {
+      this.setButtonAttribute(data.button, true);
     } else {
-      this._setButtonAttribute(button, false);
+      this.setButtonAttribute(data.button, false);
     }
   }
 }

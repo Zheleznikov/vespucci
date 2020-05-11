@@ -14,8 +14,9 @@ import Newslist from './js/components/Newslist';
 import Operate from './js/utils/Operate';
 import Exit from './js/components/Exit';
 import Search from './js/components/Search';
+// import PopupConst from './js/constants/PopupConst';
 
-
+// const popupConstEnter = new PopupConst('');
 const newsApi = new NewsApi(REQUEST_OPTIONS, URL);
 const operate = new Operate();
 const api = new Api(SERVER, MY_USUAL_HEADERS, MY_BEARER_HEADERS);
