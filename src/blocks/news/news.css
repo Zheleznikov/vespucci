@@ -23,7 +23,6 @@
   position: relative;
   border-radius: 10px;
   position: relative;
-  overflow: hidden;
   transition: all .5s ease-out;
 }
 

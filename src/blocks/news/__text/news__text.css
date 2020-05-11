@@ -4,8 +4,7 @@
   line-height: 22px;
   color: #1A1B22;
   max-height: 110px;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  overflow-y: hidden;
   display: block;
   width: 100%;
 }
