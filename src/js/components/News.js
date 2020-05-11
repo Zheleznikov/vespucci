@@ -13,7 +13,7 @@ export default class News {
     this.api = api;
   }
 
-
+  // создать карточку
   create(url, urlToImage, publishedAt, description, content, source, _id, keyword) {
     const news = document.querySelector('.news-template').content.cloneNode(true);
     news.querySelector('.news__link').href = url;
@@ -28,21 +28,23 @@ export default class News {
     return news.querySelector('.news');
   }
 
+  // запустить процесс создания карточки
   createNewsCard() {
     this.newsCard = this.create(this.url, this.urlToImage, this.publishedAt, this.description, this.content, this.source, this._id, this.keyword, this.message);
   }
 
+  // поставить флажок новости
   mark() {
     this.newsCard.querySelector('.news__icon').classList.toggle('news__icon_marked');
   }
 
-
+  // удлаить карточку из личного кабинета
   remove() {
     this.api.deleteNews(this._id);
     this.newsCard.classList.add('news__deleted');
-    // this.newsCard.parentElement.removeChild(this.newsCard);
   }
 
+  // обработчик клика по флажку
   clickIconHandler() {
     if (this.newsCard.querySelector('.news__icon').classList.contains('news__icon_marked')) {
       this.api.deleteNews(this._id);
@@ -56,20 +58,24 @@ export default class News {
     }
   }
 
+  // показать подсказку
   showTip() {
     this.newsCard.querySelector('.news__tip').classList.add('news__tip_on');
   }
 
+  // скрыть подсказку
   hideTip() {
     this.newsCard.querySelector('.news__tip').classList.remove('news__tip_on', true);
   }
 
+  // обработчик подсказок
   tipHandler() {
     this.newsCard.querySelector('.news__icon').addEventListener('mouseover', this.showTip.bind(this));
     this.newsCard.querySelector('.news__tip-content').addEventListener('mouseout', this.hideTip.bind(this));
     this.newsCard.querySelector('.news__tip').addEventListener('click', this.openEnter.bind(this));
   }
 
+  // обработчик смотрит ли карточку зарегистрированный пользователь
   authHandler() {
     if (this.message === 'Congratulate') {
       this.handlers();
@@ -78,6 +84,7 @@ export default class News {
     }
   }
 
+  // открыть попап если нажать на иконку
   openEnter() {
     document.querySelector('.popup-enter').classList.add('popup_is-opened');
   }
@@ -86,7 +93,7 @@ export default class News {
     this.newsCard.querySelector('.news__icon').addEventListener('click', this.clickIconHandler.bind(this));
   }
 
-  // для другой страницы
+  // для account.html
   accountHandlers() {
     this.newsCard.querySelector('.news__icon_delete').addEventListener('click', this.remove.bind(this));
   }

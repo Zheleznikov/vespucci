@@ -9,26 +9,23 @@ export default class Popup extends PopupConst {
 
   open() {
     this.element.classList.add('popup_is-opened');
-    this.element.querySelector('.popup__content').classList.remove('popup__content_closed');
   }
 
   close() {
     if (this.element.classList.contains('popup-success')) {
       this.element.classList.remove('popup_is-opened', true);
-      this.element.querySelector('.popup__content').classList.add('popup__content_closed');
     } else {
       this.element.classList.remove('popup_is-opened', true);
       this.clearContent();
     }
   }
 
-
+  // закрыть по щелчку мыши в другом месте или по esc
   multyClose(event) {
     if (event.target === this.element || event.target === this.element.querySelector('.popup__close') || event.keyCode === 27) {
       this.close();
     }
   }
-
 
   // очистить содержимое полей и подсказок
   clearContent() {
@@ -49,7 +46,6 @@ export default class Popup extends PopupConst {
       this.close();
     }
   }
-
 
   // переключиться на попап регистрации
   showRegPopup() {

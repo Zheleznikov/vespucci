@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-
 /* ФОРМА ВХОДА
 
 - обработчик входа - enter

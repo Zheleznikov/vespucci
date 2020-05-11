@@ -37,6 +37,6 @@ import Search from './js/components/Search';
   new Search(document.forms.search, newsApi, newslist, api, operate, SEVEN_DAYS_AGO, TODAY);
   new Popup(document.querySelector('.popup-success'));
   new Enter(document.querySelector('.popup-enter'), validate, api, head);
-  new Exit(api, head);
   new Reg(document.querySelector('.popup-reg'), validate, api);
+  new Exit(api, head);
 }());

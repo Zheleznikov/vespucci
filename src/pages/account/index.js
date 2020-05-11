@@ -15,19 +15,17 @@ import { MY_USUAL_HEADERS, MY_BEARER_HEADERS } from '../../js/constants/reqOptio
   const head = new Head(document.querySelector('.header'));
   const savedArt = new SavedArt(document.querySelector('.articles-info'));
   head.setBlackTheme();
-
   const operate = new Operate();
-
 
   const insertNews = (url, urlToImage, publishedAt, description, content, source, _id, keyword, message) => {
     const news = new News(url, urlToImage, publishedAt, description, content, source, _id, keyword, message, api);
     news.createNewsCard();
     news.accountHandlers();
-
     return news;
   };
 
   const newslist = new Newslist(document.querySelector('.results__container'), insertNews, operate);
+  new Exit(api, head);
 
   api.getMyData()
     .then((data) => {
@@ -48,6 +46,4 @@ import { MY_USUAL_HEADERS, MY_BEARER_HEADERS } from '../../js/constants/reqOptio
     .catch(() => {
       window.location.pathname = './';
     });
-
-  new Exit(api, head);
 }());

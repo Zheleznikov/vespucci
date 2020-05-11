@@ -1,6 +1,9 @@
 /* eslint-disable class-methods-use-this */
-export default class Search {
+import SearchView from './SearchView';
+
+export default class Search extends SearchView {
   constructor(form, newsApi, newslist, api, operate, sevenDaysAgo, today) {
+    super();
     this.operate = operate;
     this.form = form;
     this.newslist = newslist;
@@ -10,72 +13,35 @@ export default class Search {
     this.today = today;
     this.searchString = form.elements.searchString;
     this.button = this.form.elements.button;
-
     this.handlers();
-  }
-
-  // вспомогательные функции
-  clearContainer() {
-    document.querySelector('.results__container').textContent = '';
-  }
-
-  turnOnResults() {
-    document.querySelector('.results').classList.add('results_on');
-  }
-
-  turnOffResults() {
-    document.querySelector('.results').classList.remove('results_on');
-  }
-
-  turnOnWaiting() {
-    document.querySelector('.waiting__loading').classList.add('waiting__loading_on');
-  }
-
-  turnOffWaiting() {
-    document.querySelector('.waiting__loading').classList.remove('waiting__loading_on');
-  }
-
-  turnOnError() {
-    document.querySelector('.waiting__error').classList.add('waiting__error_on');
-  }
-
-  turnOffError() {
-    document.querySelector('.waiting__error').classList.remove('waiting__error_on');
   }
 
   // вывод карточек на экран
   show(evt) {
     evt.preventDefault();
     this.clearContainer();
-
-    this.turnOffError();
-    this.turnOnWaiting();
-
+    this.runPreloader();
     this.api.getMyData()
       .then((data) => {
         this.newsApi.getNews(this.searchString.value, this.operate.getDate(this.today), this.operate.getDate(this.sevenDaysAgo))
           .then((res) => {
-            this.turnOnResults();
-            this.turnOffWaiting();
-
+            this.getResults();
             if (this.searchString.value === '') {
-              this.turnOnError();
-              this.turnOffResults();
+              // здесь должно быть кое-какое сообщение типа это пустая строка
+              this.getError();
             } else {
               this.renderArr = this.newslist.render(res.articles, this.searchString.value, data.message);
-
               this.widthHandler();
               this.resultButtonHandler();
-
               if (res.articles.length === 0) {
-                this.turnOnError();
-                this.turnOffResults();
+                this.getError();
+                // здесь должно быть кое-какое сообщение типа ничего не найдено
               }
             }
           })
           .catch((err) => {
-            this.turnOffResults();
-            this.turnOnError();
+            this.getError();
+            // здесь должно быть сообщение типа на сервере что-то не так, повторите позже
             console.log(err);
           });
       })
@@ -116,16 +82,8 @@ export default class Search {
     }
   }
 
-  showAfterAuth(evt) {
-    if (this.searchString.value !== '') {
-      this.show(evt);
-    }
-  }
-
-
   handlers() {
     this.form.addEventListener('submit', this.show.bind(this));
-    document.querySelector('.results__button').addEventListener('click', this.showMore.bind(this));
-    document.querySelector('.popup__button_re-search').addEventListener('input', this.showAfterAuth.bind(this));
+    this.resultButton.addEventListener('click', this.showMore.bind(this));
   }
 }

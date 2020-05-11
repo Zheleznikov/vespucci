@@ -1,3 +1,10 @@
+/* ФОРМА РЕГИСТРАЦИИ
+
+- обработчик регистрации - reg
+
+- обработчик валидации - regHandler
+*/
+
 import Popup from './Popup';
 
 export default class Auth extends Popup {
@@ -10,7 +17,7 @@ export default class Auth extends Popup {
     this.handlers();
   }
 
-  // обработчик формы входа
+  // валидация
   regHandler(evt) {
     this.validate.handler(evt, this.email, this.emailErr, this.pass, this.passErr, this.button, this.handlerErr, this.name, this.nameErr);
   }
