@@ -1,3 +1,4 @@
+/* eslint-disable prefer-promise-reject-errors */
 // Здесь собраны методы для работы со своим сервером. Они подписаны в коде
 
 export default class Api {
@@ -35,8 +36,12 @@ export default class Api {
         password: userPass,
       }),
     })
-      .then((res) => res.json())
-      .then((res) => res)
+      .then((res) => {
+        if (!res.ok) {
+          return Promise.reject(`Ошибка: ${res.status}`);
+        }
+        return res.json();
+      })
       .catch((err) => {
         throw new Error(err.message);
       });
@@ -48,8 +53,12 @@ export default class Api {
       method: 'POST',
       headers: this.bearerHeaders,
     })
-      .then((res) => res.json())
-      .then((res) => res)
+      .then((res) => {
+        if (!res.ok) {
+          return Promise.reject(`Ошибка: ${res.status}`);
+        }
+        return res.json();
+      })
       .catch((err) => {
         throw new Error(err);
       });
@@ -58,8 +67,12 @@ export default class Api {
   // получить информацию о себе
   getMyData() {
     return fetch(`${this.IP}users/me`, { headers: this.bearerHeaders })
-      .then((res) => res.json())
-      .then((res) => res)
+      .then((res) => {
+        if (!res.ok) {
+          return Promise.reject(`Ошибка: ${res.status}`);
+        }
+        return res.json();
+      })
       .catch((err) => {
         throw new Error(err.message);
       });
@@ -80,8 +93,12 @@ export default class Api {
         image: artImage,
       }),
     })
-      .then((res) => res.json())
-      .then((res) => res)
+      .then((res) => {
+        if (!res.ok) {
+          return Promise.reject(`Ошибка: ${res.status}`);
+        }
+        return res.json();
+      })
       .catch((err) => {
         throw new Error(err);
       });
@@ -93,8 +110,12 @@ export default class Api {
       method: 'DELETE',
       headers: this.bearerHeaders,
     })
-      .then((res) => res.json())
-      .then((res) => res.data)
+      .then((res) => {
+        if (!res.ok) {
+          return Promise.reject(`Ошибка: ${res.status}`);
+        }
+        return res.json();
+      })
       .catch((err) => {
         throw new Error(err);
       });
@@ -103,7 +124,12 @@ export default class Api {
   // показать все новости
   getNews() {
     return fetch(`${this.IP}articles`, { headers: this.bearerHeaders })
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          return Promise.reject(`Ошибка: ${res.status}`);
+        }
+        return res.json();
+      })
       .then((res) => res.data)
       .catch((err) => {
         throw new Error(err);

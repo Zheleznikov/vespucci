@@ -23,8 +23,8 @@ export default class Newslist {
   }
 
   // рендерим новости с newsApi
-  render(arr, keyword, message) {
-    return arr.map((news) => {
+  render(data, keyword, message) {
+    return data.map((news) => {
       this.publishedAt = this.operate.turnDate(news.publishedAt);
       this.title = this.operate.trimString(news.title, 46);
       this.content = this.operate.trimString(news.content, 200);
@@ -35,15 +35,15 @@ export default class Newslist {
   }
 
   // отрисовываем новости с сервера по столько штук столько надо
-  append(arr, n) {
-    arr.splice(0, n).forEach((news) => {
+  append(data, numOfLetters) {
+    data.splice(0, numOfLetters).forEach((news) => {
       this._appendNews(this.container, news.newsCard);
     });
   }
 
   // рендерим новости с нашего сервера в личный кабинет
-  renderInAccount(arr) {
-    arr.reverse().forEach((news) => {
+  renderInAccount(data) {
+    data.reverse().forEach((news) => {
       const card = this.insertNews(news.link, news.image, news.date, news.title, news.text, news.source, news._id, news.keyword, news.message);
       this._appendNews(this.container, card.newsCard);
     });

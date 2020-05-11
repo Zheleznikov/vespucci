@@ -41,7 +41,7 @@ export default class News {
   // удлаить карточку из личного кабинета
   remove() {
     this.api.deleteNews(this._id);
-    this.newsCard.classList.add('news__deleted');
+    this.newsCard.parentElement.removeChild(this.newsCard);
   }
 
   // обработчик клика по флажку
