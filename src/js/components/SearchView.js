@@ -1,3 +1,7 @@
+/* Метод для оформелния внешнего вида страницы при поиске
+разные вспомогательные методы
+*/
+
 export default class SearchView {
   constructor() {
     this.newsContainer = document.querySelector('.results__container');
@@ -11,42 +15,42 @@ export default class SearchView {
     this.newsContainer.textContent = '';
   }
 
-  turnOnResults() {
+  _turnOnResults() {
     this.resultBlock.classList.add('results_on');
   }
 
-  turnOffResults() {
+  _turnOffResults() {
     this.resultBlock.classList.remove('results_on');
   }
 
-  turnOnWaiting() {
+  _turnOnWaiting() {
     this.loadingView.classList.add('waiting__loading_on');
   }
 
-  turnOffWaiting() {
+  _turnOffWaiting() {
     this.loadingView.classList.remove('waiting__loading_on');
   }
 
-  turnOnError() {
+  _turnOnError() {
     this.errorView.classList.add('waiting__error_on');
   }
 
-  turnOffError() {
+  _turnOffError() {
     this.errorView.classList.remove('waiting__error_on');
   }
 
   runPreloader() {
-    this.turnOffError();
-    this.turnOnWaiting();
+    this._turnOffError();
+    this._turnOnWaiting();
   }
 
   getResults() {
-    this.turnOnResults();
-    this.turnOffWaiting();
+    this._turnOnResults();
+    this._turnOffWaiting();
   }
 
   getError() {
-    this.turnOnError();
-    this.turnOffResults();
+    this._turnOnError();
+    this._turnOffResults();
   }
 }

@@ -1,11 +1,15 @@
+/* ВСПОМОГАТЕЛЬНЫЕ МЕТОДЫ ДЛЯ ПРЕОБРАЗОВАНИЯ РАЗНЫХ РЕЗУЛЬТАТОВ */
+
 /* eslint-disable class-methods-use-this */
+/* eslint-disable no-nested-ternary */
+/* eslint-disable eqeqeq */
 export default class Operate {
+  // перевод поля даты с newsApi в нужный формат
   turnDate(date) {
     const months = 'мартобря января февраля марта апреля мая июня июля августа сентября октября ноября декабя'.split(' ');
     const newDate = date.slice(0, 10).split('-').reverse();
     newDate[0] = +newDate[0];
     months.forEach((month, i) => {
-      // eslint-disable-next-line eqeqeq
       if (i == newDate[1]) {
         newDate[1] = newDate[1].replace(newDate[1], `${month},`);
       }
@@ -13,12 +17,12 @@ export default class Operate {
     return newDate.join(' ');
   }
 
+  // обработка текстов, если они слишком длинные
   trimString(string, n) {
-    // eslint-disable-next-line no-nested-ternary
     return string === null ? '' : string.length > n ? `${string.slice(0, n)}...` : string;
   }
 
-
+  // обработка сколько статей у пользователя
   pairValue(n) {
     const last = +n.toString().slice(-1);
 
@@ -44,6 +48,7 @@ export default class Operate {
   }
 
 
+  // формирование строки с ключевыми словами
   getKeywords(arr) {
     if (arr.length === 0) {
       return 'нет статей - нет ключевых слов :(';
@@ -73,6 +78,7 @@ export default class Operate {
     return `${uniqKeys[0]}, ${uniqKeys[1]} и ${length} другим`;
   }
 
+  // преобразовать дату в валидный формат
   getDate(time) {
     const date = time;
     let dd = date.getDate();

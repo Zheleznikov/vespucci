@@ -1,3 +1,5 @@
+// Выход из системы
+
 export default class Exit {
   constructor(api, head) {
     this.api = api;
@@ -9,7 +11,7 @@ export default class Exit {
     this.api.logout()
       .then(() => {
         this.head.ifUnauthorized();
-        window.location.pathname = './index.html';
+        window.location.pathname = './';
       })
       .catch((err) => console.log(err));
   }

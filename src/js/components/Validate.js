@@ -1,3 +1,12 @@
+/* МЕТОДЫ ДЛЯ ВАЛИДАЦИИ
+
+- проверка что за поле. метод checkFiled
+
+- заблокирована ли кнопка - setButtonAttribute
+
+- обработчик валидации - handler
+
+*/
 
 /* eslint-disable no-return-assign */
 /* eslint-disable class-methods-use-this */
@@ -27,6 +36,7 @@ export default class Validate extends ValidateConst {
     }
 
     if (input.classList.contains('popup__input_pass') && value.length < 8 && value.length !== 0) {
+      // может для пароля надо чтобы сообщения об ошибках были в реальном времени
       // tip.textContent = this.errMessagePassLength;
       input.onblur = () => tip.textContent = this.errMessagePassLength;
       input.onfocus = () => tip.textContent = '';

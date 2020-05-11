@@ -35,7 +35,7 @@ import { MY_USUAL_HEADERS, MY_BEARER_HEADERS } from '../../js/constants/reqOptio
         .then((res) => {
           if (res.length === 0) {
             savedArt.turnKeywordsOff();
-            saved.turnOffResults();
+            savedArt.turnOffResults();
           } else {
             savedArt.turnOnResults();
             savedArt.setKeywords(operate.getKeywords(res));

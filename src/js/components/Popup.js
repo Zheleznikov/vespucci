@@ -1,3 +1,15 @@
+/* РАБОТА С ПОПАПОМ
+
+- открыть, закрыть, закрыть по кнопке esc и щелчку мыши в другом месте экрана
+
+- очистить поля попапа clearContent;
+
+- переключение между попапами
+  showEnterPopup()
+  showRegPopup()
+  switchPopupHandler()
+*/
+
 import PopupConst from '../constants/PopupConst';
 
 export default class Popup extends PopupConst {
@@ -57,9 +69,9 @@ export default class Popup extends PopupConst {
 
   // обработчик переключения попапов
   switchPopupHandler() {
-    document.querySelector('.popup__toggle-link_reg').addEventListener('click', this.showEnterPopup.bind(this));
-    document.querySelector('.popup__toggle-link_enter').addEventListener('click', this.showRegPopup.bind(this));
-    document.querySelector('.popup__toggle-link_success').addEventListener('click', this.showEnterPopup.bind(this));
+    this.toggleLinkReg.addEventListener('click', this.showEnterPopup.bind(this));
+    this.toggleLinkEnter.addEventListener('click', this.showRegPopup.bind(this));
+    this.toggleLinkSuccess.addEventListener('click', this.showEnterPopup.bind(this));
   }
 
   defaultHandlers() {

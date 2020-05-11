@@ -2,26 +2,29 @@
 export default class SavedArt {
   constructor(element) {
     this.element = element;
+    this.info = this.element.querySelector('.articles-info__main');
+    this.keyWords = this.element.querySelector('.articles-info__words');
+    this.keyWordsSection = this.element.querySelector('.articles-info__key');
+    this.resultsBlock = document.querySelector('.results');
   }
 
   setName(name, bid) {
-    this.element.querySelector('.articles-info__main').textContent = `${name}, ${bid}`;
+    this.info.textContent = `${name}, ${bid}`;
   }
 
   setKeywords(keys) {
-    this.element.querySelector('.articles-info__words').textContent = keys;
+    this.keyWords.textContent = keys;
   }
 
   turnKeywordsOff() {
-    this.element.querySelector('.articles-info__key').classList.add('articles-info__key_off');
-    console.log(this.element.querySelector('.articles-info__key'));
+    this.keyWordsSection.classList.add('articles-info__key_off');
   }
 
   turnOnResults() {
-    document.querySelector('.results').classList.add('results_on');
+    this.resultsBlock.classList.add('results_on');
   }
 
   turnOffResults() {
-    document.querySelector('.results').classList.remove('results_on');
+    this.resultsBlock.classList.remove('results_on');
   }
 }

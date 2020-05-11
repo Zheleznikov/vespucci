@@ -1,11 +1,11 @@
 // класс для работы с newsapi.org
-
 export default class NewsApi {
   constructor(options, url) {
     this.options = options;
     this.url = url;
   }
 
+  // получить данные от сервера
   getNews(query, today, sevenDaysAgo) {
     const params = {
       q: query,
@@ -14,7 +14,6 @@ export default class NewsApi {
       pageSize: 100,
       sortBy: 'popularity',
     };
-
     const queryParams = Object.keys(params).map((key) => `${key}=${params[key]}`).join('&');
 
     return fetch(`${this.url}${queryParams}`, this.options)

@@ -14,7 +14,7 @@ export default class News {
   }
 
   // создать карточку
-  create(url, urlToImage, publishedAt, description, content, source, _id, keyword) {
+  _create(url, urlToImage, publishedAt, description, content, source, _id, keyword) {
     const news = document.querySelector('.news-template').content.cloneNode(true);
     news.querySelector('.news__link').href = url;
     news.querySelector('.news__image').src = urlToImage;
@@ -30,11 +30,11 @@ export default class News {
 
   // запустить процесс создания карточки
   createNewsCard() {
-    this.newsCard = this.create(this.url, this.urlToImage, this.publishedAt, this.description, this.content, this.source, this._id, this.keyword, this.message);
+    this.newsCard = this._create(this.url, this.urlToImage, this.publishedAt, this.description, this.content, this.source, this._id, this.keyword, this.message);
   }
 
   // поставить флажок новости
-  mark() {
+  _mark() {
     this.newsCard.querySelector('.news__icon').classList.toggle('news__icon_marked');
   }
 
@@ -48,9 +48,9 @@ export default class News {
   clickIconHandler() {
     if (this.newsCard.querySelector('.news__icon').classList.contains('news__icon_marked')) {
       this.api.deleteNews(this._id);
-      this.mark();
+      this._mark();
     } else {
-      this.mark();
+      this._mark();
       this.api.postNews(this.keyword, this.description, this.content, this.publishedAt, this.source, this.url, this.urlToImage)
         // eslint-disable-next-line no-return-assign
         .then((res) => this._id = res.data._id)
@@ -59,20 +59,20 @@ export default class News {
   }
 
   // показать подсказку
-  showTip() {
+  _showTip() {
     this.newsCard.querySelector('.news__tip').classList.add('news__tip_on');
   }
 
   // скрыть подсказку
-  hideTip() {
+  _hideTip() {
     this.newsCard.querySelector('.news__tip').classList.remove('news__tip_on', true);
   }
 
   // обработчик подсказок
   tipHandler() {
-    this.newsCard.querySelector('.news__icon').addEventListener('mouseover', this.showTip.bind(this));
-    this.newsCard.querySelector('.news__tip-content').addEventListener('mouseout', this.hideTip.bind(this));
-    this.newsCard.querySelector('.news__tip').addEventListener('click', this.openEnter.bind(this));
+    this.newsCard.querySelector('.news__icon').addEventListener('mouseover', this._showTip.bind(this));
+    this.newsCard.querySelector('.news__tip-content').addEventListener('mouseout', this._hideTip.bind(this));
+    this.newsCard.querySelector('.news__tip').addEventListener('click', this._openEnter.bind(this));
   }
 
   // обработчик смотрит ли карточку зарегистрированный пользователь
@@ -85,7 +85,7 @@ export default class News {
   }
 
   // открыть попап если нажать на иконку
-  openEnter() {
+  _openEnter() {
     document.querySelector('.popup-enter').classList.add('popup_is-opened');
   }
 

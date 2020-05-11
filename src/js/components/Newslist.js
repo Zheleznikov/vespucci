@@ -34,7 +34,7 @@ export default class Newslist {
     });
   }
 
-  // отрисовываем новости с сервера по 3 шт
+  // отрисовываем новости с сервера по столько штук столько надо
   append(arr, n) {
     arr.splice(0, n).forEach((news) => {
       this._appendNews(this.container, news.newsCard);

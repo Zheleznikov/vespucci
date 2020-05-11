@@ -1,3 +1,4 @@
+// переменные для валидации
 export default class ValidateConst {
   constructor() {
     this.errMessageNull = 'Это поле должно быть заполнено';

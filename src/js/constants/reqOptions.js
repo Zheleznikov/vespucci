@@ -1,3 +1,4 @@
+// Запрос на newsApi
 const REQUEST_OPTIONS = {
   headers: {
     authorization: 'Bearer e1b4f6c04db147c8afb184bec5c703a5',
@@ -6,6 +7,8 @@ const REQUEST_OPTIONS = {
 
 const URL = 'https://newsapi.org/v2/everything?';
 
+
+// запросы на свой сервер
 const MY_USUAL_HEADERS = {
   'Content-Type': 'application/json',
   Accept: 'application/json',
