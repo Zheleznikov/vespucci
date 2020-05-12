@@ -66,7 +66,7 @@ export default class Validate {
   }
 
   // работа с кнопкой
-  setButtonAttribute(button, valid) {
+  _setButtonAttribute(button, valid) {
     if (valid) {
       button.removeAttribute('disabled', true);
     } else {
@@ -75,29 +75,13 @@ export default class Validate {
   }
 
   // обработчик валидации
-  handler(evt, data, emailFlag, passFlag, nameFlag = true) {
-    data.button.onblur = () => data.handlerErr.textContent = '';
-    // this.emailFlag = false;
-    // this.passFlag = false;
-
-    // if (evt.target === data.email) {
-    emailFlag = this._checkField(data.email.value, data.emailErr, data.email);
-    // }
-    // if (evt.target === data.pass) {
-    passFlag = this._checkField(data.pass.value, data.passErr, data.pass);
-    // }
-    // if (evt.target === data.name) {
-    if (data.name) {
-      nameFlag = this._checkField(data.name.value, data.nameErr, data.name);
-    }
-    // }
-    console.log(emailFlag, '- флаг email', passFlag, '- флаг пароля');
-    // console.log(this.passFlag, '- флаг пароля');
-
-    if (emailFlag && passFlag && nameFlag) {
-      this.setButtonAttribute(data.button, true);
+  handler(data, handlerErr, button) {
+    button.onblur = () => handlerErr.textContent = '';
+    const flags = data.map((field) => this._checkField(field.input.value, field.error, field.input));
+    if (flags.every((flag) => flag === true)) {
+      this._setButtonAttribute(button, true);
     } else {
-      this.setButtonAttribute(data.button, false);
+      this._setButtonAttribute(button, false);
     }
   }
 }

@@ -15,31 +15,33 @@ export default class Enter extends Popup {
     this.validate = validate;
     this.head = head;
     this._handlers();
-    this.emailFlag;
-    this.passFlag;
+    // this.emailFlag;
+    // this.passFlag;
 
-    this.dataToValidate = {
-      email: this.email,
-      emailErr: this.emailErr,
-      pass: this.pass,
-      passErr: this.passErr,
-      button: this.button,
-      handlerErr: this.handlerErr,
-      emailFlag: this.emailFlag,
-      passFlag: this.passFlag,
-    };
+    this.dataToValidate = [{
+      input: this.email,
+      error: this.emailErr,
+    //   flag: this.emailFlag,
+    },
+    {
+      input: this.pass,
+      error: this.passErr,
+    //    flag: this.passFlag,
+    },
+
+    ];
   }
 
   open() {
     super.open();
-    this.emailFlag = false;
-    this.passFlag = false;
+    //   this.emailFlag = false;
+    //  this.passFlag = false;
     // console.log(this.emailFlag);
   }
 
   // валидация
-  _enterHandler(evt) {
-    this.validate.handler(evt, this.dataToValidate, this.emailFlag, this.passFlag);
+  _enterHandler() {
+    this.validate.handler(this.dataToValidate, this.handlerErr, this.button);
   }
 
   // вход
@@ -57,8 +59,8 @@ export default class Enter extends Popup {
         }
       })
       .catch((err) => {
-        // console.log(err);
-        return Promise.reject(`Ошибка: ${err.message}`);
+        console.log(err);
+        //  return Promise.reject(`Ошибка: ${err.message}`);
       });
   }
 

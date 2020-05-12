@@ -15,11 +15,24 @@ export default class Auth extends Popup {
     this.name = this.element.querySelector('.popup__input_name');
     this.nameErr = this.element.querySelector('.popup__input-error_name');
     this._handlers();
+    this.dataToValidate = [{
+      input: this.email,
+      error: this.emailErr,
+    },
+    {
+      input: this.pass,
+      error: this.passErr,
+    },
+    {
+      input: this.name,
+      error: this.nameErr,
+    },
+    ];
   }
 
   // валидация
-  _regHandler(evt) {
-    this.validate.handler(evt, this.email, this.emailErr, this.pass, this.passErr, this.button, this.handlerErr, this.name, this.nameErr);
+  _regHandler() {
+    this.validate.handler(this.dataToValidate, this.handlerErr, this.button);
   }
 
   // зарегистрироваться
