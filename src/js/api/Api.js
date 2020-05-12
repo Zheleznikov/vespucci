@@ -37,12 +37,13 @@ export default class Api {
       }),
     })
       .then((res) => {
+        console.log(res);
         if (!res.ok) {
           return Promise.reject(res);
         }
         return res.json();
-      })
-      .catch((err) => Promise.reject(err));
+      });
+  // .catch((err) => Promise.reject(err));
   }
 
   // разлогиниться
@@ -64,12 +65,13 @@ export default class Api {
   getMyData() {
     return fetch(`${this.IP}users/me`, { headers: this.bearerHeaders })
       .then((res) => {
+        console.log(res);
         if (!res.ok) {
           return Promise.reject(res);
         }
         return res.json();
       })
-      .catch((err) => Promise.reject(err));
+    //  .catch((err) => Promise.reject(err));
   }
 
   // сохранить новость себе

@@ -11,6 +11,7 @@ export default class Exit {
     this.api.logout()
       .then(() => {
         this.head.ifUnauthorized();
+        localStorage.removeItem('token');
         window.location.pathname = './';
       })
       .catch((err) => console.log(err));

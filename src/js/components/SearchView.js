@@ -45,6 +45,11 @@ export default class SearchView {
     this._turnOnWaiting();
   }
 
+  stopPreloader() {
+    // this._turnOffError();
+    this._turnOffWaiting();
+  }
+
   getResults() {
     this._turnOnResults();
     this._turnOffWaiting();

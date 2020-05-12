@@ -23,27 +23,30 @@ export default class Search extends SearchView {
     this.clearContainer();
     this.runPreloader();
     this.api.getMyData()
-      .then((data) => {
-        this.newsApi.getNews(this.searchString.value, this.operate.getDate(this.today), this.operate.getDate(this.sevenDaysAgo))
-          .then((res) => {
-            this.getResults();
-            if (this.searchString.value === '') {
-              this.getErrEmptyField();
-            } else {
-              this.renderArr = this.newslist.render(res.articles, this.searchString.value, data.message);
-              this._widthHandler();
-              this._resultButtonHandler();
-              if (res.articles.length === 0) {
-                this.getErrMotFound();
-              }
-            }
-          })
-          .catch((err) => {
-            this.getErrServer();
-            console.log(err);
-          });
+      .then(() => this._getNews())
+      .catch((err) => {
+        this._getNews();
+        console.log(err);
       })
-      .catch((err) => console.log(err));
+      .finally(() => this.stopPreloader());
+  }
+
+  _getNews() {
+    this.newsApi.getNews(this.searchString.value, this.operate.getDate(this.today), this.operate.getDate(this.sevenDaysAgo))
+      .then((res) => {
+        this.getResults();
+        this.renderArr = this.newslist.render(res.articles, this.searchString.value);
+        this._widthHandler();
+        this._resultButtonHandler();
+        if (res.articles.length === 0) {
+          this.getErrMotFound();
+        }
+      })
+      .catch((err) => {
+        this.stopPreloader();
+        this.getErrServer();
+        console.log(err);
+      });
   }
 
   // вывести еще карточек
@@ -80,6 +83,8 @@ export default class Search extends SearchView {
     }
   }
 
+
+  // обработчик кнопки поиска новостей
   _searchStringHandler() {
     this.validate.searchStringHandler(this.searchString, this.button);
   }

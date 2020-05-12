@@ -23,13 +23,13 @@ export default class Newslist {
   }
 
   // рендерим новости с newsApi
-  render(data, keyword, message) {
+  render(data, keyword) {
     return data.map((news) => {
       this.publishedAt = this.operate.turnDate(news.publishedAt);
       this.title = this.operate.trimString(news.title, 46);
       this.content = this.operate.trimString(news.content, 200);
 
-      const card = this.insertNews(news.url, news.urlToImage, this.publishedAt, this.title, this.content, news.source.name, '_id', keyword, message);
+      const card = this.insertNews(news.url, news.urlToImage, this.publishedAt, this.title, this.content, news.source.name, '_id', keyword);
       return card;
     });
   }

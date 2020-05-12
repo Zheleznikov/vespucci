@@ -17,6 +17,9 @@ import Search from './js/components/Search';
 // import PopupConst from './js/constants/PopupConst';
 
 // const popupConstEnter = new PopupConst('');
+
+const token = localStorage.getItem('token');
+console.log(token);
 const newsApi = new NewsApi(REQUEST_OPTIONS, URL);
 const operate = new Operate();
 const api = new Api(SERVER, MY_USUAL_HEADERS, MY_BEARER_HEADERS);
@@ -24,14 +27,17 @@ const head = new Head(document.querySelector('.header'));
 const validate = new Validate();
 
 api.getMyData()
-  .then((data) => head.ifLogin(data.data.name))
+  .then((data) => {
+    console.log(data);
+    head.ifLogin(data.data.name);
+  })
   .catch((err) => {
-    console.log(err.status);
+    console.log(err);
     head.ifUnauthorized();
   });
 
-const insertNews = (url, urlToImage, publishedAt, description, content, source, _id, keyword, message) => {
-  const news = new News(url, urlToImage, publishedAt, description, content, source, _id, keyword, message, api);
+const insertNews = (url, urlToImage, publishedAt, description, content, source, _id, keyword) => {
+  const news = new News(url, urlToImage, publishedAt, description, content, source, _id, keyword, api);
   news.createNewsCard();
   news.authHandler();
   return news;
