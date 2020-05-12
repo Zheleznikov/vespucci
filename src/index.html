@@ -48,7 +48,7 @@
             <p class="search__subtitle">Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.</p>
             <form class="search__field" name="search">
               <input type="text" class="search__input" name="searchString" placeholder="Введите тему новости">
-              <button class="button search__button" name="button">Искать</button>
+              <button class="button search__button" name="button" disabled>Искать</button>
             </form>
           </div>
         </section>
@@ -169,7 +169,7 @@
     <!-- === /попап РЕГИСТРАЦИЯ === -->
 
     <!-- === попап в случае УСПЕШНОЙ регистрации === -->
-    <section class="popup popup-success popup_is-opened">
+    <section class="popup popup-success">
       <div class="popup__content">
         <img src="<%=require('./images/close.svg')%>" alt="Х" class="popup__close">
         <h3 class="popup__title">Пользователь успешно зарегистрирован!</h3>

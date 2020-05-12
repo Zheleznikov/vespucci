@@ -2,8 +2,9 @@
 import SearchView from './SearchView';
 
 export default class Search extends SearchView {
-  constructor(form, newsApi, newslist, api, operate, sevenDaysAgo, today) {
+  constructor(form, newsApi, newslist, api, operate, sevenDaysAgo, today, validate) {
     super();
+    this.validate = validate;
     this.operate = operate;
     this.form = form;
     this.newslist = newslist;
@@ -79,8 +80,13 @@ export default class Search extends SearchView {
     }
   }
 
+  _searchStringHandler() {
+    this.validate.searchStringHandler(this.searchString, this.button);
+  }
+
   _handlers() {
     this.form.addEventListener('submit', this._show.bind(this));
+    this.form.addEventListener('input', this._searchStringHandler.bind(this));
     this.resultButton.addEventListener('click', this._showMore.bind(this));
   }
 }

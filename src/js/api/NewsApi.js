@@ -19,9 +19,11 @@ export default class NewsApi {
     return fetch(`${this.url}${queryParams}`, this.options)
       .then((res) => {
         if (!res.ok) {
+          console.log(res);
           return Promise.reject(`Ошибка: ${res.status}`);
         }
         return res.json();
-      });
+      })
+      .catch((error) => console.log('error', error));
   }
 }

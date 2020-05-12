@@ -25,7 +25,10 @@ const validate = new Validate();
 
 api.getMyData()
   .then((data) => head.ifLogin(data.data.name))
-  .catch(() => head.ifUnauthorized());
+  .catch((err) => {
+    console.log(err.status);
+    head.ifUnauthorized();
+  });
 
 const insertNews = (url, urlToImage, publishedAt, description, content, source, _id, keyword, message) => {
   const news = new News(url, urlToImage, publishedAt, description, content, source, _id, keyword, message, api);
@@ -35,7 +38,7 @@ const insertNews = (url, urlToImage, publishedAt, description, content, source, 
 };
 
 const newslist = new Newslist(document.querySelector('.results__container'), insertNews, operate);
-new Search(document.forms.search, newsApi, newslist, api, operate, SEVEN_DAYS_AGO, TODAY);
+new Search(document.forms.search, newsApi, newslist, api, operate, SEVEN_DAYS_AGO, TODAY, validate);
 new Popup(document.querySelector('.popup-success'));
 new Enter(document.querySelector('.popup-enter'), validate, api, head);
 new Reg(document.querySelector('.popup-reg'), validate, api);

@@ -74,6 +74,11 @@ export default class Validate {
     }
   }
 
+  searchStringHandler(field, button) {
+    const flag = (field.value.length !== 0);
+    this._setButtonAttribute(button, flag);
+  }
+
   // обработчик валидации
   handler(data, handlerErr, button) {
     button.onblur = () => handlerErr.textContent = '';

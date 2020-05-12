@@ -15,29 +15,19 @@ export default class Enter extends Popup {
     this.validate = validate;
     this.head = head;
     this._handlers();
-    // this.emailFlag;
-    // this.passFlag;
 
     this.dataToValidate = [{
       input: this.email,
       error: this.emailErr,
-    //   flag: this.emailFlag,
     },
     {
       input: this.pass,
       error: this.passErr,
-    //    flag: this.passFlag,
     },
 
     ];
   }
 
-  open() {
-    super.open();
-    //   this.emailFlag = false;
-    //  this.passFlag = false;
-    // console.log(this.emailFlag);
-  }
 
   // валидация
   _enterHandler() {
@@ -49,7 +39,6 @@ export default class Enter extends Popup {
     evt.preventDefault();
     this.api.signin(this.email.value, this.pass.value)
       .then((data) => {
-        // console.log(data);
         if (data.message === 'Congratulate') {
           localStorage.setItem('token', data.token);
           this.head.ifLogin(data.data.name);
@@ -59,14 +48,15 @@ export default class Enter extends Popup {
         }
       })
       .catch((err) => {
+        this.handlerErr.textContent = 'Неправильная почта или пароль';
         console.log(err);
-        //  return Promise.reject(`Ошибка: ${err.message}`);
       });
   }
 
 
   _handlers() {
     document.querySelector('.header__button_auth').addEventListener('click', this.open.bind(this));
+    this.toggleLinkSuccess.addEventListener('click', this.open.bind(this));
     this.form.addEventListener('input', this._enterHandler.bind(this));
     this.form.addEventListener('submit', this._enter.bind(this));
   }

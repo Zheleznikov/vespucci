@@ -38,14 +38,11 @@ export default class Api {
     })
       .then((res) => {
         if (!res.ok) {
-          return Promise.reject(`err: ${res.status}`);
+          return Promise.reject(res);
         }
         return res.json();
-      });
-    // .catch((err) => {
-    // //  console.log(err);
-    //   throw new Error(err.message);
-    // });
+      })
+      .catch((err) => Promise.reject(err));
   }
 
   // разлогиниться
@@ -60,9 +57,7 @@ export default class Api {
         }
         return res.json();
       })
-      .catch((err) => {
-        throw new Error(err);
-      });
+      .catch((err) => Promise.reject(err));
   }
 
   // получить информацию о себе
@@ -70,13 +65,11 @@ export default class Api {
     return fetch(`${this.IP}users/me`, { headers: this.bearerHeaders })
       .then((res) => {
         if (!res.ok) {
-          return Promise.reject(`Ошибка: ${res.status}`);
+          return Promise.reject(res);
         }
         return res.json();
       })
-      .catch((err) => {
-        throw new Error(err.message);
-      });
+      .catch((err) => Promise.reject(err));
   }
 
   // сохранить новость себе

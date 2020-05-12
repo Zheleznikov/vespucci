@@ -46,13 +46,14 @@ export default class Popup {
 
   open() {
     this.element.classList.add('popup_is-opened');
-    this.clearContent();
+    //  this.clearContent();
   }
 
   openOtherPopup(popup) {
-  // this.clearContent();
+    // this.clearContent();
     popup.classList.add('popup_is-opened');
-  //  console.log(this.email);
+    // this.close();
+    //  console.log(this.email);
   }
 
   close() {
@@ -89,10 +90,10 @@ export default class Popup {
   showEnterPopup() {
     //  if (this.element.classList.contains('popup-reg') || this.element.classList.contains('popup-success')) {
     this.close();
-    this.openOtherPopup(this.enterPopup);
+    // this.openOtherPopup(this.enterPopup);
     // this.clearContent();
 
-    // this.enterPopup.classList.add('popup_is-opened');
+    this.enterPopup.classList.add('popup_is-opened');
 
     // }
   }
@@ -103,8 +104,8 @@ export default class Popup {
     // this.clearContent();
     this.close();
 
-    //  this.regPopup.classList.add('popup_is-opened');
-    this.openOtherPopup(this.regPopup);
+    this.regPopup.classList.add('popup_is-opened');
+    // this.openOtherPopup(this.regPopup);
 
     //  }
   }
