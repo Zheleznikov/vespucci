@@ -1,7 +1,7 @@
 import './style/index.css';
 import { SERVER } from './js/constants/service';
 import { REQUEST_OPTIONS, URL, MY_USUAL_HEADERS, MY_BEARER_HEADERS } from './js/constants/reqOptions';
-import { SEVEN_DAYS_AGO, TODAY } from './js/constants/times';
+import DATES from './js/constants/dates';
 import VespucciApi from './js/api/VespucciApi';
 import NewsApi from './js/api/NewsApi';
 import Head from './js/components/Head';
@@ -39,7 +39,7 @@ const insertNews = (newsData, _id) => {
 };
 
 const newslist = new Newslist(document.querySelector('.results__container'), insertNews, operate);
-new Search(document.forms.search, newsApi, newslist, operate, SEVEN_DAYS_AGO, TODAY, validate);
+new Search(document.forms.search, newsApi, newslist, operate, DATES, validate);
 new Popup(document.querySelector('.popup-success'));
 new PopupEnter(document.querySelector('.popup-enter'), validate, vespucciApi, head, auth);
 new PopupReg(document.querySelector('.popup-reg'), validate, vespucciApi);

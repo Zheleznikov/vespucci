@@ -41,7 +41,8 @@ if (auth.isLogin()) {
         savedArt.setKeywords(operate.getKeywords(res));
         newslist.renderInAccount(res);
       }
-    });
+    })
+    .catch((err) => console.log(err));
 } else {
   window.location.pathname = '/';
 }

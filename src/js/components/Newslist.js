@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* ОБРАБОТКА МАССИВА С НОВОСТЯМИ
 
 - рендерим карточки с сервера - render
@@ -45,7 +46,6 @@ export default class Newslist {
   // рендерим новости с нашего сервера в личный кабинет
   renderInAccount(data) {
     data.reverse().forEach((news) => {
-      console.log(news);
       news.publishedAt = news.date;
       news.urlToImage = news.image;
       news.content = news.text;

@@ -14,6 +14,8 @@ const MY_USUAL_HEADERS = {
   Accept: 'application/json',
 };
 
+
+// почему-то если так передавать, то не срабатывает
 const MY_BEARER_HEADERS = {
   authorization: `Bearer ${localStorage.getItem('token')}`,
   'Content-Type': 'application/json',

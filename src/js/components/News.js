@@ -34,14 +34,16 @@ export default class News {
 
   // удалить карточку из личного кабинета
   remove() {
-    this.vespucciApi.deleteNews(this._id);
+    this.vespucciApi.deleteNews(this._id)
+      .catch((err) => console.log(err));
     this.newsCard.parentElement.removeChild(this.newsCard);
   }
 
   // обработчик клика по флажку
   clickIconHandler() {
     if (this.newsCard.querySelector('.news__icon').classList.contains('news__icon_marked')) {
-      this.vespucciApi.deleteNews(this._id);
+      this.vespucciApi.deleteNews(this._id)
+        .catch((err) => console.log(err));
       this._mark();
     } else {
       this._mark();

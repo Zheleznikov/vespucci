@@ -55,10 +55,7 @@ export default class VespucciApi {
   logout() {
     return fetch(`${this.IP}logout`, {
       method: 'POST',
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
-        'Content-Type': 'application/json',
-      },
+      headers: this.bearerHeaders,
     })
       .then((res) => {
         if (!res.ok) {
@@ -74,31 +71,27 @@ export default class VespucciApi {
   // получить информацию о себе
   getMyData() {
     return fetch(`${this.IP}users/me`, {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
-        'Content-Type': 'application/json',
-      },
+      headers: this.bearerHeaders,
+      // headers: {
+      //   authorization: `Bearer ${localStorage.getItem('token')}`,
+      //   'Content-Type': 'application/json',
+      // },
     })
       .then((res) => {
         console.log(res);
         if (!res.ok) {
-          return Promise.reject(res);
+          return Promise.reject(`Ошибка: ${res.status}`);
         }
         return res.json();
-      });
-    // .catch((err) => {
-    //   throw new Error(err);
-    // });
+      })
+      .catch((err) => console.log(err)); // этим методом я больше не пользуюсь
   }
 
   // сохранить новость себе
   postNews(news) {
     return fetch(`${this.IP}articles`, {
       method: 'POST',
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
-        'Content-Type': 'application/json',
-      },
+      headers: this.bearerHeaders,
       body: JSON.stringify({
         keyword: news.keyword,
         title: news.title,
@@ -124,10 +117,7 @@ export default class VespucciApi {
   deleteNews(id) {
     return fetch(`${this.IP}articles/${id}`, {
       method: 'DELETE',
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
-        'Content-Type': 'application/json',
-      },
+      headers: this.bearerHeaders,
     })
       .then((res) => {
         if (!res.ok) {
@@ -142,11 +132,9 @@ export default class VespucciApi {
 
   // показать все новости
   getNews() {
+    console.log(this.bearerHeaders);
     return fetch(`${this.IP}articles`, {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
-        'Content-Type': 'application/json',
-      },
+      headers: this.bearerHeaders,
     })
       .then((res) => {
         if (!res.ok) {
