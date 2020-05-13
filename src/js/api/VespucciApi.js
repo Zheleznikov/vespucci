@@ -72,10 +72,6 @@ export default class VespucciApi {
   getMyData() {
     return fetch(`${this.IP}users/me`, {
       headers: this.bearerHeaders,
-      // headers: {
-      //   authorization: `Bearer ${localStorage.getItem('token')}`,
-      //   'Content-Type': 'application/json',
-      // },
     })
       .then((res) => {
         console.log(res);
@@ -84,7 +80,7 @@ export default class VespucciApi {
         }
         return res.json();
       })
-      .catch((err) => console.log(err)); // этим методом я больше не пользуюсь
+      .catch((err) => console.log(err)); // этим методом я больше не пользуюсь поэтому завершаю цепочку здесь
   }
 
   // сохранить новость себе
@@ -132,7 +128,6 @@ export default class VespucciApi {
 
   // показать все новости
   getNews() {
-    console.log(this.bearerHeaders);
     return fetch(`${this.IP}articles`, {
       headers: this.bearerHeaders,
     })

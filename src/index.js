@@ -40,7 +40,8 @@ const insertNews = (newsData, _id) => {
 
 const newslist = new Newslist(document.querySelector('.results__container'), insertNews, operate);
 new Search(document.forms.search, newsApi, newslist, operate, DATES, validate);
-new Popup(document.querySelector('.popup-success'));
+const successPopup = new Popup(document.querySelector('.popup-success'));
+successPopup.closeSuccessPopupHandler();
 new PopupEnter(document.querySelector('.popup-enter'), validate, vespucciApi, head, auth);
 new PopupReg(document.querySelector('.popup-reg'), validate, vespucciApi);
 new Exit(vespucciApi, head, auth);

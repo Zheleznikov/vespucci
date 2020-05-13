@@ -23,7 +23,6 @@ export default class NewsApi {
           return Promise.reject(`Ошибка: ${res.status}`);
         }
         return res.json();
-      })
-      .catch((error) => console.log('error', error));
+      });
   }
 }

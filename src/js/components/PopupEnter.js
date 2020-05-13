@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-unused-expressions */
 /* ФОРМА ВХОДА
 
@@ -28,6 +29,20 @@ export default class PopupEnter extends Popup {
     ];
   }
 
+  open() {
+    super.open();
+    this.clearFields();
+  }
+
+  // очистить все поля
+  clearFields() {
+    super.clearFields();
+    this.dataToValidate.forEach((couple) => {
+      couple.input.value = '';
+      couple.error.textContent = '';
+    });
+  }
+
   // валидация
   _enterHandler() {
     this.validate.handler(this.dataToValidate, this.handlerErr, this.button);
@@ -38,16 +53,11 @@ export default class PopupEnter extends Popup {
     evt.preventDefault();
     this.vespucciApi.signin(this.email.value, this.pass.value)
       .then((res) => {
-        // if (res.message === 'Congratulate') {
         this.auth.login(res.token, res.data.name);
         this.head.ifLogin(localStorage.getItem('name'));
         this.close();
-        // } else {
-        //   this.handlerErr.textContent = res.message;
-        // }
       })
       .catch((err) => {
-        console.log(err.body);
         this.handlerErr.textContent = 'Неправильная почта или пароль';
         console.log(err);
       });
@@ -55,6 +65,8 @@ export default class PopupEnter extends Popup {
 
 
   _handlers() {
+    this.toggleLinkEnter.addEventListener('click', this.close.bind(this));
+    this.toggleLinkReg.addEventListener('click', this.open.bind(this));
     document.querySelector('.header__button_auth').addEventListener('click', this.open.bind(this));
     this.toggleLinkSuccess.addEventListener('click', this.open.bind(this));
     this.form.addEventListener('input', this._enterHandler.bind(this));

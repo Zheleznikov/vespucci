@@ -33,11 +33,11 @@ export default class News {
   }
 
   // удалить карточку из личного кабинета
-  remove() {
-    this.vespucciApi.deleteNews(this._id)
-      .catch((err) => console.log(err));
-    this.newsCard.parentElement.removeChild(this.newsCard);
-  }
+  // remove() {
+  //   this.vespucciApi.deleteNews(this._id)
+  //     .then(() => this.newsCard.parentElement.removeChild(this.newsCard))
+  //     .catch((err) => console.log(err));
+  // }
 
   // обработчик клика по флажку
   clickIconHandler() {
@@ -87,10 +87,10 @@ export default class News {
   }
 
 
-  // для account.html
-  accountHandlers() {
-    this.newsCard.querySelector('.news__icon_delete').addEventListener('click', this.remove.bind(this));
-  }
+ //  для account.html
+  // accountHandlers() {
+  //   this.newsCard.querySelector('.news__icon_delete').addEventListener('click', this.remove.bind(this));
+  // }
 
   handler() {
     this.newsCard.querySelector('.news__icon').addEventListener('mouseover', this.authHandler.bind(this));

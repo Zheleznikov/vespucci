@@ -4,11 +4,13 @@ import VespucciApi from '../../js/api/VespucciApi';
 import Head from '../../js/components/Head';
 import Exit from '../../js/components/Exit';
 import News from '../../js/components/News';
+// import NewsInAccount from  '../../js/components/NewsInAccount';
 import Newslist from '../../js/components/Newslist';
 import Operate from '../../js/utils/Operate';
 import SavedArt from '../../js/components/SavedArt';
 import { MY_USUAL_HEADERS, MY_BEARER_HEADERS } from '../../js/constants/reqOptions';
 import Auth from '../../js/components/Auth';
+import NewsInAccount from '../../js/components/NewsInAccount';
 
 
 const auth = new Auth();
@@ -19,10 +21,11 @@ head.setBlackTheme();
 const operate = new Operate();
 
 const insertNews = (newsData, _id) => {
-  const news = new News(newsData, vespucciApi, auth, _id);
-  news.createNewsCard();
-  news.accountHandlers();
-  return news;
+  console.log(newsData);
+  const newsInAccount = new NewsInAccount(newsData, vespucciApi, auth, _id, savedArt);
+  newsInAccount.createNewsCard();
+  newsInAccount.accountHandlers();
+  return newsInAccount;
 };
 
 const newslist = new Newslist(document.querySelector('.results__container'), insertNews, operate);
@@ -34,8 +37,7 @@ if (auth.isLogin()) {
     .then((res) => {
       savedArt.setName(localStorage.getItem('name'), operate.pairValue(res.length));
       if (res.length === 0) {
-        savedArt.turnKeywordsOff();
-        savedArt.turnOffResults();
+        savedArt.turnOff();
       } else {
         savedArt.turnOnResults();
         savedArt.setKeywords(operate.getKeywords(res));

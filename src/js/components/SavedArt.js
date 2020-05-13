@@ -27,4 +27,9 @@ export default class SavedArt {
   turnOffResults() {
     this.resultsBlock.classList.remove('results_on');
   }
+
+  turnOff() {
+    this.turnOffResults();
+    this.turnKeywordsOff();
+  }
 }

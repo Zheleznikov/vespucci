@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* ФОРМА РЕГИСТРАЦИИ
 
 - обработчик регистрации - reg
@@ -30,6 +31,27 @@ export default class PopupReg extends Popup {
     ];
   }
 
+  open() {
+    super.open();
+    this.clearFields();
+  }
+
+  clearFields() {
+    super.clearFields();
+    this.dataToValidate.forEach((couple) => {
+      couple.input.value = '';
+      couple.error.textContent = '';
+    });
+    // // this.email.value = '';
+    // // this.pass.value = '';
+    // // this.name.value = '';
+    // // this.emailErr.textContent = '';
+    // // this.passErr.textContent = '';
+    // // this.errName.textContent = '';
+    // this.handlerErr.textContent = '';
+    // this.button.setAttribute('disabled', 'disabled');
+  }
+
   // валидация
   _regHandler() {
     this.validate.handler(this.dataToValidate, this.handlerErr, this.button);
@@ -50,6 +72,8 @@ export default class PopupReg extends Popup {
   }
 
   _handlers() {
+    this.toggleLinkEnter.addEventListener('click', this.open.bind(this));
+    this.toggleLinkReg.addEventListener('click', this.close.bind(this));
     this.form.addEventListener('input', this._regHandler.bind(this));
     this.form.addEventListener('submit', this._reg.bind(this));
   }
