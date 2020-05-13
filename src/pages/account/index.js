@@ -1,6 +1,6 @@
 import './account.css';
 import { SERVER } from '../../js/constants/service';
-import Api from '../../js/api/Api';
+import VespucciApi from '../../js/api/VespucciApi';
 import Head from '../../js/components/Head';
 import Exit from '../../js/components/Exit';
 import News from '../../js/components/News';
@@ -8,42 +8,40 @@ import Newslist from '../../js/components/Newslist';
 import Operate from '../../js/utils/Operate';
 import SavedArt from '../../js/components/SavedArt';
 import { MY_USUAL_HEADERS, MY_BEARER_HEADERS } from '../../js/constants/reqOptions';
+import Auth from '../../js/components/Auth';
 
 
-(function main() {
-  const api = new Api(SERVER, MY_USUAL_HEADERS, MY_BEARER_HEADERS);
-  const head = new Head(document.querySelector('.header'));
-  const savedArt = new SavedArt(document.querySelector('.articles-info'));
-  head.setBlackTheme();
-  const operate = new Operate();
+const auth = new Auth();
+const vespucciApi = new VespucciApi(SERVER, MY_USUAL_HEADERS, MY_BEARER_HEADERS);
+const head = new Head(document.querySelector('.header'));
+const savedArt = new SavedArt(document.querySelector('.articles-info'));
+head.setBlackTheme();
+const operate = new Operate();
 
-  const insertNews = (url, urlToImage, publishedAt, description, content, source, _id, keyword, message) => {
-    const news = new News(url, urlToImage, publishedAt, description, content, source, _id, keyword, message, api);
-    news.createNewsCard();
-    news.accountHandlers();
-    return news;
-  };
+const insertNews = (newsData, _id) => {
+  const news = new News(newsData, vespucciApi, auth, _id);
+  news.createNewsCard();
+  news.accountHandlers();
+  return news;
+};
 
-  const newslist = new Newslist(document.querySelector('.results__container'), insertNews, operate);
-  new Exit(api, head);
+const newslist = new Newslist(document.querySelector('.results__container'), insertNews, operate);
+new Exit(vespucciApi, head, auth);
 
-  api.getMyData()
-    .then((data) => {
-      head.ifLogin(data.data.name);
-      savedArt.setName(data.data.name, operate.pairValue(data.data.articles.length));
-      api.getNews()
-        .then((res) => {
-          if (res.length === 0) {
-            savedArt.turnKeywordsOff();
-            savedArt.turnOffResults();
-          } else {
-            savedArt.turnOnResults();
-            savedArt.setKeywords(operate.getKeywords(res));
-            newslist.renderInAccount(res);
-          }
-        });
-    })
-    .catch(() => {
-      window.location.pathname = './';
+if (auth.isLogin()) {
+  head.ifLogin(localStorage.getItem('name'));
+  vespucciApi.getNews()
+    .then((res) => {
+      savedArt.setName(localStorage.getItem('name'), operate.pairValue(res.length));
+      if (res.length === 0) {
+        savedArt.turnKeywordsOff();
+        savedArt.turnOffResults();
+      } else {
+        savedArt.turnOnResults();
+        savedArt.setKeywords(operate.getKeywords(res));
+        newslist.renderInAccount(res);
+      }
     });
-}());
+} else {
+  window.location.pathname = '/';
+}

@@ -8,10 +8,11 @@
 
 import Popup from './Popup';
 
-export default class Enter extends Popup {
-  constructor(element, validate, api, head) {
+export default class PopupEnter extends Popup {
+  constructor(element, validate, vespucciApi, head, auth) {
     super(element);
-    this.api = api;
+    this.auth = auth;
+    this.vespucciApi = vespucciApi;
     this.validate = validate;
     this.head = head;
     this._handlers();
@@ -24,10 +25,8 @@ export default class Enter extends Popup {
       input: this.pass,
       error: this.passErr,
     },
-
     ];
   }
-
 
   // валидация
   _enterHandler() {
@@ -37,17 +36,18 @@ export default class Enter extends Popup {
   // вход
   _enter(evt) {
     evt.preventDefault();
-    this.api.signin(this.email.value, this.pass.value)
-      .then((data) => {
-        if (data.message === 'Congratulate') {
-          localStorage.setItem('token', data.token);
-          this.head.ifLogin(data.data.name);
-          this.close();
-        } else {
-          this.handlerErr.textContent = data.message;
-        }
+    this.vespucciApi.signin(this.email.value, this.pass.value)
+      .then((res) => {
+        // if (res.message === 'Congratulate') {
+        this.auth.login(res.token, res.data.name);
+        this.head.ifLogin(localStorage.getItem('name'));
+        this.close();
+        // } else {
+        //   this.handlerErr.textContent = res.message;
+        // }
       })
       .catch((err) => {
+        console.log(err.body);
         this.handlerErr.textContent = 'Неправильная почта или пароль';
         console.log(err);
       });

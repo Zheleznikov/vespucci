@@ -25,11 +25,12 @@ export default class Newslist {
   // рендерим новости с newsApi
   render(data, keyword) {
     return data.map((news) => {
-      this.publishedAt = this.operate.turnDate(news.publishedAt);
-      this.title = this.operate.trimString(news.title, 46);
-      this.content = this.operate.trimString(news.content, 200);
+      news.publishedAt = this.operate.turnDate(news.publishedAt);
+      news.title = this.operate.trimString(news.title, 46);
+      news.content = this.operate.trimString(news.content, 200);
+      news.keyword = keyword;
 
-      const card = this.insertNews(news.url, news.urlToImage, this.publishedAt, this.title, this.content, news.source.name, '_id', keyword);
+      const card = this.insertNews(news, '_id');
       return card;
     });
   }
@@ -44,7 +45,12 @@ export default class Newslist {
   // рендерим новости с нашего сервера в личный кабинет
   renderInAccount(data) {
     data.reverse().forEach((news) => {
-      const card = this.insertNews(news.link, news.image, news.date, news.title, news.text, news.source, news._id, news.keyword, news.message);
+      console.log(news);
+      news.publishedAt = news.date;
+      news.urlToImage = news.image;
+      news.content = news.text;
+      news.url = news.link;
+      const card = this.insertNews(news, news._id);
       this._appendNews(this.container, card.newsCard);
     });
   }

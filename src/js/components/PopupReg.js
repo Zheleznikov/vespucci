@@ -7,11 +7,11 @@
 
 import Popup from './Popup';
 
-export default class Auth extends Popup {
-  constructor(element, validate, api) {
+export default class PopupReg extends Popup {
+  constructor(element, validate, vespucciApi) {
     super(element);
     this.validate = validate;
-    this.api = api;
+    this.vespucciApi = vespucciApi;
     this.name = this.element.querySelector('.popup__input_name');
     this.nameErr = this.element.querySelector('.popup__input-error_name');
     this._handlers();
@@ -38,16 +38,15 @@ export default class Auth extends Popup {
   // зарегистрироваться
   _reg(evt) {
     evt.preventDefault();
-    this.api.signup(this.email.value, this.name.value, this.pass.value)
-      .then((data) => {
-        if (data.message === 'Congratulate') {
-          this.close();
-          document.querySelector('.popup-success').classList.add('popup_is-opened');
-        } else {
-          this.handlerErr.textContent = data.message;
-        }
+    this.vespucciApi.signup(this.email.value, this.name.value, this.pass.value)
+      .then(() => {
+        this.close();
+        document.querySelector('.popup-success').classList.add('popup_is-opened');
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        this.handlerErr.textContent = 'видимо email занят';
+      });
   }
 
   _handlers() {

@@ -1,18 +1,22 @@
 // Выход из системы
 
 export default class Exit {
-  constructor(api, head) {
-    this.api = api;
+  constructor(vespucciApi, head, auth) {
+    this.auth = auth;
+    this.vespucciApi = vespucciApi;
     this.head = head;
     this._handler();
   }
 
-  _exit() {
-    this.api.logout()
+  _exit(evt) {
+    evt.preventDefault();
+    this.vespucciApi.logout()
       .then(() => {
+        this.auth.logout();
+        if (window.location.pathname !== '/') {
+          window.location.pathname = '/';
+        }
         this.head.ifUnauthorized();
-        localStorage.removeItem('token');
-        window.location.pathname = './';
       })
       .catch((err) => console.log(err));
   }

@@ -1,36 +1,30 @@
 /* eslint-disable class-methods-use-this */
 export default class News {
-  constructor(url, urlToImage, publishedAt, description, content, source, _id, keyword, message, api) {
+  constructor(newsData, vespucciApi, auth, _id) {
     this._id = _id;
-    this.url = url;
-    this.urlToImage = urlToImage;
-    this.publishedAt = publishedAt;
-    this.description = description;
-    this.content = content;
-    this.source = source;
-    this.keyword = keyword;
-    this.message = message;
-    this.api = api;
+    this.newsData = newsData;
+    this.auth = auth;
+    this.vespucciApi = vespucciApi;
   }
 
   // создать карточку
-  _create(url, urlToImage, publishedAt, description, content, source, _id, keyword) {
+  _create(newsData) {
     const news = document.querySelector('.news-template').content.cloneNode(true);
-    news.querySelector('.news__link').href = url;
-    news.querySelector('.news__image').src = urlToImage;
-    news.querySelector('.news__date').textContent = publishedAt;
-    news.querySelector('.news__title').textContent = description;
-    news.querySelector('.news__text').textContent = content;
-    news.querySelector('.news__source').textContent = source;
+    news.querySelector('.news__link').href = newsData.url;
+    news.querySelector('.news__image').src = newsData.urlToImage;
+    news.querySelector('.news__date').textContent = newsData.publishedAt;
+    news.querySelector('.news__title').textContent = newsData.title;
+    news.querySelector('.news__text').textContent = newsData.content;
+    news.querySelector('.news__source').textContent = newsData.source.name;
     if (window.location.pathname === '/account.html') {
-      news.querySelector('.news__keyword-content').textContent = keyword;
+      news.querySelector('.news__keyword-content').textContent = newsData.keyword;
     }
     return news.querySelector('.news');
   }
 
   // запустить процесс создания карточки
   createNewsCard() {
-    this.newsCard = this._create(this.url, this.urlToImage, this.publishedAt, this.description, this.content, this.source, this._id, this.keyword, this.message);
+    this.newsCard = this._create(this.newsData);
   }
 
   // поставить флажок новости
@@ -40,18 +34,18 @@ export default class News {
 
   // удалить карточку из личного кабинета
   remove() {
-    this.api.deleteNews(this._id);
+    this.vespucciApi.deleteNews(this._id);
     this.newsCard.parentElement.removeChild(this.newsCard);
   }
 
   // обработчик клика по флажку
   clickIconHandler() {
     if (this.newsCard.querySelector('.news__icon').classList.contains('news__icon_marked')) {
-      this.api.deleteNews(this._id);
+      this.vespucciApi.deleteNews(this._id);
       this._mark();
     } else {
       this._mark();
-      this.api.postNews(this.keyword, this.description, this.content, this.publishedAt, this.source, this.url, this.urlToImage)
+      this.vespucciApi.postNews(this.newsData)
         // eslint-disable-next-line no-return-assign
         .then((res) => this._id = res.data._id)
         .catch((err) => console.log(err));
@@ -77,8 +71,9 @@ export default class News {
 
   // обработчик смотрит ли карточку зарегистрированный пользователь
   authHandler() {
-    if (this.message === 'Congratulate') {
-      this.handlers();
+    console.log(this.auth.isLogin());
+    if (this.auth.isLogin()) {
+      this.newsCard.querySelector('.news__icon').addEventListener('click', this.clickIconHandler.bind(this));
     } else {
       this._tipHandler();
     }
@@ -89,12 +84,13 @@ export default class News {
     document.querySelector('.popup-enter').classList.add('popup_is-opened');
   }
 
-  handlers() {
-    this.newsCard.querySelector('.news__icon').addEventListener('click', this.clickIconHandler.bind(this));
-  }
 
   // для account.html
   accountHandlers() {
     this.newsCard.querySelector('.news__icon_delete').addEventListener('click', this.remove.bind(this));
+  }
+
+  handler() {
+    this.newsCard.querySelector('.news__icon').addEventListener('mouseover', this.authHandler.bind(this));
   }
 }

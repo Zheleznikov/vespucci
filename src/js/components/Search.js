@@ -2,14 +2,13 @@
 import SearchView from './SearchView';
 
 export default class Search extends SearchView {
-  constructor(form, newsApi, newslist, api, operate, sevenDaysAgo, today, validate) {
+  constructor(form, newsApi, newslist, operate, sevenDaysAgo, today, validate) {
     super();
     this.validate = validate;
     this.operate = operate;
     this.form = form;
     this.newslist = newslist;
     this.newsApi = newsApi;
-    this.api = api;
     this.sevenDaysAgo = sevenDaysAgo;
     this.today = today;
     this.searchString = form.elements.searchString;
@@ -22,20 +21,11 @@ export default class Search extends SearchView {
     evt.preventDefault();
     this.clearContainer();
     this.runPreloader();
-    this.api.getMyData()
-      .then(() => this._getNews())
-      .catch((err) => {
-        this._getNews();
-        console.log(err);
-      })
-      .finally(() => this.stopPreloader());
-  }
-
-  _getNews() {
     this.newsApi.getNews(this.searchString.value, this.operate.getDate(this.today), this.operate.getDate(this.sevenDaysAgo))
       .then((res) => {
         this.getResults();
         this.renderArr = this.newslist.render(res.articles, this.searchString.value);
+        // console.log(this.renderArr);
         this._widthHandler();
         this._resultButtonHandler();
         if (res.articles.length === 0) {
@@ -46,7 +36,8 @@ export default class Search extends SearchView {
         this.stopPreloader();
         this.getErrServer();
         console.log(err);
-      });
+      })
+      .finally(() => this.stopPreloader());
   }
 
   // вывести еще карточек
