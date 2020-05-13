@@ -21,7 +21,7 @@ head.setBlackTheme();
 const operate = new Operate();
 
 const insertNews = (newsData, _id) => {
-  const newsInAccount = new NewsInAccount(newsData, vespucciApi, auth, _id, savedArt);
+  const newsInAccount = new NewsInAccount(newsData, vespucciApi, auth, _id, savedArt, operate);
   newsInAccount.createNewsCard();
   newsInAccount.accountHandlers();
   return newsInAccount;
@@ -34,6 +34,7 @@ if (auth.isLogin()) {
   head.setLogin(localStorage.getItem('name'));
   vespucciApi.getNews()
     .then((res) => {
+      localStorage.setItem('numOfArt', res.length);
       savedArt.setName(localStorage.getItem('name'), operate.pairValue(res.length));
       if (res.length === 0) {
         savedArt.turnOff();
