@@ -5,7 +5,7 @@
 Методы ifLogin, ifUnauthorized
 
 - переключение классов для мобильной версии при разрешении меньше 680
-Методы ifMobile
+Методы setMobile
 
 - переключение на мобильную версию для страницы личного кабинета
 Методы setBlackTheme, widthHandler
@@ -23,11 +23,24 @@ export default class Head {
     this.accountLink = this.header.querySelector('.header__link_account');
     this.openButton = this.header.querySelector('.header__menu-button');
 
+    this.headerLinks = this.header.querySelector('.header__links');
+    this.headerLogoContainer = this.header.querySelector('.header__logo-container');
+    this.headerLogo = this.header.querySelector('.header__logo');
+    this.headerMenuSticks = this.header.querySelector('.header__menu-sticks');
+    this.headerButtonsArray = this.header.querySelectorAll('.header__button');
+    this.headerLinksArray = this.header.querySelectorAll('.header__link');
+    this.headerLinkActive = this.header.querySelector('.header__link_active');
+    this.headerMenuButton = this.header.querySelector('.header__menu-button');
+    this.search = document.querySelector('.search');
+    this.articlesInfo = document.querySelector('.articles-info');
+    this.headerButtonIcon = this.header.querySelector('.header__button_icon');
+    this.headerButtonIn = this.header.querySelector('.header__button_in');
+
     this._handlers();
   }
 
   // кнопки в хэдере для авторизванного пользователя
-  ifLogin(name) {
+  setLogin(name) {
     this.authButton.classList.add('header__button_none');
     this.userButton.classList.remove('header__button_none');
     this.accountLink.classList.remove('header__link_none');
@@ -35,56 +48,57 @@ export default class Head {
   }
 
   // кнопки входа для неавторизованного пользователя
-  ifUnauthorized() {
+  setUnauthorized() {
     this.authButton.classList.remove('header__button_none');
     this.userButton.classList.add('header__button_none');
     this.accountLink.classList.add('header__link_none');
   }
 
   // подключение классов для мобильной версии
-  ifMobile() {
+  setMobile() {
     this.header.classList.toggle('header_mobile');
     this.header.classList.toggle('page');
-    this.header.querySelector('.header__links').classList.toggle('header__links_mobile');
-    this.header.querySelector('.header__logo-container').classList.toggle('header__logo-container_mobile');
-    this.header.querySelector('.header__logo').classList.toggle('header__logo_mobile');
-    this.header.querySelector('.header__menu-sticks').classList.toggle('header__menu-sticks_mobile');
-    this.header.querySelectorAll('.header__button').forEach((button) => button.classList.toggle('header__button_mobile'));
-    this.header.querySelectorAll('.header__link').forEach((link) => link.classList.toggle('header__link_mobile'));
-    this.header.querySelector('.header__link_active').classList.toggle('header__link_active_mobile');
-    this.header.querySelector('.header__menu-button').classList.toggle('header__menu-button_x');
+
+    this.headerLinks.classList.toggle('header__links_mobile');
+    this.headerLogoContainer.classList.toggle('header__logo-container_mobile');
+    this.headerLogo.classList.toggle('header__logo_mobile');
+    this.headerMenuSticks.classList.toggle('header__menu-sticks_mobile');
+    this.headerButtonsArray.forEach((button) => button.classList.toggle('header__button_mobile'));
+    this.headerLinksArray.forEach((link) => link.classList.toggle('header__link_mobile'));
+    this.headerLinkActive.classList.toggle('header__link_active_mobile');
+    this.headerMenuButton.classList.toggle('header__menu-button_x');
 
     if (window.location.pathname !== '/account.html') {
-      document.querySelector('.search').classList.toggle('search_mobile');
+      this.search.classList.toggle('search_mobile');
     }
 
     if (window.location.pathname === '/account.html') {
-      document.querySelector('.articles-info').classList.toggle('articles-info_mobile');
-      this.header.querySelector('.header__button_icon').src = '../../images/logout.svg';
+      this.articlesInfo.classList.toggle('articles-info_mobile');
+      this.headerButtonIcon.src = '../../images/logout.svg';
     }
   }
 
   // подключение классов для мобильной версии для страницы личного кабинета
   setBlackTheme() {
     if (window.location.pathname === '/account.html') {
-      this.header.querySelector('.header__logo').classList.toggle('header__theme_black');
-      this.header.querySelectorAll('.header__link').forEach((link) => link.classList.toggle('header__theme_black'));
-      this.header.querySelector('.header__button_in').classList.toggle('header__theme_black');
-      this.header.querySelector('.header__menu-button').classList.toggle('header__menu-button_account');
+      this.headerLogo.classList.toggle('header__theme_black');
+      this.headerLinksArray.forEach((link) => link.classList.toggle('header__theme_black'));
+      this.headerButtonIn.classList.toggle('header__theme_black');
+      this.headerMenuButton.classList.toggle('header__menu-button_account');
     }
   }
 
   // обработчик переключение значка выхода в зависимости от ширины страницы
   _widthHandler() {
     if (window.innerWidth < 680) {
-      this.header.querySelector('.header__button_icon').src = '../../images/logout.svg';
+      this.headerButtonIcon.src = '../../images/logout.svg';
     } else if (window.innerWidth > 680) {
-      this.header.querySelector('.header__button_icon').src = '../../images/logout-black.svg';
+      this.headerButtonIcon.src = '../../images/logout-black.svg';
     }
   }
 
   _handlers() {
-    this.openButton.addEventListener('click', this.ifMobile.bind(this));
+    this.openButton.addEventListener('click', this.setMobile.bind(this));
     this.openButton.addEventListener('click', this.setBlackTheme.bind(this));
 
     if (window.location.pathname === '/account.html') {

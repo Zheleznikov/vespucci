@@ -32,24 +32,18 @@ export default class News {
     this.newsCard.querySelector('.news__icon').classList.toggle('news__icon_marked');
   }
 
-  // удалить карточку из личного кабинета
-  // remove() {
-  //   this.vespucciApi.deleteNews(this._id)
-  //     .then(() => this.newsCard.parentElement.removeChild(this.newsCard))
-  //     .catch((err) => console.log(err));
-  // }
-
   // обработчик клика по флажку
   clickIconHandler() {
     if (this.newsCard.querySelector('.news__icon').classList.contains('news__icon_marked')) {
       this.vespucciApi.deleteNews(this._id)
+        .then(() => this._mark())
         .catch((err) => console.log(err));
-      this._mark();
     } else {
-      this._mark();
       this.vespucciApi.postNews(this.newsData)
-        // eslint-disable-next-line no-return-assign
-        .then((res) => this._id = res.data._id)
+        .then((res) => {
+          this._mark();
+          this._id = res.data._id;
+        })
         .catch((err) => console.log(err));
     }
   }
@@ -85,12 +79,6 @@ export default class News {
   _openEnter() {
     document.querySelector('.popup-enter').classList.add('popup_is-opened');
   }
-
-
- //  для account.html
-  // accountHandlers() {
-  //   this.newsCard.querySelector('.news__icon_delete').addEventListener('click', this.remove.bind(this));
-  // }
 
   handler() {
     this.newsCard.querySelector('.news__icon').addEventListener('mouseover', this.authHandler.bind(this));

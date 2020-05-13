@@ -42,14 +42,6 @@ export default class PopupReg extends Popup {
       couple.input.value = '';
       couple.error.textContent = '';
     });
-    // // this.email.value = '';
-    // // this.pass.value = '';
-    // // this.name.value = '';
-    // // this.emailErr.textContent = '';
-    // // this.passErr.textContent = '';
-    // // this.errName.textContent = '';
-    // this.handlerErr.textContent = '';
-    // this.button.setAttribute('disabled', 'disabled');
   }
 
   // валидация

@@ -3,7 +3,7 @@ import { SERVER } from '../../js/constants/service';
 import VespucciApi from '../../js/api/VespucciApi';
 import Head from '../../js/components/Head';
 import Exit from '../../js/components/Exit';
-import News from '../../js/components/News';
+// import News from '../../js/components/News';
 // import NewsInAccount from  '../../js/components/NewsInAccount';
 import Newslist from '../../js/components/Newslist';
 import Operate from '../../js/utils/Operate';
@@ -21,7 +21,6 @@ head.setBlackTheme();
 const operate = new Operate();
 
 const insertNews = (newsData, _id) => {
-  console.log(newsData);
   const newsInAccount = new NewsInAccount(newsData, vespucciApi, auth, _id, savedArt);
   newsInAccount.createNewsCard();
   newsInAccount.accountHandlers();
@@ -32,7 +31,7 @@ const newslist = new Newslist(document.querySelector('.results__container'), ins
 new Exit(vespucciApi, head, auth);
 
 if (auth.isLogin()) {
-  head.ifLogin(localStorage.getItem('name'));
+  head.setLogin(localStorage.getItem('name'));
   vespucciApi.getNews()
     .then((res) => {
       savedArt.setName(localStorage.getItem('name'), operate.pairValue(res.length));

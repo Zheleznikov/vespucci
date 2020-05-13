@@ -5,6 +5,7 @@ export default class Exit {
     this.auth = auth;
     this.vespucciApi = vespucciApi;
     this.head = head;
+    this.logoutButton = document.querySelector('.header__button_in');
     this._handler();
   }
 
@@ -16,12 +17,12 @@ export default class Exit {
         if (window.location.pathname !== '/') {
           window.location.pathname = '/';
         }
-        this.head.ifUnauthorized();
+        this.head.setUnauthorized();
       })
       .catch((err) => console.log(err));
   }
 
   _handler() {
-    document.querySelector('.header__button_in').addEventListener('click', this._exit.bind(this));
+    this.logoutButton.addEventListener('click', this._exit.bind(this));
   }
 }

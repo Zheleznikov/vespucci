@@ -74,4 +74,14 @@ export default class SearchView {
     this._getError();
     this.errMessage.textContent = 'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз';
   }
+
+  disableSearchFields() {
+    this.button.setAttribute('disabled', true);
+    this.searchString.setAttribute('disabled', true);
+  }
+
+  enableSearchFields() {
+    this.button.removeAttribute('disabled', true);
+    this.searchString.removeAttribute('disabled', true);
+  }
 }

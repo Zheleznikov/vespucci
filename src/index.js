@@ -25,9 +25,9 @@ const head = new Head(document.querySelector('.header'));
 const validate = new Validate();
 
 if (auth.isLogin()) {
-  head.ifLogin(localStorage.getItem('name'));
+  head.setLogin(localStorage.getItem('name'));
 } else {
-  head.ifUnauthorized();
+  head.setUnauthorized();
 }
 
 const insertNews = (newsData, _id) => {

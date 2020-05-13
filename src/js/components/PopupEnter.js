@@ -16,6 +16,7 @@ export default class PopupEnter extends Popup {
     this.vespucciApi = vespucciApi;
     this.validate = validate;
     this.head = head;
+    this.popupOpenButton = document.querySelector('.header__button_auth');
     this._handlers();
 
     this.dataToValidate = [{
@@ -54,7 +55,7 @@ export default class PopupEnter extends Popup {
     this.vespucciApi.signin(this.email.value, this.pass.value)
       .then((res) => {
         this.auth.login(res.token, res.data.name);
-        this.head.ifLogin(localStorage.getItem('name'));
+        this.head.setLogin(localStorage.getItem('name'));
         this.close();
       })
       .catch((err) => {
@@ -65,11 +66,13 @@ export default class PopupEnter extends Popup {
 
 
   _handlers() {
-    this.toggleLinkEnter.addEventListener('click', this.close.bind(this));
     this.toggleLinkReg.addEventListener('click', this.open.bind(this));
-    document.querySelector('.header__button_auth').addEventListener('click', this.open.bind(this));
+    this.popupOpenButton.addEventListener('click', this.open.bind(this));
     this.toggleLinkSuccess.addEventListener('click', this.open.bind(this));
+    this.toggleLinkEnter.addEventListener('click', this.close.bind(this));
+
     this.form.addEventListener('input', this._enterHandler.bind(this));
     this.form.addEventListener('submit', this._enter.bind(this));
+    this.button.addEventListener('click', () => this.button.removeAttribute('disabled', true));
   }
 }

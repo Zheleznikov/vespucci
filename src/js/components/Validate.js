@@ -49,9 +49,12 @@ export default class Validate {
 
     if (input.classList.contains('popup__input_pass') && value.length < 8 && value.length !== 0) {
       // может для пароля надо чтобы сообщения об ошибках были в реальном времени
-      // tip.textContent = this.errMessagePassLength;
-      input.onblur = () => tip.textContent = this.errMessagePassLength;
-      input.onfocus = () => tip.textContent = '';
+      // const wait = () => tip.textContent = this.errMessagePassLength;
+      // const func = () => setTimeout(wait, 3000);
+      // setTimeout(wait, 3000);
+    //  tip.textContent = this.errMessagePassLength;
+      // input.onblur = () => tip.textContent = this.errMessagePassLength;
+      input.onfocus = () => tip.textContent = this.errMessagePassLength;
       return false;
     }
 
@@ -83,7 +86,7 @@ export default class Validate {
   handler(data, handlerErr, button) {
     button.onblur = () => handlerErr.textContent = '';
     const flags = data.map((field) => this._checkField(field.input.value, field.error, field.input));
-    if (flags.every((flag) => flag === true)) {
+    if (flags.every((flag) => flag)) {
       this._setButtonAttribute(button, true);
     } else {
       this._setButtonAttribute(button, false);

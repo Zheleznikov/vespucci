@@ -18,44 +18,42 @@ export default class Operate {
   }
 
   // обработка текстов, если они слишком длинные
-  trimString(string, n) {
-    return string === null ? '' : string.length > n ? `${string.slice(0, n)}...` : string;
+  trimString(content, reqSize) {
+    return content === null ? '' : content.length > reqSize ? `${content.slice(0, reqSize)}...` : content;
   }
 
   // обработка сколько статей у пользователя
-  pairValue(n) {
-    const last = +n.toString().slice(-1);
+  pairValue(numOfArt) {
+    const last = +numOfArt.toString().slice(-1);
 
-    if (n === 0) {
+    if (numOfArt === 0) {
       return 'у Вас нет сохраненных статей';
     }
 
-    if (n > 100) {
+    if (numOfArt > 100) {
       return 'у Вас больше 100 сохраненных статей';
     }
-    if (n > 4 && n < 21) {
-      return `у Вас ${n} сохраненных статей`;
+    if (numOfArt > 4 && numOfArt < 21) {
+      return `у Вас ${numOfArt} сохраненных статей`;
     }
     if (last === 1) {
-      return `у Вас ${n} сохраненная статья`;
+      return `у Вас ${numOfArt} сохраненная статья`;
     }
 
     if (last > 1 && last < 5) {
-      return `у Вас ${n} сохраненных статьи`;
+      return `у Вас ${numOfArt} сохраненных статьи`;
     }
 
-    return `у Вас ${n} сохраненных статей`;
+    return `у Вас ${numOfArt} сохраненных статей`;
   }
 
 
   // формирование строки с ключевыми словами
-  getKeywords(arr) {
-    if (arr.length === 0) {
+  getKeywords(words) {
+    if (words.length === 0) {
       return 'нет статей - нет ключевых слов :(';
     }
-    const keys = arr.map((el) => el.keyword);
-
-    const uniqKeys = keys.reduce((res, current) => {
+    const uniqKeys = words.map((el) => el.keyword).reduce((res, current) => {
       if (!res.includes(current)) {
         res.push(current);
       }

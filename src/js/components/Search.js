@@ -8,10 +8,12 @@ export default class Search extends SearchView {
     this.validate = validate;
     this.operate = operate;
     this.form = form;
+    this.searchString = this.form.elements.searchString;
+    this.button = this.form.elements.button;
     this.newslist = newslist;
     this.newsApi = newsApi;
-    this.searchString = form.elements.searchString;
-    this.button = this.form.elements.button;
+
+    this.resultsButton = document.querySelector('.results__button');
     this._handlers();
   }
 
@@ -20,8 +22,10 @@ export default class Search extends SearchView {
     evt.preventDefault();
     this.clearContainer();
     this.runPreloader();
+    this.disableSearchFields();
     this.newsApi.getNews(this.searchString.value, this.operate.getDate(this.dates.today), this.operate.getDate(this.dates.sevenDaysAgo))
       .then((res) => {
+        this.enableSearchFields();
         this.getResults();
         this.renderArr = this.newslist.render(res.articles, this.searchString.value);
         this._widthHandler();
@@ -31,6 +35,7 @@ export default class Search extends SearchView {
         }
       })
       .catch((err) => {
+        this.enableSearchFields();
         this.stopPreloader();
         this.getErrServer();
         console.log(err);
@@ -66,9 +71,9 @@ export default class Search extends SearchView {
   // обработчик кнопки "показать еще"
   _resultButtonHandler() {
     if (this.renderArr.length === 0) {
-      document.querySelector('.results__button').classList.add('results__button_off');
+      this.resultsButton.classList.add('results__button_off');
     } else {
-      document.querySelector('.results__button').classList.remove('results__button_off');
+      this.resultsButton.classList.remove('results__button_off');
     }
   }
 
