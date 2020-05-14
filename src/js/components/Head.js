@@ -98,8 +98,8 @@ export default class Head {
   }
 
   _handlers() {
-    this.openButton.addEventListener('click', this._setMobile.bind(this));
-    this.openButton.addEventListener('click', this.setBlackTheme.bind(this));
+    this.headerMenuSticks.addEventListener('click', this._setMobile.bind(this));
+    this.headerMenuSticks.addEventListener('click', this.setBlackTheme.bind(this));
 
     if (window.location.pathname === '/account.html') {
       window.addEventListener('resize', this._widthHandler.bind(this));
