@@ -7,13 +7,13 @@ import Exit from '../../js/components/Exit';
 import Newslist from '../../js/components/Newslist';
 import Operate from '../../js/utils/Operate';
 import SavedArt from '../../js/components/SavedArt';
-import { MY_USUAL_HEADERS, MY_BEARER_HEADERS } from '../../js/constants/reqOptions';
+import { MY_USUAL_HEADERS } from '../../js/constants/reqOptions';
 import Auth from '../../js/components/Auth';
 import NewsInAccount from '../../js/components/NewsInAccount';
 
 
 const auth = new Auth();
-const vespucciApi = new VespucciApi(SERVER, MY_USUAL_HEADERS, MY_BEARER_HEADERS);
+const vespucciApi = new VespucciApi(SERVER, MY_USUAL_HEADERS);
 const head = new Head(HEADER);
 const savedArt = new SavedArt(ARTICLES_INFO);
 head.setBlackTheme();

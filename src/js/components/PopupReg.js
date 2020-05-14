@@ -52,13 +52,16 @@ export default class PopupReg extends Popup {
   // зарегистрироваться
   _reg(evt) {
     evt.preventDefault();
+    this.button.textContent = 'Регистрируемся...';
     this.vespucciApi.signup(this.email.value, this.name.value, this.pass.value)
       .then(() => {
         this.close();
         document.querySelector('.popup-success').classList.add('popup_is-opened');
+        this.button.textContent = 'Зарегистрироваться';
       })
       .catch((err) => {
         console.log(err);
+        this.button.textContent = 'Зарегистрироваться';
         this.handlerErr.textContent = 'видимо email занят';
       });
   }

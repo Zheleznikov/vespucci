@@ -52,13 +52,16 @@ export default class PopupEnter extends Popup {
   // вход
   _enter(evt) {
     evt.preventDefault();
+    this.button.textContent = 'Заходим...';
     this.vespucciApi.signin(this.email.value, this.pass.value)
       .then((res) => {
+        this.button.textContent = 'Войти';
         this.auth.login(res.token, res.data.name);
         this.head.setLogin(localStorage.getItem('name'));
         this.close();
       })
       .catch((err) => {
+        this.button.textContent = 'Войти';
         this.handlerErr.textContent = 'Неправильная почта или пароль';
         console.log(err);
       });
@@ -70,9 +73,7 @@ export default class PopupEnter extends Popup {
     this.popupOpenButton.addEventListener('click', this.open.bind(this));
     this.toggleLinkSuccess.addEventListener('click', this.open.bind(this));
     this.toggleLinkEnter.addEventListener('click', this.close.bind(this));
-
     this.form.addEventListener('input', this._enterHandler.bind(this));
     this.form.addEventListener('submit', this._enter.bind(this));
-    this.button.addEventListener('click', () => this.button.removeAttribute('disabled', true));
   }
 }

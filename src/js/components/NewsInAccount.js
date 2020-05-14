@@ -1,3 +1,5 @@
+/* КЛАСС РАБОТЫ С КАРТОЧКОЙ В ЛИЧНОМ КАБИНЕТЕ */
+
 import News from './News';
 
 export default class NewsInAccount extends News {
@@ -9,10 +11,10 @@ export default class NewsInAccount extends News {
   }
 
   // удаляем карточку со страницы, в случае успеха обновляется информация вверху страницы
-  remove() {
+  _remove() {
     this.vespucciApi.deleteNews(this._id)
       .then((res) => {
-        this.removeChild();
+        this._removeChild();
         const currentNumOfSavedNews = (localStorage.getItem('numOfArt') - 1);
         this.savedArt.setName(localStorage.getItem('name'), this.operate.pairValue(localStorage.getItem('numOfArt') - 1));
         localStorage.setItem('numOfArt', currentNumOfSavedNews);
@@ -26,12 +28,12 @@ export default class NewsInAccount extends News {
       .catch((err) => console.log(err));
   }
 
-  removeChild() {
+  _removeChild() {
     this.newsCard.parentElement.removeChild(this.newsCard);
   }
 
 
   accountHandlers() {
-    this.newsCard.querySelector('.news__icon_delete').addEventListener('click', this.remove.bind(this));
+    this.newsCard.querySelector('.news__icon_delete').addEventListener('click', this._remove.bind(this));
   }
 }

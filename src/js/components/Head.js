@@ -2,7 +2,7 @@
 /*  ОФОРМЛЕНИЕ ХЭДЕРА
 
 - переключение кнопок в хэдере в зависимости от того авторизованный пользователь или нет
-Методы ifLogin, ifUnauthorized
+Методы setLogin, setUnauthorized
 
 - переключение классов для мобильной версии при разрешении меньше 680
 Методы setMobile
@@ -55,7 +55,7 @@ export default class Head {
   }
 
   // подключение классов для мобильной версии
-  setMobile() {
+  _setMobile() {
     this.header.classList.toggle('header_mobile');
     this.header.classList.toggle('page');
 
@@ -98,7 +98,7 @@ export default class Head {
   }
 
   _handlers() {
-    this.openButton.addEventListener('click', this.setMobile.bind(this));
+    this.openButton.addEventListener('click', this._setMobile.bind(this));
     this.openButton.addEventListener('click', this.setBlackTheme.bind(this));
 
     if (window.location.pathname === '/account.html') {

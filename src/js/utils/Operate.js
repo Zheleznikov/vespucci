@@ -67,17 +67,17 @@ export default class Operate {
 
   // ОБРАБОТКА МАССИВОВ С КЛЮЧЕВЫМИ СЛОВАМИ
 
-  // получить только ключи из массива. для localstorage
+  // получить только ключевые слова из массива. для localstorage
   getAllKeyWords(data) {
-    return data.map((el) => el.keyword);
+    return data.map((news) => news.keyword);
   }
 
-  // формирование строки с ключевыми словами. для первого поиска при окрытии личного кабинета
+  // формирование строки с ключевыми словами. для первого поиска при открытии личного кабинета
   getKeywords(words) {
     if (words.length === 0) {
       return 'нет статей - нет ключевых слов :(';
     }
-    const uniqKeys = words.map((el) => el.keyword).reduce((res, current) => {
+    const uniqKeys = words.map((news) => news.keyword).reduce((res, current) => {
       if (!res.includes(current)) {
         res.push(current);
       }

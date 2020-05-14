@@ -2,9 +2,8 @@
 // Здесь собраны методы для работы со своим сервером. Они подписаны в коде
 
 export default class VespucciApi {
-  constructor(IP, headers, bearerHeaders) {
+  constructor(IP, headers) {
     this.headers = headers;
-    this.bearerHeaders = bearerHeaders;
     this.IP = IP;
   }
 
@@ -55,7 +54,10 @@ export default class VespucciApi {
   logout() {
     return fetch(`${this.IP}logout`, {
       method: 'POST',
-      headers: this.bearerHeaders,
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+      },
     })
       .then((res) => {
         if (!res.ok) {
@@ -71,7 +73,10 @@ export default class VespucciApi {
   // получить информацию о себе
   getMyData() {
     return fetch(`${this.IP}users/me`, {
-      headers: this.bearerHeaders,
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+      },
     })
       .then((res) => {
         console.log(res);
@@ -87,7 +92,10 @@ export default class VespucciApi {
   postNews(news) {
     return fetch(`${this.IP}articles`, {
       method: 'POST',
-      headers: this.bearerHeaders,
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         keyword: news.keyword,
         title: news.title,
@@ -113,7 +121,10 @@ export default class VespucciApi {
   deleteNews(id) {
     return fetch(`${this.IP}articles/${id}`, {
       method: 'DELETE',
-      headers: this.bearerHeaders,
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+      },
     })
       .then((res) => {
         if (!res.ok) {
@@ -129,7 +140,10 @@ export default class VespucciApi {
   // показать все новости
   getNews() {
     return fetch(`${this.IP}articles`, {
-      headers: this.bearerHeaders,
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+      },
     })
       .then((res) => {
         if (!res.ok) {

@@ -1,4 +1,7 @@
 /* eslint-disable class-methods-use-this */
+
+/* КЛАСС ОФОРМЛЕНИЯ ВЕРХНЕЙ ЧАСТИ В ЛИЧНОМ КАБИНЕТЕ */
+
 export default class SavedArt {
   constructor(element) {
     this.element = element;

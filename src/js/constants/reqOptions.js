@@ -15,9 +15,4 @@ const MY_USUAL_HEADERS = {
 };
 
 
-const MY_BEARER_HEADERS = {
-  authorization: `Bearer ${localStorage.getItem('token')}`,
-  'Content-Type': 'application/json',
-};
-
-export { REQUEST_OPTIONS, URL, MY_USUAL_HEADERS, MY_BEARER_HEADERS };
+export { REQUEST_OPTIONS, URL, MY_USUAL_HEADERS };

@@ -1,4 +1,6 @@
 /* eslint-disable class-methods-use-this */
+
+/* КЛАСС СОЗДАНИЯ НОВОСТИ */
 export default class News {
   constructor(newsData, vespucciApi, auth, _id) {
     this._id = _id;
@@ -32,22 +34,6 @@ export default class News {
     this.newsCard.querySelector('.news__icon').classList.toggle('news__icon_marked');
   }
 
-  // обработчик клика по флажку
-  clickIconHandler() {
-    if (this.newsCard.querySelector('.news__icon').classList.contains('news__icon_marked')) {
-      this.vespucciApi.deleteNews(this._id)
-        .then(() => this._mark())
-        .catch((err) => console.log(err));
-    } else {
-      this.vespucciApi.postNews(this.newsData)
-        .then((res) => {
-          this._mark();
-          this._id = res.data._id;
-        })
-        .catch((err) => console.log(err));
-    }
-  }
-
   // показать подсказку
   _showTip() {
     this.newsCard.querySelector('.news__tip').classList.add('news__tip_on');
@@ -65,6 +51,7 @@ export default class News {
     this.newsCard.querySelector('.news__tip').addEventListener('click', this._openEnter.bind(this));
   }
 
+
   // обработчик смотрит ли карточку зарегистрированный пользователь
   authHandler() {
     console.log(this.auth.isLogin());
@@ -75,12 +62,24 @@ export default class News {
     }
   }
 
-  // открыть попап если нажать на иконку
-  _openEnter() {
-    document.querySelector('.popup-enter').classList.add('popup_is-opened');
+  // обработчик клика по флажку
+  clickIconHandler() {
+    if (this.newsCard.querySelector('.news__icon').classList.contains('news__icon_marked')) {
+      this.vespucciApi.deleteNews(this._id)
+        .then(() => this._mark())
+        .catch((err) => console.log(err));
+    } else {
+      this.vespucciApi.postNews(this.newsData)
+        .then((res) => {
+          this._mark();
+          this._id = res.data._id;
+        })
+        .catch((err) => console.log(err));
+    }
   }
 
-  handler() {
-    this.newsCard.querySelector('.news__icon').addEventListener('mouseover', this.authHandler.bind(this));
+  // открыть попап входа если нажать на иконку
+  _openEnter() {
+    document.querySelector('.popup-enter').classList.add('popup_is-opened');
   }
 }

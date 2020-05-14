@@ -46,7 +46,6 @@ export default class SearchView {
   }
 
   stopPreloader() {
-    // this._turnOffError();
     this._turnOffWaiting();
   }
 
