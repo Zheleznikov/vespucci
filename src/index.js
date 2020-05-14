@@ -1,6 +1,7 @@
 import './style/index.css';
 import { SERVER } from './js/constants/service';
 import { REQUEST_OPTIONS, URL, MY_USUAL_HEADERS, MY_BEARER_HEADERS } from './js/constants/reqOptions';
+import { HEADER, POPUP_REG, POPUP_ENTER, POPUP_SUCCESS, RESULTS_CONTAINER } from './js/constants/domConst';
 import DATES from './js/constants/dates';
 import VespucciApi from './js/api/VespucciApi';
 import NewsApi from './js/api/NewsApi';
@@ -21,7 +22,7 @@ const auth = new Auth();
 const newsApi = new NewsApi(REQUEST_OPTIONS, URL);
 const operate = new Operate();
 const vespucciApi = new VespucciApi(SERVER, MY_USUAL_HEADERS, MY_BEARER_HEADERS);
-const head = new Head(document.querySelector('.header'));
+const head = new Head(HEADER);
 const validate = new Validate();
 
 if (auth.isLogin()) {
@@ -38,10 +39,10 @@ const insertNews = (newsData, _id) => {
   return news;
 };
 
-const newslist = new Newslist(document.querySelector('.results__container'), insertNews, operate);
+const newslist = new Newslist(RESULTS_CONTAINER, insertNews, operate);
 new Search(document.forms.search, newsApi, newslist, operate, DATES, validate);
-const successPopup = new Popup(document.querySelector('.popup-success'));
+const successPopup = new Popup(POPUP_SUCCESS);
 successPopup.closeSuccessPopupHandler();
-new PopupEnter(document.querySelector('.popup-enter'), validate, vespucciApi, head, auth);
-new PopupReg(document.querySelector('.popup-reg'), validate, vespucciApi);
+new PopupEnter(POPUP_ENTER, validate, vespucciApi, head, auth);
+new PopupReg(POPUP_REG, validate, vespucciApi);
 new Exit(vespucciApi, head, auth);

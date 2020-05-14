@@ -3,6 +3,7 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable eqeqeq */
+
 export default class Operate {
   // перевод поля даты с newsApi в нужный формат
   turnDate(date) {
@@ -17,12 +18,13 @@ export default class Operate {
     return newDate.join(' ');
   }
 
-  // обработка текстов, если они слишком длинные
+  // обработка текстов, если они слишком длинные NEWSAPI
   trimString(content, reqSize) {
     return content === null ? '' : content.length > reqSize ? `${content.slice(0, reqSize)}...` : content;
   }
 
   // обработка сколько статей у пользователя
+  // ДЛЯ ЛИЧНОГО КАБИнЕТА ВЫСТАВИТЬ СВЕРХУ
   pairValue(numOfArt) {
     const last = +numOfArt.toString().slice(-1);
 
@@ -47,8 +49,30 @@ export default class Operate {
     return `у Вас ${numOfArt} сохраненных статей`;
   }
 
+  // преобразовать дату в валидный формат. для класса Search
+  getDate(time) {
+    const date = time;
+    let dd = date.getDate();
+    if (dd < 10) {
+      dd = `0${dd}`;
+    }
+    let mm = date.getMonth() + 1;
+    if (mm < 10) {
+      mm = `0${mm}`;
+    }
+    const year = date.getFullYear();
+    return `${year}-${mm}-${dd}`;
+  }
 
-  // формирование строки с ключевыми словами
+
+  // ОБРАБОТКА МАССИВОВ С КЛЮЧЕВЫМИ СЛОВАМИ
+
+  // получить только ключи из массива. для localstorage
+  getAllKeyWords(data) {
+    return data.map((el) => el.keyword);
+  }
+
+  // формирование строки с ключевыми словами. для первого поиска при окрытии личного кабинета
   getKeywords(words) {
     if (words.length === 0) {
       return 'нет статей - нет ключевых слов :(';
@@ -76,18 +100,23 @@ export default class Operate {
     return `${uniqKeys[0]}, ${uniqKeys[1]} и ${length} другим`;
   }
 
-  // преобразовать дату в валидный формат
-  getDate(time) {
-    const date = time;
-    let dd = date.getDate();
-    if (dd < 10) {
-      dd = `0${dd}`;
+  // создать массив с уникальными ключами
+  getArrayOfUniqueKeyWords(words) {
+    if (words.length === 0) {
+      return 'нет статей - нет ключевых слов :(';
     }
-    let mm = date.getMonth() + 1;
-    if (mm < 10) {
-      mm = `0${mm}`;
-    }
-    const year = date.getFullYear();
-    return `${year}-${mm}-${dd}`;
+    return words.reduce((res, current) => {
+      if (!res.includes(current)) {
+        res.push(current);
+      }
+      return res;
+    }, []).reverse();
+  }
+
+  // удалить одно ключевое слово из списка ключевых слов
+  deleteElementFromArray(stringOfKeywords, deletedWord) {
+    const arrOfKeywords = stringOfKeywords.split(',');
+    arrOfKeywords.splice(arrOfKeywords.indexOf(deletedWord), 1);
+    return arrOfKeywords;
   }
 }

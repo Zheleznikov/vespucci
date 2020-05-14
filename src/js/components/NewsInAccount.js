@@ -8,28 +8,28 @@ export default class NewsInAccount extends News {
     this.vespucciApi = vespucciApi;
   }
 
+  // удаляем карточку со страницы, в случае успеха обновляется информация вверху страницы
   remove() {
     this.vespucciApi.deleteNews(this._id)
-      .then(() => {
-        this.newsCard.parentElement.removeChild(this.newsCard);
-        this.vespucciApi.getNews()
-          .then((res) => {
-            this.savedArt.setName(localStorage.getItem('name'), this.operate.pairValue(res.length));
-            if (res.length === 0) {
-              this.savedArt.turnOff();
-            } else {
-              this.savedArt.turnOnResults();
-              this.savedArt.setKeywords(this.operate.getKeywords(res));
-            }
-          })
-          .catch((err) => console.log(err));
+      .then((res) => {
+        this.removeChild();
+        const currentNumOfSavedNews = (localStorage.getItem('numOfArt') - 1);
+        this.savedArt.setName(localStorage.getItem('name'), this.operate.pairValue(localStorage.getItem('numOfArt') - 1));
+        localStorage.setItem('numOfArt', currentNumOfSavedNews);
+        const arrayOfKeywords = this.operate.deleteElementFromArray(localStorage.getItem('keywords'), res.data.keyword);
+        localStorage.setItem('keywords', arrayOfKeywords);
+        this.savedArt.setKeywords(this.operate.getArrayOfUniqueKeyWords(arrayOfKeywords));
+        if (arrayOfKeywords.length === 0) {
+          this.savedArt.turnOff();
+        }
       })
       .catch((err) => console.log(err));
   }
 
-  createNewsCard() {
-    super.createNewsCard();
+  removeChild() {
+    this.newsCard.parentElement.removeChild(this.newsCard);
   }
+
 
   accountHandlers() {
     this.newsCard.querySelector('.news__icon_delete').addEventListener('click', this.remove.bind(this));

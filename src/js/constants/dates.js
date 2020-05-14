@@ -1,7 +1,4 @@
-// // рассчет переменных для поиска
-// const SEVEN_DAYS_AGO = new Date(new Date().getTime() - 1000 * 7 * 24 * 60 * 60);
-// const TODAY = new Date();
-
+// рассчет переменных для поискового запроса от сегодняшнейдаты до даты 7 дней назад
 const DATES = {
   today: new Date(),
   sevenDaysAgo: new Date(new Date().getTime() - 1000 * 7 * 24 * 60 * 60),

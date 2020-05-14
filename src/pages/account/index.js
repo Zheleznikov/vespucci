@@ -1,10 +1,9 @@
 import './account.css';
 import { SERVER } from '../../js/constants/service';
+import { HEADER, RESULTS_CONTAINER, ARTICLES_INFO } from '../../js/constants/domConst';
 import VespucciApi from '../../js/api/VespucciApi';
 import Head from '../../js/components/Head';
 import Exit from '../../js/components/Exit';
-// import News from '../../js/components/News';
-// import NewsInAccount from  '../../js/components/NewsInAccount';
 import Newslist from '../../js/components/Newslist';
 import Operate from '../../js/utils/Operate';
 import SavedArt from '../../js/components/SavedArt';
@@ -15,8 +14,8 @@ import NewsInAccount from '../../js/components/NewsInAccount';
 
 const auth = new Auth();
 const vespucciApi = new VespucciApi(SERVER, MY_USUAL_HEADERS, MY_BEARER_HEADERS);
-const head = new Head(document.querySelector('.header'));
-const savedArt = new SavedArt(document.querySelector('.articles-info'));
+const head = new Head(HEADER);
+const savedArt = new SavedArt(ARTICLES_INFO);
 head.setBlackTheme();
 const operate = new Operate();
 
@@ -27,7 +26,7 @@ const insertNews = (newsData, _id) => {
   return newsInAccount;
 };
 
-const newslist = new Newslist(document.querySelector('.results__container'), insertNews, operate);
+const newslist = new Newslist(RESULTS_CONTAINER, insertNews, operate);
 new Exit(vespucciApi, head, auth);
 
 if (auth.isLogin()) {
@@ -40,6 +39,7 @@ if (auth.isLogin()) {
         savedArt.turnOff();
       } else {
         savedArt.turnOnResults();
+        localStorage.setItem('keywords', operate.getAllKeyWords(res));
         savedArt.setKeywords(operate.getKeywords(res));
         newslist.renderInAccount(res);
       }
