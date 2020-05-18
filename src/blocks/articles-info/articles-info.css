@@ -1,0 +1,29 @@
+@import url(./__key/articles-info__key.css);
+@import url(./__main/articles-info__main.css);
+@import url(./__title/articles-info__title.css);
+@import url(./__words/articles-info__words.css);
+@import url(./_mobile/articles-info_mobile.css);
+@import url(./__key/_off/articles-info__key_off.css);
+.articles-info {
+  padding-top: 40px;
+  padding-bottom: 56px;
+  border-top: 1px solid rgba(196, 196, 196);
+  flex: auto;
+}
+
+.articles-info_mobile {
+  border: none;
+}
+
+@media screen and (max-width: 800px) {
+  .articles-info {
+    padding-top: 24px;
+    padding-bottom: 32px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .articles-info {
+    padding-top: 8px;
+  }
+}

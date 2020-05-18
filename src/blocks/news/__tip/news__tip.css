@@ -1,0 +1,23 @@
+.news__tip {
+  display: none;
+  background: #FFFFFF;
+  box-shadow: 0px 10px 22px rgba(59, 74, 116, 0.1);
+  border-radius: 10px;
+  position: absolute;
+  padding: 11px 5px;
+  margin: 0;
+
+  top: 24px;
+  right: 69px;
+  outline: none;
+  border: none;
+  cursor: url(../../../images/pointer.svg), pointer;
+}
+
+
+@media screen and (max-width: 840px) {
+  .news__tip {
+    top: 8px;
+    right: 53px;
+  }
+}

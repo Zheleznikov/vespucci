@@ -1,0 +1,34 @@
+@import url(./__copyright/footer__copyright.css);
+@import url(./__icon/footer__icon.css);
+@import url(./__link/footer__link.css);
+@import url(./__nav/footer__nav.css);
+@import url(./__link-api/footer__link-api.css);
+@import url(./__links-logo/footer__links-logo.css);
+@import url(./__links-word/footer__links-word.css);
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-family: Roboto, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 18px;
+  line-height: 24px;
+  max-height: 80px;
+  flex-shrink: 0;
+
+}
+
+@media screen and (max-width: 800px) {
+  .footer {
+    max-height: 64px;
+  }
+}
+
+@media screen and (max-width: 740px) {
+  .footer {
+    max-height: none;
+    flex-direction: column-reverse;
+    padding-top: 20px;
+  }
+}

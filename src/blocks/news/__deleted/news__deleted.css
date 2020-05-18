@@ -1,0 +1,13 @@
+.news__deleted {
+  animation: fade-out 1s ease-out both;
+  display: block;
+}
+
+ @keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

@@ -1,0 +1,13 @@
+.author__links {
+  color: #2F71E5;
+  text-decoration: none;
+  cursor: url(../../../images/pointer.svg), pointer;
+}
+
+.author__links:hover {
+  color: #347EFF;
+}
+
+.author__links:active {
+  color: #2A65CC;
+}

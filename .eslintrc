@@ -1,0 +1,12 @@
+{
+  "extends": "airbnb-base",
+   "rules": {
+     "eol-last" : "off",
+     "no-console": "off",
+     "object-curly-newline": "off",
+     "max-len": "off",
+     "no-undef": "off",
+     "no-new": "off",
+     "no-underscore-dangle": "off"
+   }
+}

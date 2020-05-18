@@ -1,0 +1,47 @@
+@import url(./__menu/header__menu.css);
+@import url(./__button/header__button.css);
+@import url(./__link/header__link.css);
+@import url(./__links/header__links.css);
+@import url(./__logo/header__logo.css);
+@import url(./__link/_active/header__link_active.css);
+@import url(./__link/_none/header__link_none.css);
+@import url(./__button/_in/header__button_in.css);
+@import url(./__button/_none/header__button_none.css);
+@import url(./__menu-button/header__menu-button.css);
+@import url(./__menu-sticks/header__menu-sticks.css);
+@import url(./__logo-container/header__logo-container.css);
+@import url(./_mobile/header_mobile.css);
+@import url(./__logo/_mobile/header__logo_mobile.css);
+@import url(./__logo-container/_mobile/header__logo-container_mobile.css);
+@import url(./__links/_mobile/header__links_mobile.css);
+@import url(./__link/_mobile/header__link_mobile.css);
+@import url(./__button/_mobile/header__button_mobile.css);
+@import url(./__button/_icon/header__button_icon.css);
+@import url(./__button/_user/header__button_user.css);
+@import url(./__menu-sticks/_mobile/header__menu-sticks_mobile.css);
+@import url(./__theme/_black/header__theme_black.css);
+@import url(./__menu-button/_account/header__menu-button_account.css);
+@import url(./__menu-button/_x/header__menu-button_x.css);
+@import url(./__links/_mobile/header__links_mobile_animation.css);
+
+.header {
+  color: white;
+  font-family: Roboto, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  display: flex;
+  justify-content: space-between;
+  min-height: 80px;
+  position: relative;
+}
+
+
+@media screen and (max-width: 800px) {
+  .header {
+    min-height: 66px;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .header {
+    min-height: 56px;
+  }
+}

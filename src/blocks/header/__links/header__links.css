@@ -1,0 +1,22 @@
+.header__links {
+  display: flex;
+  font-size: 18px;
+  line-height: 24px;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .header__links {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .header__links {
+    display: none;
+  }
+}

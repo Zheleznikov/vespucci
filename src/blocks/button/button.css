@@ -1,0 +1,19 @@
+.button {
+  display: block;
+  margin: 0;
+  border: none;
+  border-radius: 100px;
+  background-color: #2F71E5;
+  color: white;
+  outline: none;
+  box-shadow: 0px 5px 15px rgba(14, 26, 57, 0.2);
+  cursor: url(../../images/pointer.svg), pointer;
+}
+
+.button:hover {
+  background-color: #347EFF;
+}
+
+.button:active {
+  background-color: #2A65CC;
+}

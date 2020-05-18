@@ -1,0 +1,14 @@
+.search__button {
+  line-height: 22px;
+  padding: 21px 54px 21px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+@media screen and (max-width: 520px) {
+  .search__button {
+    position: static;
+    width: 100%;
+  }
+}

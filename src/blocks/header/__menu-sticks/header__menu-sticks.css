@@ -1,0 +1,19 @@
+.header__menu-sticks {
+    align-self: center;
+    position: relative;
+    display: none;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    right: 0;
+    top: 22px;
+}
+
+
+@media screen and (max-width: 680px) {
+  .header__menu-sticks {
+    display: block;
+  }
+}
+
+

@@ -1,0 +1,9 @@
+.footer__link-api {
+  color: inherit;
+  text-decoration: inherit;
+  cursor: url(../../../images/pointer.svg), pointer;
+}
+
+.footer__link-api:hover {
+  opacity: .6;
+}

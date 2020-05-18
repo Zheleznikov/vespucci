@@ -1,0 +1,24 @@
+.search__subtitle {
+    max-width: 545px;
+    margin-bottom: 64px;
+}
+
+@media screen and (max-width: 800px) {
+  .search__subtitle {
+    margin-bottom: 48px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .search__subtitle {
+    /* max-width: 280px; */
+    margin-bottom: 122px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .search__subtitle {
+    /* max-width: 280px; */
+    /* margin-bottom: 122px; */
+  }
+}

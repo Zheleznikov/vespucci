@@ -1,0 +1,14 @@
+.popup__button {
+  margin-top: 0px;
+  margin-bottom: 16px;
+  width: 100%;
+  box-shadow: 0px 5px 15px rgba(14, 26, 57, 0.2);
+  padding-top: 21px;
+  padding-bottom: 19px;
+}
+
+.popup__button:disabled, .popup__button_disabled:hover, .popup__button_disabled:active {
+  background-color: #E6E8EB;
+  color: #B6BCBF;
+  box-shadow: none;
+}

@@ -1,0 +1,30 @@
+@import url(./__button/results__button.css);
+@import url(./__container/results__container.css);
+@import url(./__title/results__title.css);
+@import url(./__helpers/results__helpers.css);
+@import url(./__button/_off/results__button_off.css);
+.results {
+  background-color: #F5F6F7;
+  padding-top: 62px;
+  padding-bottom: 62px;
+  position: relative;
+  display: none;
+}
+
+.results_on {
+  display: block;
+}
+
+@media screen and (max-width: 840px) {
+  .results {
+    padding-bottom: 22px;
+    padding-top: 32px;
+  }
+}
+
+@media screen and (max-width: 539px) {
+  .results {
+    padding-bottom: 16px;
+    padding-top: 24px;
+  }
+}

@@ -1,0 +1,8 @@
+@media screen and (max-width: 680px) {
+  .header__logo-container_mobile {
+    width: 100%;
+    border-bottom: 1px solid rgb(196,196,196);
+    margin-bottom: 16px;
+  }
+
+}

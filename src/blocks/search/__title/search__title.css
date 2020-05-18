@@ -1,0 +1,16 @@
+.search__title {
+  font-family: Roboto Slab, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 60px;
+  line-height: 64px;
+  margin-top: 0px;
+  margin-bottom: 32px;
+}
+
+@media screen and (max-width: 800px) {
+  .search__title {
+    max-width: 385px;
+    font-size: 36px;
+    line-height: 40px;
+    margin-bottom: 16px;
+  }
+}

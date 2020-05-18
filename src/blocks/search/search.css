@@ -1,0 +1,30 @@
+@import url(./__button/search__button.css);
+@import url(./__field/search__field.css);
+@import url(./__input/search__input.css);
+@import url(./__subtitle/search__subtitle.css);
+@import url(./__title/search__title.css);
+@import url(./__main/search__main.css);
+@import url(./_mobile/search_mobile.css);
+
+.search {
+  width: 100%;
+  color: white;
+  font-family: Roboto, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 18px;
+  line-height: 24px;
+  border-top: 1px solid rgba(196, 196, 196);
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.search_mobile {
+  border-top: none;
+}
+
+@media screen and (max-width: 800px) {
+  .search {
+    padding-top: 48px;
+    padding-bottom: 38px;
+  }
+}
+

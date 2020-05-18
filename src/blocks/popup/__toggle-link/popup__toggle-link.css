@@ -1,0 +1,7 @@
+.popup__toggle-link {
+    background-color: white;
+    border: none;
+    color: #2F71E5;
+    outline: none;
+    cursor: url(../../../images/pointer.svg), pointer;
+}

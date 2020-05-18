@@ -1,0 +1,14 @@
+@media screen and (max-width: 680px) {
+  .header_mobile {
+    background: #1A1B22;
+    width: 100%;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    min-height: none;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    padding-bottom: 24px;
+   
+  }
+
+}

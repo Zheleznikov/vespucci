@@ -1,0 +1,19 @@
+.news__text {
+  font-family: Roboto;
+  font-size: 16px;
+  line-height: 22px;
+  color: #1A1B22;
+  max-height: 110px;
+  overflow-y: hidden;
+  display: block;
+  width: 100%;
+}
+
+
+@media screen and (max-width: 840px) {
+  .news__text {
+    max-height: 88px;
+  }
+
+
+}

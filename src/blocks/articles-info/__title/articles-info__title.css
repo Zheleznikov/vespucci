@@ -1,0 +1,21 @@
+.articles-info__title {
+  font-family: Roboto, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 18px;
+  line-height: 24px;
+  color: rgba(26, 27, 34, 0.5);
+  padding: 0;
+  margin: 0 0 28px;
+}
+
+@media screen and (max-width: 800px) {
+  .articles-info__title {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .articles-info__title {
+    font-size: 12px;
+  }
+}

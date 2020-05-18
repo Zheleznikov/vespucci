@@ -1,0 +1,23 @@
+.footer__link {
+  font-family: Roboto;
+  font-size: 18px;
+  line-height: 24px;
+  color: #1A1B22;
+  text-decoration: none;
+  display: flex;
+  cursor: url(../../../images/pointer.svg), pointer;
+}
+
+.footer__link:first-of-type {
+  margin-right: 28px;
+}
+
+.footer__link:hover {
+  opacity: .7;
+}
+
+@media screen and (max-width: 440px) {
+  .footer__link:first-of-type {
+    margin-bottom: 30px;
+  }
+}

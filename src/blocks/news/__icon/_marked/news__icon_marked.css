@@ -1,0 +1,7 @@
+.news__icon_marked {
+    background-image: url(../../../../images/flag-marked.svg);
+}
+
+.news__icon_marked:hover {
+  background-image: url(../../../../images/flag-marked.svg);
+}

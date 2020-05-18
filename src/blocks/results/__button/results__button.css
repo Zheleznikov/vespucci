@@ -1,0 +1,31 @@
+.results__button {
+  display: block;
+  font-family: Roboto;
+  font-size: 18px;
+  line-height: 24px;
+  border: 1px solid white;
+  color: #1A1B22;
+  background-color: white;
+  padding: 18px 84px 22px;
+  border-radius: 100px;
+  cursor: url(../../../images/pointer.svg), pointer;
+  outline: none;
+  margin: 64px auto 18px;
+}
+
+.results__button:hover {
+  background-color:#E5E5E5;
+
+}
+
+@media screen and (max-width: 840px) {
+  .results__button {
+    margin: 32px auto 8px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .results__button {
+    margin: 15px auto 16px;
+  }
+}

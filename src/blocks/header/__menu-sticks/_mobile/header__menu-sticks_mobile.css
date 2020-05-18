@@ -1,0 +1,5 @@
+@media screen and (max-width: 680px) {
+  .header__menu-sticks_mobile {
+    right: 5%;
+  }
+}

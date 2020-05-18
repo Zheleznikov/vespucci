@@ -1,0 +1,17 @@
+.popup__close {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: -40px;
+    right: -40px;
+    cursor: url(../../../images/pointer.svg), pointer;
+}
+
+@media screen and (max-width: 500px) {
+  .popup__close {
+    width: 26px;
+    height: 26px;
+    right: 4%;
+    top: -39px;
+  }
+}

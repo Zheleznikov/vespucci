@@ -1,0 +1,23 @@
+.news__image {
+    height: 272px;
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    /* object-fit: fill; */
+    object-position: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    /* margin-bottom: 20px; */
+}
+
+@media screen and (max-width: 840px) {
+  .news__image {
+    height: 150px;
+  }
+}
+
+@media screen and (max-width: 459px) {
+  .news__image  {
+   height: 196px;
+  }
+}

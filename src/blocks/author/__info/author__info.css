@@ -1,0 +1,14 @@
+.author__info {
+  display: flex;
+  font-family: Roboto, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 18px;
+  line-height: 24px;
+  color: #1A1B22;
+}
+
+@media screen and (max-width: 540px) {
+  .author__info {
+    flex-direction: column;
+    align-items: center;
+  }
+}

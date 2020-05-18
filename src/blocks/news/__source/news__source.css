@@ -1,0 +1,23 @@
+.news__source {
+  font-family: Roboto Slab;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: #B6BCBF;
+  padding: 0;
+  margin: 0;
+
+  position: absolute;
+  bottom: 24px;
+  left:24px;
+}
+
+@media screen and (max-width: 840px) {
+  .news__source {
+    bottom: 16px;
+    left: 16px;
+  }
+
+}

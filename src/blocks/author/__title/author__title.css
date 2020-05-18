@@ -1,0 +1,11 @@
+.author__title {
+  margin-top: 50px;
+  padding: 0;
+}
+
+@media screen and (max-width: 1000px) {
+  .author__title {
+    margin-top: 6px;
+    margin-bottom: 16px;
+  }
+}

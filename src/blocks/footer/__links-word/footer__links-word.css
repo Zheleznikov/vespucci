@@ -1,0 +1,13 @@
+.footer__links-word {
+    display: flex;
+    margin-right: 40px;
+
+}
+
+@media screen and (max-width: 440px) {
+  .footer__links-word {
+    flex-direction: column;
+    margin-bottom: 40px;
+
+  }
+}
