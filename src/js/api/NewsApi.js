@@ -21,7 +21,7 @@ export default class NewsApi {
       redirect: 'follow'
     };
 
-    return fetch(`${this.url}news-api`, requestOptions)
+    return fetch(`${this.url}newsapi`, requestOptions)
      .then((res) => {
           if (!res.ok) {
             return Promise.reject(`Ошибка: ${res.status}`);
