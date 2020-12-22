@@ -5,7 +5,8 @@ const REQUEST_OPTIONS = {
   },
 };
 
-const URL = 'https://newsapi.org/v2/everything?';
+// const URL = 'https://newsapi.org/v2/everything?';
+const URL = 'http://localhost:3002/news-api?';
 
 
 // запросы на свой сервер

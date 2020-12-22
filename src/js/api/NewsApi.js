@@ -6,22 +6,67 @@ export default class NewsApi {
     this.url = url;
   }
 
-  // получить данные от сервера
-  getNews(query, today, sevenDaysAgo) {
-    const params = {
-      q: query,
-      from: sevenDaysAgo,
-      to: today,
-      pageSize: 100,
-    };
-    const queryParams = Object.keys(params).map((key) => `${key}=${params[key]}`).join('&');
+  getNews(q, from, to) {
+    const myHeaders = new Headers();
+    myHeaders.append("Accept", "application/json");
+    myHeaders.append("Content-Type", "application/json");
 
-    return fetch(`${this.url}${queryParams}`, this.options)
-      .then((res) => {
-        if (!res.ok) {
-          return Promise.reject(`Ошибка: ${res.status}`);
-        }
-        return res.json();
-      });
+    const raw = JSON.stringify({q, from, to ,"key":"e1b4f6c04db147c8afb184bec5c703a5"});
+
+    const requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+
+    return fetch("http://localhost:3002/news-api", requestOptions)
+     .then((res) => {
+          if (!res.ok) {
+            return Promise.reject(`Ошибка: ${res.status}`);
+          }
+          return res.json();
+        });
+
+
   }
+
+
 }
+
+
+  // получить данные от сервера
+  // getNews(q, from, to) {
+  //   const myHeaders = new Headers();
+  //   myHeaders.append("Accept", "application/json");
+  //   myHeaders.append("Content-Type", "application/json");
+
+  //   const raw = JSON.stringify({"q":q,"from":from,"to":to,"key":"e1b4f6c04db147c8afb184bec5c703a5"});
+
+  //   const requestOptions = {
+  //     method: 'GET',
+  //     headers: myHeaders,
+  //     body: raw,
+  //     redirect: 'follow'
+  //   };
+
+  //   fetch("http://localhost:3002/news-api", requestOptions)
+    
+  // }
+
+  //   return fetch(`http://localhost:3002/news-api`, {
+  //     method: 'GET',
+  //     headers: {
+  //       authorization: `Bearer ${localStorage.getItem('token')}`,
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({ q, from, to, key: 'e1b4f6c04db147c8afb184bec5c703a5' })
+  //   })
+  //     .then((res) => {
+  //       if (!res.ok) {
+  //         return Promise.reject(`Ошибка: ${res.status}`);
+  //       }
+  //       return res.json();
+  //     });
+  // }
+// }
