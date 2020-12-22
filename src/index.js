@@ -1,6 +1,6 @@
 import './style/index.css';
 import { SERVER } from './js/constants/service';
-import { REQUEST_OPTIONS, URL, MY_USUAL_HEADERS } from './js/constants/reqOptions';
+import { REQUEST_OPTIONS, URL, MY_USUAL_HEADERS, API_KEY } from './js/constants/reqOptions';
 import { HEADER, POPUP_REG, POPUP_ENTER, POPUP_SUCCESS, RESULTS_CONTAINER } from './js/constants/domConst';
 import DATES from './js/constants/dates';
 import VespucciApi from './js/api/VespucciApi';
@@ -19,7 +19,7 @@ import Auth from './js/components/Auth';
 
 
 const auth = new Auth();
-const newsApi = new NewsApi(REQUEST_OPTIONS, URL);
+const newsApi = new NewsApi(REQUEST_OPTIONS, URL, API_KEY);
 const operate = new Operate();
 const vespucciApi = new VespucciApi(SERVER, MY_USUAL_HEADERS);
 const head = new Head(HEADER);
