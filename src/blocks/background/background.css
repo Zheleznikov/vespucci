@@ -1,7 +1,8 @@
 .background {
   width: 100%;
   /* background-image: url(../../images/main-search.png); */
-  background-image: url(../../images/back-ng.jpg);
+  /* background-image: url(../../images/back-ng.jpg); */
+  background-image: url(../../images/back-ng2.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -11,7 +12,8 @@
 @media screen and (max-width: 950px) {
   .background {
     /* background-image: url(../../images/main-search-768.png); */
-    background-image: url(../../images/back-ng-768.jpg);
+    /* background-image: url(../../images/back-ng-768.jpg); */
+    background-image: url(../../images/back-ng2-768.jpg);
   }
 }
 
