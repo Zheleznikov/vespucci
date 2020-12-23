@@ -1,10 +1,10 @@
 /* eslint-disable prefer-promise-reject-errors */
 // класс для работы с newsapi.org
 export default class NewsApi {
-  constructor(options, url, api_key) {
-    this.options = options;
+  constructor(url, api_key, headers) {
     this.url = url;
     this.api_key = api_key;
+    this.headers = headers;
   }
 
   getNews(q, from, to) {
@@ -12,16 +12,15 @@ export default class NewsApi {
     myHeaders.append("Accept", "application/json");
     myHeaders.append("Content-Type", "application/json");
 
-    const raw = JSON.stringify({q, from, to ,key:this.api_key });
-
     const requestOptions = {
       method: 'POST',
-      headers: myHeaders,
-      body: raw,
+      headers: this.headers,
+      body: JSON.stringify({q, from, to ,key:this.api_key }),
       redirect: 'follow'
     };
 
-    return fetch(`${this.url}news-api`, requestOptions)
+
+    return fetch(this.url, requestOptions)
      .then((res) => {
           if (!res.ok) {
             return Promise.reject(`Ошибка: ${res.status}`);
@@ -52,7 +51,7 @@ export default class NewsApi {
   //   };
 
   //   fetch("http://localhost:3002/news-api", requestOptions)
-    
+
   // }
 
   //   return fetch(`http://localhost:3002/news-api`, {
