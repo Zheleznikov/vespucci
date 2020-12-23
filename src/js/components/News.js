@@ -2,11 +2,12 @@
 
 /* КЛАСС СОЗДАНИЯ НОВОСТИ */
 export default class News {
-  constructor(newsData, vespucciApi, auth, _id) {
+  constructor(newsData, vespucciApi, auth, _id, eventGenerate) {
     this._id = _id;
     this.newsData = newsData;
     this.auth = auth;
     this.vespucciApi = vespucciApi;
+    this.eventGenerate = eventGenerate;
   }
 
   // создать карточку
@@ -53,14 +54,18 @@ export default class News {
 
   _addingHandler() {
     this.newsCard.querySelector('.news__icon').addEventListener('click', this.clickIconHandler.bind(this));
+    this.newsCard.querySelector('.news__icon').removeEventListener('mouseover', this._showTip.bind(this));
+    this.newsCard.querySelector('.news__tip-content').removeEventListener('mouseout', this._hideTip.bind(this));
   }
 
 
   // обработчик смотрит ли карточку зарегистрированный пользователь
   authHandler() {
     if (this.auth.isLogin()) {
+      // this.eventGenerate.authEventGenerate();
       this._addingHandler();
     } else {
+      // this.eventGenerate.noAuthEventGenerate();
       this._tipHandler();
     }
   }

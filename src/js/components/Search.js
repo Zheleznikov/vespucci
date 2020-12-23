@@ -2,7 +2,7 @@
 import SearchView from './SearchView';
 
 export default class Search extends SearchView {
-  constructor(form, newsApi, newslist, operate, dates, validate) {
+  constructor(form, newsApi, newslist, operate, dates, validate, isLogin) {
     super();
     this.dates = dates;
     this.validate = validate;
@@ -12,6 +12,7 @@ export default class Search extends SearchView {
     this.button = this.form.elements.button;
     this.newslist = newslist;
     this.newsApi = newsApi;
+    this.isLogin = isLogin;
 
     this.resultsButton = document.querySelector('.results__button');
     this._handlers();
@@ -23,6 +24,7 @@ export default class Search extends SearchView {
     this.clearContainer();
     this.runPreloader();
     this.disableSearchFields();
+
     this.newsApi.getNews(this.searchString.value, this.operate.getDate(this.dates.today), this.operate.getDate(this.dates.sevenDaysAgo))
       .then((res) => {
         this.enableSearchFields();
@@ -30,6 +32,7 @@ export default class Search extends SearchView {
         this.renderArr = this.newslist.render(res.articles, this.searchString.value);
         this._widthHandler();
         this._resultButtonHandler();
+        this.isLogin();
         if (res.articles.length === 0) {
           this.getErrMotFound();
         }
