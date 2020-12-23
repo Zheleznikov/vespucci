@@ -94,7 +94,6 @@ export default class News {
 
   _authListener() {
     document.addEventListener('is-auth', (e) => {
-      console.log('this is suthlistener', e.detail);
       if (e.detail === 'no-auth') {
         this._tipHandler();
       } else if (e.detail === 'auth-was-made') {

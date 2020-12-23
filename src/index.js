@@ -32,7 +32,6 @@ const vespucciApi = new VespucciApi(SERVER, MY_USUAL_HEADERS);
 const head = new Head(HEADER);
 const validate = new Validate();
 
-document.addEventListener("is-auth", (e) => console.log(e.detail));
 
 
 const isLogin = () => {
