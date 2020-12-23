@@ -25,16 +25,30 @@ const vespucciApi = new VespucciApi(SERVER, MY_USUAL_HEADERS);
 const head = new Head(HEADER);
 const validate = new Validate();
 
+document.addEventListener('is-auth', (e) => console.log(e.detail));
+// document.addEventListener('no-auth', (e) => console.log(e.detail));
+
 if (auth.isLogin()) {
   head.setLogin(localStorage.getItem('name'));
+
+  const authGen = new CustomEvent('is-auth', {
+    detail: 'auth-was-made'
+  })
+  document.dispatchEvent(authGen);
 } else {
   head.setUnauthorized();
+  const authGen = new CustomEvent('is-auth', {
+    detail: 'no-auth'
+  })
+  document.dispatchEvent(authGen);
 }
+
 
 const insertNews = (newsData, _id) => {
   const news = new News(newsData, vespucciApi, auth, _id);
   news.createNewsCard();
   news.authHandler();
+  news._authListener();
   // news.handler();
   return news;
 };
