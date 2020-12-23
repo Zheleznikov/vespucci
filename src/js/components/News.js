@@ -51,12 +51,15 @@ export default class News {
     this.newsCard.querySelector('.news__tip').addEventListener('click', this._openEnter.bind(this));
   }
 
+  _addingHandler() {
+    this.newsCard.querySelector('.news__icon').addEventListener('click', this.clickIconHandler.bind(this));
+  }
+
 
   // обработчик смотрит ли карточку зарегистрированный пользователь
   authHandler() {
-    console.log(this.auth.isLogin());
     if (this.auth.isLogin()) {
-      this.newsCard.querySelector('.news__icon').addEventListener('click', this.clickIconHandler.bind(this));
+      this._addingHandler();
     } else {
       this._tipHandler();
     }
@@ -81,5 +84,19 @@ export default class News {
   // открыть попап входа если нажать на иконку
   _openEnter() {
     document.querySelector('.popup-enter').classList.add('popup_is-opened');
+  }
+
+
+  _authListener() {
+    document.addEventListener('is-auth', (e) => {
+      console.log('this is suthlistener', e.detail);
+      if (e.detail === 'no-auth') {
+        this._tipHandler();
+      } else if (e.detail === 'auth-was-made') {
+        this._addingHandler();
+      }
+
+    });
+
   }
 }
