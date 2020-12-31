@@ -5,13 +5,18 @@
 */
 
 export default class Auth {
+  constructor(eventGenerate) {
+    this.eventGenerate = eventGenerate;
+  }
   login(token, name) {
     localStorage.setItem('token', token);
     localStorage.setItem('name', name);
+    this.eventGenerate.authEventGenerate();
   }
 
   logout() {
     localStorage.clear();
+    this.eventGenerate.noAuthEventGenerate();
   }
 
   isLogin() {

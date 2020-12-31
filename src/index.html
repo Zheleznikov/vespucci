@@ -46,6 +46,7 @@
           <div class="search__main">
             <h1 class="search__title">Что в мире творится?</h1>
             <p class="search__subtitle">Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.</p>
+            <p class="search__subtitle"></p>
             <form class="search__field" name="search">
               <input type="text" class="search__input" name="searchString" placeholder="Введите тему новости">
               <button class="button search__button" name="button" disabled>Искать</button>
@@ -92,9 +93,8 @@
         <div class="author__about">
           <h2 class="title author__title">Об авторе</h2>
           <p class="author__text">Привет!</p>
-          <p class="author__text">Я Сергей. Работаю в техподдержке школы и асессором тестирования в Яндексе. Летом 2019 увлекся разработкой сайтов. А уже осенью учился в Яндекс.Практикуме.</p>
-          <p class="author__text">Мое портфолио можно посмотреть на <a href="https://zheleznikov.ru/" target="_blank" class="author__links">сайте</a>.</p>
-          <p class="author__text">Со временем стало понятно, что мне интереснее автоматизированное тестирование. Поэтому сейчас я активно прокачиваю скилы в этой области: изучаю python и selenium, учусь тестировать API и UI. Учусь в ОТУСе и Яндекс.Практикуме по программе подготовки инженеров по тестированию.</p>
+          <p class="author__text">Я Сергей. А этот сайт - моя дипломная работа в Яндекс.Практикуме. В отличие от десятков аналогичных, этот работает и поддерживается. Так что создавайте учетную запись, ищите новости и сохраняйте их в личный кабинет. </p>
+          <p class="author__text">Мои другие проекты можно посмотреть <a href="https://zheleznikov.ru/" target="_blank" class="author__links">здесь</a>.</p>
 
         </div>
       </div>
@@ -103,7 +103,7 @@
     </main>
     <!-- === футер === -->
     <footer class="page footer">
-      <p class="footer__copyright">&#169; 2020 vespucci.tk <a href="https://newsapi.org/" target="_blank" class="footer__link-api"> Powered by News API</a></p>
+      <p class="footer__copyright">Copyright &#169; 2020,<a href="https://newsapi.org/" target="_blank" class="footer__link-api"> Powered by News API</a></p>
       <nav class="footer__nav">
         <div class="footer__links-word">
           <a href="./" class="footer__link">Главная</a>
@@ -111,7 +111,7 @@
         </div>
         <div class="footer__links-logo">
           <a href="https://github.com/Zheleznikov/" target="_blank" class="footer__link"><img src="<%=require('./images/github-icon.svg')%>" alt="github" class="footer__icon"></a>
-          <a href="https://www.facebook.com/yandex.praktikum/" target="_blank" class="footer__link"><img src="<%=require('./images/fb-icon.svg')%>" alt="facebook" class="footer__icon"></a>
+          <a href="https://t.me/zheleznikov" target="_blank" class="footer__link"><img src="<%=require('./images/telegram-icon.svg')%>" alt="facebook" class="footer__icon"></a>
         </div>
       </nav>
     </footer>

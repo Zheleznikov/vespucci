@@ -2,11 +2,12 @@
 
 /* КЛАСС СОЗДАНИЯ НОВОСТИ */
 export default class News {
-  constructor(newsData, vespucciApi, auth, _id) {
+  constructor(newsData, vespucciApi, auth, _id, eventGenerate) {
     this._id = _id;
     this.newsData = newsData;
     this.auth = auth;
     this.vespucciApi = vespucciApi;
+    this.eventGenerate = eventGenerate;
   }
 
   // создать карточку
@@ -51,13 +52,20 @@ export default class News {
     this.newsCard.querySelector('.news__tip').addEventListener('click', this._openEnter.bind(this));
   }
 
+  _addingHandler() {
+    this.newsCard.querySelector('.news__icon').addEventListener('click', this.clickIconHandler.bind(this));
+    this.newsCard.querySelector('.news__icon').removeEventListener('mouseover', this._showTip.bind(this));
+    this.newsCard.querySelector('.news__tip-content').removeEventListener('mouseout', this._hideTip.bind(this));
+  }
+
 
   // обработчик смотрит ли карточку зарегистрированный пользователь
   authHandler() {
-    console.log(this.auth.isLogin());
     if (this.auth.isLogin()) {
-      this.newsCard.querySelector('.news__icon').addEventListener('click', this.clickIconHandler.bind(this));
+      // this.eventGenerate.authEventGenerate();
+      this._addingHandler();
     } else {
+      // this.eventGenerate.noAuthEventGenerate();
       this._tipHandler();
     }
   }
@@ -81,5 +89,18 @@ export default class News {
   // открыть попап входа если нажать на иконку
   _openEnter() {
     document.querySelector('.popup-enter').classList.add('popup_is-opened');
+  }
+
+
+  _authListener() {
+    document.addEventListener('is-auth', (e) => {
+      if (e.detail === 'no-auth') {
+        this._tipHandler();
+      } else if (e.detail === 'auth-was-made') {
+        this._addingHandler();
+      }
+
+    });
+
   }
 }
